@@ -3,48 +3,63 @@
     <div id="nav">
       <div class="nav-bar">
         <el-menu
-          :default-active="activeIndex"
+          
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
         >
-          <el-menu-item >
-            <a href="#" class="home">
-              <img src="./assets/images/icon-home.svg" />
+          <el-menu-item>
+            <router-link to="/" class="home">
+              <img class="default" src="./assets/images/icon-home.svg" />
+              <img class="active" src="./assets/images/icon-home-active.svg" />
               <div><span>主页</span></div>
-            </a>
+            </router-link>
           </el-menu-item>
-          <el-menu-item >
-            <a href="#" class="stores">
-              <img src="./assets/images/icon-stores.svg" />
+          <el-menu-item>
+            <router-link to="/stores" class="stores">
+              <img class="default" src="./assets/images/icon-stores.svg" />
+              <img
+                class="active"
+                src="./assets/images/icon-stores-active.svg"
+              />
               <div><span>门店</span></div>
-            </a>
+            </router-link>
           </el-menu-item>
-          <el-menu-item >
-            <a href="#" class="account">
-              <img src="./assets/images/icon-account.svg" />
+          <el-menu-item>
+            <router-link to="/account" class="account">
+              <img class="default" src="./assets/images/icon-account.svg" />
+              <img
+                class="active"
+                src="./assets/images/icon-account-active.svg"
+              />
               <div><span>我的账户</span></div>
-            </a>
+            </router-link>
           </el-menu-item>
-          <el-menu-item >
-            <a href="#" class="menu">
-              <img src="./assets/images/icon-menu.svg" />
+          <el-menu-item>
+            <router-link to="/menu" class="menu">
+              <img class="default" src="./assets/images/icon-menu.svg" />
+              <img class="active" src="./assets/images/icon-menu-active.svg" />
               <div><span>菜单</span></div>
-            </a>
+            </router-link>
           </el-menu-item>
-          <el-menu-item >
-            <a href="#" class="more">
-              <img src="./assets/images/icon-more.svg" />
+          <el-menu-item>
+            <router-link to="/more" class="more">
+              <img class="default" src="./assets/images/icon-more.svg" />
+              <img class="active" src="./assets/images/icon-more-active.svg" />
               <div><span>更多</span></div>
-            </a>
+            </router-link>
           </el-menu-item>
         </el-menu>
       </div>
     </div>
     <router-view />
+    
   </div>
 </template>
+<script>
 
+
+export default {};
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -64,35 +79,53 @@
     bottom: 0;
     background: #fff;
     .el-menu {
-      .home:hover{
-        img{
-         content: url("./assets/images/icon-home-active.svg");
-        }
-          color: #00A862;
+      .active {
+        display: none;
       }
-      .stores:hover{
-        img{
-         content: url("./assets/images/icon-stores-active.svg");
+      .home:hover {
+        .default {
+          display: none;
         }
-          color: #00A862;
+        .active {
+          display: inline;
+        }
+        color: #00a862;
       }
-      .account:hover{
-        img{
-         content: url("./assets/images/icon-account-active.svg");
+      .stores:hover {
+        .default {
+          display: none;
         }
-          color: #00A862;
+        .active {
+          display: inline;
+        }
+        color: #00a862;
       }
-      .menu:hover{
-        img{
-         content: url("./assets/images/icon-menu-active.svg");
+      .account:hover {
+        .default {
+          display: none;
         }
-          color: #00A862;
+        .active {
+          display: inline;
+        }
+        color: #00a862;
       }
-      .more:hover{
-        img{
-         content: url("./assets/images/icon-more-active.svg");
+      .menu:hover {
+        .default {
+          display: none;
         }
-          color: #00A862;
+        .active {
+          display: inline;
+        }
+        color: #00a862;
+      }
+      .more:hover {
+        .default {
+          display: none;
+        }
+        .active {
+          display: inline;
+        }
+        color: #00a862;
       }
       li {
         line-height: unset;
@@ -104,7 +137,7 @@
           // &.router-link-exact-active {
           //   color: #42b983;
           // }
-          span{
+          span {
             font-weight: 400;
             font-size: 12px;
           }
