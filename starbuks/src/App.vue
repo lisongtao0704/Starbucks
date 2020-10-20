@@ -70,6 +70,7 @@ export default {};
   .nav-bar {
     width: 100%;
     position: fixed;
+    z-index: 999;
     bottom: 0;
     background: #fff;
     .el-menu {
@@ -92,9 +93,6 @@ export default {};
         padding: 0;
         a {
           text-decoration: none;
-          // &.router-link-exact-active {
-          //   color: #42b983;
-          // }
           span {
             font-weight: 400;
             font-size: 12px;

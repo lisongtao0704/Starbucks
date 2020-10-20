@@ -4,7 +4,7 @@
       <router-link to="/"
         ><img src="../../assets/images/logo.svg"
       /></router-link>
-      <i class="el-icon-close"></i>
+      <i class="el-icon-close" @click="moreMenu()"></i>
     </div>
     <div class="main">
       <ul>
@@ -24,16 +24,16 @@
         <li><hr /></li>
       </ul>
       <div class="reg">
-        <div>
+        <router-link to="">
           <img src="../../assets/images/icon-account.svg" />
           <span>登录</span>
-        </div>
-        <div>注册</div>
+        </router-link>
+        <router-link to="" class="login"><span>注册</span></router-link>
       </div>
     </div>
     <div class="footer">
-      <router-link to="">English</router-link>
-      <router-link to="">隐私政策</router-link>
+      <router-link to="">English</router-link>|
+      <router-link to="">隐私政策</router-link>|
       <router-link to="">使用条款</router-link>
     </div>
   </div>
@@ -42,14 +42,24 @@
 <script>
 export default {
   name: "more",
+  data() {
+    return {};
+  },
+  methods: {
+    moreMenu() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 
 <style lang='less' scoped>
 .more {
+  white-space: nowrap;
   background: #fff;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
+  z-index: 1000;
   .moreUp {
     padding: 16px;
     display: flex;
@@ -66,7 +76,22 @@ export default {
     padding: 16px;
     .reg {
       display: flex;
-      
+      a {
+        text-decoration: none;
+        color: #00a862;
+        font-size: 16px;
+        img {
+          margin-right: 2px;
+          vertical-align: middle;
+        }
+      }
+      .login {
+        border: 1px solid #00a862;
+        margin-left: 25px;
+        padding: 2px 12px;
+        border-radius: 48px;
+        box-sizing: border-box;
+      }
     }
     ul {
       list-style: none;
@@ -89,9 +114,15 @@ export default {
     }
   }
   .footer {
+    position: fixed;
+    bottom: 0;
+    color: rgba(0, 0, 0, 0.38);
+    padding: 16px 16px 10px 16px;
     a {
       color: rgba(0, 0, 0, 0.38);
+      font-size: 14px;
       list-style: none;
+      margin-right: 5px;
       text-decoration: none;
     }
   }
