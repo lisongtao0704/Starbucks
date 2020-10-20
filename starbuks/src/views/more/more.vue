@@ -9,7 +9,7 @@
     <div class="main">
       <ul>
         <li><router-link to="/stores">门店</router-link></li>
-        <li><router-link to="#">星俱乐部</router-link></li>
+        <li><router-link to="/account/starbucks-rewards">星享俱乐部</router-link></li>
         <li><router-link to="/menu">菜单</router-link></li>
         <li><hr /></li>
         <li><router-link to="/more/xbkMobileApp">星巴克移动应用</router-link></li>
@@ -24,11 +24,11 @@
         <li><hr /></li>
       </ul>
       <div class="reg">
-        <router-link to="">
+        <router-link to="/account/login">
           <img src="../../assets/images/icon-account.svg" />
           <span>登录</span>
         </router-link>
-        <router-link to="" class="login"><span>注册</span></router-link>
+        <router-link to="/account/register" class="login"><span>注册</span></router-link>
       </div>
     </div>
     <div class="footer">

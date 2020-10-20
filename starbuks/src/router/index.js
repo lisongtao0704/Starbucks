@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 
 const routes = [{
@@ -14,7 +13,21 @@ const routes = [{
 {
   path: '/account',
   name: 'Account',
-  component: () => import('../views/account/account.vue')
+  component: () => import('../views/account/account.vue'),
+  redirect: '/account/login',
+  children: [{
+    path: 'login',
+    component: () => import('../views/account/login.vue')
+  },
+  {
+    path: 'register',
+    component: () => import('../views/account/register.vue')
+  },
+  {
+    path: 'starbucks-rewards',
+    component: () => import('../views/account/starbucks-rewards.vue')
+  }
+  ]
 },
 {
   path: '/menu',
