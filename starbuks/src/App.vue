@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-     
-      <div class="nav-bar">
+
+      <div class="nav-bar songtao">
         <el-menu class="el-menu-demo" mode="horizontal">
           <el-menu-item>
-            <router-link to="/" class="home">
+            <router-link to="/home" class="home">
               <img class="default" src="./assets/images/icon-home.svg" />
               <img class="active" src="./assets/images/icon-home-active.svg" />
               <div><span>主页</span></div>
@@ -14,20 +14,14 @@
           <el-menu-item>
             <router-link to="/stores" class="stores">
               <img class="default" src="./assets/images/icon-stores.svg" />
-              <img
-                class="active"
-                src="./assets/images/icon-stores-active.svg"
-              />
+              <img class="active" src="./assets/images/icon-stores-active.svg" />
               <div><span>门店</span></div>
             </router-link>
           </el-menu-item>
           <el-menu-item>
             <router-link to="/account" class="account">
               <img class="default" src="./assets/images/icon-account.svg" />
-              <img
-                class="active"
-                src="./assets/images/icon-account-active.svg"
-              />
+              <img class="active" src="./assets/images/icon-account-active.svg" />
               <div><span>我的账户</span></div>
             </router-link>
           </el-menu-item>
@@ -52,54 +46,62 @@
   </div>
 </template>
 <script>
-export default {};
+  export default {};
 </script>
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  .el-menu--horizontal > .el-menu-item.is-active {
-    border: none;
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
   }
-  .nav-bar {
-    width: 100%;
-    position: fixed;
-    z-index: 999;
-    bottom: 0;
-    background: #fff;
-    .el-menu {
-      .active {
-        display: none;
-      }
-      .router-link-active.router-link-exact-active{
-          .default {
+
+  #nav {
+    .el-menu--horizontal>.el-menu-item.is-active {
+      border: none;
+    }
+
+    .nav-bar {
+      width: 100%;
+      position: fixed;
+      z-index: 999;
+      bottom: 0;
+      background: #fff;
+
+      .el-menu {
+        .active {
           display: none;
         }
-        .active {
-          display: inline;
+
+        .router-link-active{
+          .default {
+            display: none;
+          }
+
+          .active {
+            display: inline;
+          }
+
+          color: #00a862;
         }
-        color: #00a862;
-      }
-      li {
-        line-height: unset;
-        width: 20%;
-        height: 55px;
-        padding: 0;
-        a {
-          text-decoration: none;
-          span {
-            font-weight: 400;
-            font-size: 12px;
+
+        li {
+          line-height: unset;
+          width: 20%;
+          height: 55px;
+          padding: 0;
+
+          a {
+            text-decoration: none;
+
+            span {
+              font-weight: 400;
+              font-size: 12px;
+            }
           }
         }
       }
     }
   }
-}
 </style>

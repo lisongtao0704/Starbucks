@@ -7,6 +7,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './styles/style.css'
 Vue.use(ElementUI)
 
+
+import SlideVerify from 'vue-monoplasty-slide-verify';
+Vue.use(SlideVerify);
+
 Vue.config.productionTip = false
 
 new Vue({
