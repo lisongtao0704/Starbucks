@@ -76,44 +76,8 @@ export default {};
       .active {
         display: none;
       }
-      .home:hover {
-        .default {
-          display: none;
-        }
-        .active {
-          display: inline;
-        }
-        color: #00a862;
-      }
-      .stores:hover {
-        .default {
-          display: none;
-        }
-        .active {
-          display: inline;
-        }
-        color: #00a862;
-      }
-      .account:hover {
-        .default {
-          display: none;
-        }
-        .active {
-          display: inline;
-        }
-        color: #00a862;
-      }
-      .menu:hover {
-        .default {
-          display: none;
-        }
-        .active {
-          display: inline;
-        }
-        color: #00a862;
-      }
-      .more:hover {
-        .default {
+      .router-link-active.router-link-exact-active{
+          .default {
           display: none;
         }
         .active {
