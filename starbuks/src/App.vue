@@ -1,12 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
+     
       <div class="nav-bar">
-        <el-menu
-          
-          class="el-menu-demo"
-          mode="horizontal"
-        >
+        <el-menu class="el-menu-demo" mode="horizontal">
           <el-menu-item>
             <router-link to="/" class="home">
               <img class="default" src="./assets/images/icon-home.svg" />
@@ -52,12 +49,9 @@
       </div>
     </div>
     <router-view />
-    
   </div>
 </template>
 <script>
-
-
 export default {};
 </script>
 <style lang="less">
