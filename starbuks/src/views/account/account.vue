@@ -4,11 +4,10 @@
 
 <script>
 export default {
-  name: "account",
-};
+  name: 'account'
+}
 </script>
 
 <style lang='less' scoped>
 
 </style>
-

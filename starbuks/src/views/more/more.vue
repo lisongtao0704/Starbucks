@@ -12,15 +12,15 @@
         <li><router-link to="#">星俱乐部</router-link></li>
         <li><router-link to="/menu">菜单</router-link></li>
         <li><hr /></li>
-        <li><router-link to="#">星巴克移动应用</router-link></li>
-        <li><router-link to="#">星礼卡</router-link></li>
-        <li><router-link to="#">星巴克臻选™</router-link></li>
-        <li><router-link to="#">啡快™ - 在线点 到店取</router-link></li>
-        <li><router-link to="#">专星送™</router-link></li>
-        <li><router-link to="#">咖啡星讲堂</router-link></li>
-        <li><router-link to="#">上海烘焙工坊</router-link></li>
-        <li><router-link to="#">关于星巴克</router-link></li>
-        <li><router-link to="#">帮助中心</router-link></li>
+        <li><router-link to="/more/xbkMobileApp">星巴克移动应用</router-link></li>
+        <li><router-link to="/more/giftCards">星礼卡</router-link></li>
+        <li><router-link to="/more/xbkChoose">星巴克臻选™</router-link></li>
+        <li><router-link to="/more/feikuai">啡快™ - 在线点 到店取</router-link></li>
+        <li><router-link to="/more/starSend">专星送™</router-link></li>
+        <li><router-link to="/more/coffeeClassroom">咖啡星讲堂</router-link></li>
+        <li><router-link to="/more/baking">上海烘焙工坊</router-link></li>
+        <li><router-link to="/more/asXbk">关于星巴克</router-link></li>
+        <li><router-link to="/more/help">帮助中心</router-link></li>
         <li><hr /></li>
       </ul>
       <div class="reg">
@@ -33,24 +33,24 @@
     </div>
     <div class="footer">
       <router-link to="">English</router-link>|
-      <router-link to="">隐私政策</router-link>|
-      <router-link to="">使用条款</router-link>
+      <router-link to="/more/privacy">隐私政策</router-link>|
+      <router-link to="/more/useClause">使用条款</router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "more",
-  data() {
-    return {};
+  name: 'more',
+  data () {
+    return {}
   },
   methods: {
-    moreMenu() {
-      this.$router.go(-1);
-    },
-  },
-};
+    moreMenu () {
+      this.$router.go(-1)
+    }
+  }
+}
 </script>
 
 <style lang='less' scoped>
@@ -128,4 +128,3 @@ export default {
   }
 }
 </style>
-

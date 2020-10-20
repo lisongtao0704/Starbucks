@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-     
-      <div class="nav-bar">
+
+      <div class="nav-bar songtao">
         <el-menu class="el-menu-demo" mode="horizontal">
           <el-menu-item>
-            <router-link to="/" class="home">
+            <router-link to="/home" class="home">
               <img class="default" src="./assets/images/icon-home.svg" />
               <img class="active" src="./assets/images/icon-home-active.svg" />
               <div><span>主页</span></div>
@@ -39,7 +39,7 @@
             </router-link>
           </el-menu-item>
           <el-menu-item>
-            <router-link to="/more" class="more">
+            <router-link to="/more/xbkMobileApp" class="more">
               <img class="default" src="./assets/images/icon-more.svg" />
               <img class="active" src="./assets/images/icon-more-active.svg" />
               <div><span>更多</span></div>
@@ -52,7 +52,7 @@
   </div>
 </template>
 <script>
-export default {};
+export default {}
 </script>
 <style lang="less">
 #app {
@@ -67,7 +67,7 @@ export default {};
   .el-menu--horizontal > .el-menu-item.is-active {
     border: none;
   }
-  .nav-bar {
+  .nav-bar.songtao {
     width: 100%;
     position: fixed;
     z-index: 999;
@@ -77,7 +77,7 @@ export default {};
       .active {
         display: none;
       }
-      .router-link-active.router-link-exact-active{
+      .router-link-active{
           .default {
           display: none;
         }
