@@ -17,6 +17,7 @@
           >星巴克 Apple Watch
         </el-menu-item>
       </el-menu>
+      <div class="advertising-right">广告</div>
     </div>
     <router-view />
   </div>
@@ -36,25 +37,39 @@ export default {
 
 <style scoped lang="less">
 .xbkMobileApp {
-  padding: 16px 16px 0 16px;
-  h2 {
-    text-align: left;
-  }
-  .xbkmobile {
-    letter-spacing: 0.4px;
-    .el-menu-item {
-      font-size: 16px;
-      font-weight: 400;
-      padding: 0;
-      margin: 0 20px 0 0;
+  .headed {
+    padding: 16px 16px 0 16px;
+    .advertising-right {
+      position: absolute;
+      top: 115px;
+      right: 10px;
+      font-size: 12px;
+      padding: 0px 6px;
+      z-index: 999;
+      color: #fff;
+      background-color: #000;
+      opacity: 0.6;
+      border-radius: 2px;
     }
-    .is-active {
-      border-bottom: 3px solid #00a862 !important;
-      color: rgba(0, 0, 0, 0.87);
-      font-weight: 700;
-      font-size: 16px;
-      padding: 0;
-      margin: 0 20px 0 0;
+    h2 {
+      text-align: left;
+    }
+    .xbkmobile {
+      letter-spacing: 0.4px;
+      .el-menu-item {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 0;
+        margin: 0 20px 0 0;
+      }
+      .is-active {
+        border-bottom: 3px solid #00a862 !important;
+        color: rgba(0, 0, 0, 0.87);
+        font-weight: 700;
+        font-size: 16px;
+        padding: 0;
+        margin: 0 20px 0 0;
+      }
     }
   }
 }

@@ -100,7 +100,12 @@ const routes = [{
   children: [{
     path: 'app',
     name: 'app',
-    component: () => import('../views/more/moreChild/xbkmobileApp/mobileApp.vue')
+    component: () => import('../views/more/moreChild/xbkmobileApp/mobileApp.vue'),
+    children: [{
+      path: '1',
+      name: 'club',
+      component: () => import('../views/more/moreChild/xbkmobileApp/xbk/club.vue')
+    }]
   },
   {
     path: 'apple',
