@@ -9,16 +9,12 @@
         <input type="password" id="password" name="password" @focus="addp" v-model="password" @blur='reducep'>
         <label for="password" class="form-label" :class="{classB:ismove}">密码</label>
       </div>
-      <!--  -->
       <div class="slide" v-if="isslide">
         <p>拖动下方滑块完成拼图</p>
         <slide-verify ref="slideblock" @again="onAgain" @fulfilled="onFulfilled" @success="onSuccess" @fail="onFail"
           @refresh="onRefresh" :accuracy="accuracy" :slider-text="text"></slide-verify>
       </div>
-
       <div class="msg" v-if="ismsg"><span>✓</span>{{msg}}</div>
-
-      <!--  -->
       <div class="login-dl">
         <el-button type="text" @click="login">登录</el-button>
         <div class="forget-password"><a href="javascript:;">忘记密码?</a></div>
