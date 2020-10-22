@@ -68,7 +68,8 @@ export default {}
       z-index: 999;
       bottom: 0;
       background: #fff;
-
+      box-shadow: 0 -1px 1px rgba(100,100,100,.2);
+      
       .el-menu {
         .active {
           display: none;
@@ -90,7 +91,7 @@ export default {}
           line-height: unset;
           width: 20%;
           height: 55px;
-          padding: 0;
+          padding: 5px 0;
 
           a {
             text-decoration: none;

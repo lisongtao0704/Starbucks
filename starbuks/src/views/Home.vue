@@ -72,8 +72,8 @@
       </nav>
       <section class="content" v-if="lgMedia || !isshow">
         <div class="tag-ad">广告</div>
-        
         <ad-slider/>
+        <promotion></promotion>
       </section>
     </article>
     
@@ -88,6 +88,7 @@ import "./../assets/css/styles.css";
 import NavContainer from "@/components/navContainer";
 import NavOverlay from "@/components/NavOverlay";
 import AdSlider from "@/components/adSlider";
+import Promotion from "@/components/promotion"
 
 
 export default {
@@ -95,7 +96,8 @@ export default {
   components: {
     NavContainer,
     NavOverlay,
-    AdSlider
+    AdSlider,
+    Promotion
   },
   data() {
     return {
@@ -120,4 +122,9 @@ export default {
   },
 };
 </script>
-
+<style  scoped>
+.wrapper .content {
+   padding-top: 0;
+   z-index: 998;
+ }
+</style>

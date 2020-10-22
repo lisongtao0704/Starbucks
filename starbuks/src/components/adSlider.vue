@@ -25,10 +25,7 @@
 		data(){
 			return{
 				sliderList: [
-					{
-						sliderImage: require('./../assets/images/banner-1.jpg'),
-						sliderImageMobile: require('./../assets/images/banner-1-mobile.jpg')
-					},
+					
 					{
 						sliderImage: require('./../assets/images/kv-1.jpg'),
 						sliderImageMobile: require('./../assets/images/kv-1-mobile.jpg')
@@ -73,11 +70,11 @@
 
 			  	});
 
-			  	swiper_slider_ad.el.onmouseover = function(){
+			  	swiper_slider_ad.el.mouseover = function(){
 			  		swiper_slider_ad.autoplay.stop();
 				};
 
-				swiper_slider_ad.el.onmouseout = function(){
+				swiper_slider_ad.el.mouseout = function(){
 			  		swiper_slider_ad.autoplay.start();
 				};
 
@@ -89,3 +86,9 @@
 	}
 
 </script>
+<style scoped>
+ .slider-ad {
+	 overflow:hidden;
+ }
+ 
+</style>
