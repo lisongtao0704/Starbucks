@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-var token = localStorage.getItem('token') || {}
+var token = sessionStorage.getItem('token') || 0
 
 export default new Vuex.Store({
   state: {
@@ -26,6 +26,24 @@ export default new Vuex.Store({
       return state.token
     }
   },
+
+ mutations: {
+     setToken(state, token) {
+         state.token = token
+         sessionStorage.token = token //同步存储token至localStorage
+
+       },
+   },
+  getters : {
+   //获取token方法
+   //判断是否有token,如果没有重新赋值，返回给state的token
+   // getToken(state) {
+   //   if (!state.token) {
+   //     state.token = sessionStorage.getItem('token')
+   //   }
+   //   return state.token
+   //   }
+   },
   actions: {
   },
   modules: {

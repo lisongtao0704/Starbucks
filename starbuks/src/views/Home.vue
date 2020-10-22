@@ -2,7 +2,7 @@
   <div>
     <article class="wrapper">
       <nav class="nav">
-        <nav-container v-on:showMenuOverlay="showMenuExec" v-show="!isshow">
+        <nav-container @showMenuOverlay="showMenuExec" v-show="!isshow">
           <span slot="navbody">
             <section class="body" v-if="!NickName">
               <div class="account">
@@ -67,10 +67,16 @@
             </section>
           </span>
         </nav-container>
-        <nav-overlay v-on:closeMenuOverlay="closeMenuExec" v-show="isshow">
+        <nav-overlay @closeMenuOverlay="closeMenuExec" v-show="isshow">
         </nav-overlay>
       </nav>
+      <section class="content" v-if="lgMedia || !isshow">
+        <div class="tag-ad">广告</div>
+        <ad-slider/>
+        <promotion></promotion>
+      </section>
     </article>
+    
   </div>
 </template>
 
@@ -81,12 +87,16 @@ import './../assets/css/init.css'
 import './../assets/css/styles.css'
 import NavContainer from '@/components/navContainer'
 import NavOverlay from '@/components/NavOverlay'
+import AdSlider from "@/components/adSlider";
+import Promotion from "@/components/promotion"
 
 export default {
   name: 'Home',
   components: {
     NavContainer,
-    NavOverlay
+    NavOverlay,
+    AdSlider,
+    Promotion
   },
   data () {
     return {
@@ -111,3 +121,9 @@ export default {
   }
 }
 </script>
+<style  scoped>
+.wrapper .content {
+   padding-top: 0;
+   z-index: 998;
+ }
+</style>
