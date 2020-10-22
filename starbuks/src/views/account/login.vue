@@ -90,15 +90,31 @@ export default {
       this.$refs.slideblock.reset()
     },
     login () {
+
+      var _this = this
       if (!this.ismsg) {
         return this.$alert('请先通过验证', {
           confirmButtonText: '确定'
-
         })
       }
       if (this.username.length < 6) {
-        alert('qing')
+         return alert('qing')
       }
+      if(this.password.length <6){
+        return alert('来啦')
+      }
+      this.$http.get('http://localhost:8080/db.json').then(res=>{
+         console.log(res.data)
+          if(res.data.code === 0){
+                 this.user = res.data.result
+                 this.$store.commit("setToken", this.user);
+                 setTimeout(function(){
+                   alert('登录成功，即将跳转')
+                  _this.$router.push('/home')
+                 },2000)
+
+             }
+      })
     }
   }
 }

@@ -11,6 +11,9 @@ Vue.use(SlideVerify)
 
 Vue.config.productionTip = false
 
+import axios from 'axios'
+Vue.prototype.$http = axios
+
 new Vue({
   router,
   store,

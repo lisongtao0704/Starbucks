@@ -1,13 +1,12 @@
 <template>
-  <div class="account">
+  <div v-if="isok">haha</div>
+  <div class="account" v-else>
     <div class="accountbtn menubtn account">
       <h2>登录或创建一个新帐户 🌟</h2>
       <div class="router-div">
         <router-link to="/account/login">登录</router-link>
         <router-link to="/account/register">注册</router-link>
-        <router-link to="/account/starbucks-rewards"
-          >关于兴享俱乐部</router-link
-        >
+        <router-link to="/account/starbucks-rewards">关于兴享俱乐部</router-link>
       </div>
       <router-view></router-view>
     </div>
@@ -16,7 +15,16 @@
 
 <script>
 export default {
-  name: 'account'
+  name: 'account',
+  data(){
+    return {
+      isok:0
+    }
+  },
+  mounted(){
+      this.isok = this.$store.state.token;
+      console.log(this.isok)
+  }
 }
 </script>
 
@@ -32,7 +40,7 @@ export default {
   h2 {
     font-weight: 700;
     line-height: 140%;
-    margin: 0.3rem 0.375rem 0 0;
+    margin: 15px 0 0 15px;
     color: #333;
     text-align: left;
     margin-left: 15px;

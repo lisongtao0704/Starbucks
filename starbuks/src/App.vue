@@ -42,7 +42,9 @@
         </el-menu>
       </div>
     </div>
-    <router-view />
+    <transition>
+      <router-view/>
+    </transition>
   </div>
 </template>
 <script>
@@ -101,5 +103,15 @@ export default {}
         }
       }
     }
+  }
+  .v-enter,
+  .v-lever-to{
+  	 opacity: 0;
+  	 transform: translate(100%);
+
+  }
+  .v-enter-active,
+  .v-lever-active{
+  	 transition:all 0.3s ease;
   }
 </style>

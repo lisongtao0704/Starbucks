@@ -33,7 +33,34 @@ const routes = [{
   path: '/menu',
   name: 'Menu',
   component: () => import('../views/menu/menu.vue')
-}, {
+},
+{
+  path:'/menu/food',
+  component:()=>import('../views/menu/food.vue')
+},
+{
+  path:'/menu/search',
+  component:()=>import('../views/menu/search.vue')
+},
+{
+  path:'/menu/merchandise',
+  component:()=>import('../views/menu/merchandise.vue'),
+  redirect: '/menu/merchandise/merchandise-all',
+  children:[{
+    path:'merchandise-all',
+    component:()=>import('../views/menu/merchandise-all.vue')
+  },
+  {
+    path:'merchandise-core',
+    component:()=>import('../views/menu/merchandise-core.vue')
+  },
+  {
+    path:'merchandise-store',
+    component:()=>import('../views/menu/merchandise-store.vue')
+  }
+  ]
+},
+{
   path: '/more',
   name: 'More',
   component: () => import('../views/more/more.vue')
