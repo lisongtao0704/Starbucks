@@ -2,22 +2,23 @@
 	<section class="slider-ad">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" v-for="item in sliderList">
+				<div class="swiper-slide" v-for="(item,index) in sliderList" :key="index">
 					<a href="javascript:;">
-						<img :src="'/static/images/featured/2019spring/'+ item.sliderImage"
+						<img :src=" item.sliderImage"
 						class="tablet-show mobile-hidden">
-						<img :src="'/static/images/featured/2019spring/'+ item.sliderImageMobile"
+						<img :src="item.sliderImageMobile"
 						class="tablet-hidden mobile-show">
 					</a>
 				</div>
 			</div>
 		    <div class="swiper-button-next transition"></div>
 		</div>
+	
 	</section>
 </template>
 <script>
 
-	import Swiper from 'swiper';
+	import Swiper from 'swiper/dist/js/swiper.min.js'
 	import 'swiper/dist/css/swiper.min.css'
 
 	export default {
@@ -25,28 +26,28 @@
 			return{
 				sliderList: [
 					{
-						sliderImage: 'banner-1.jpg',
-						sliderImageMobile: 'banner-1-mobile.jpg'
+						sliderImage: require('./../assets/images/banner-1.jpg'),
+						sliderImageMobile: require('./../assets/images/banner-1-mobile.jpg')
 					},
 					{
-						sliderImage: 'kv-1.jpg',
-						sliderImageMobile: 'kv-1-mobile.jpg'
+						sliderImage: require('./../assets/images/kv-1.jpg'),
+						sliderImageMobile: require('./../assets/images/kv-1-mobile.jpg')
 					},
 					{
-						sliderImage: 'kv-cold-brew.jpg',
-						sliderImageMobile: 'kv-cold-brew-mobile.jpg'
+						sliderImage: require('./../assets/images/kv-cold-brew.jpg'),
+						sliderImageMobile: require('./../assets/images/kv-cold-brew-mobile.jpg')
 					},
 					{
-						sliderImage: 'kv-2.jpg',
-						sliderImageMobile: 'kv-2-mobile.jpg'
+						sliderImage: require('./../assets/images/kv-2.jpg'),
+						sliderImageMobile: require('./../assets/images/kv-2-mobile.jpg')
 					},
 					{
-						sliderImage: 'kv-5-icecream.jpg',
-						sliderImageMobile: 'kv-5-icecream-mobile.jpg'
+						sliderImage: require('./../assets/images/kv-5-icecream.jpg'),
+						sliderImageMobile: require('./../assets/images/kv-5-icecream-mobile.jpg')
 					},
 					{
-						sliderImage: 'kv-ice.jpg',
-						sliderImageMobile: 'kv-ice-mobile.jpg'
+						sliderImage: require('./../assets/images/kv-ice.jpg'),
+						sliderImageMobile: require('./../assets/images/kv-ice-mobile.jpg')
 					}
 				]
 			}
@@ -80,9 +81,9 @@
 			  		swiper_slider_ad.autoplay.start();
 				};
 
-				$('.slider-ad .swiper-button-next').click(()=>{
-					swiper_slider_ad.autoplay.start();
-				});
+				// $('.slider-ad .swiper-button-next').click(()=>{
+				// 	swiper_slider_ad.autoplay.start();
+				// });
 			}
 		}
 	}
