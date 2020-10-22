@@ -20,7 +20,7 @@
   export default{
     methods:{
       back(){
-        this.$router.back()
+        this.$router.push('/menu')
       }
     }
   }
@@ -77,4 +77,5 @@
       height: 100%;
     }
   }
+  * { touch-action: pan-y; }
 </style>

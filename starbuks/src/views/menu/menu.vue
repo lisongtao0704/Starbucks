@@ -3,9 +3,9 @@
     <h2 class="navTitle-menuIndex">菜单</h2>
     <div class="menubtn-router">
       <router-link to="/menu">季度精选</router-link>
-      <router-link to="/account/register">饮料</router-link>
+      <router-link to="/menu/beverages">饮料</router-link>
       <router-link to="/menu/food">美食</router-link>
-      <router-link to="/account/login">咖啡产品</router-link>
+      <router-link to="/menu/coffee">咖啡产品</router-link>
       <router-link to="/menu/merchandise">商品</router-link>
     </div>
     <div class="menu-img">
@@ -161,6 +161,7 @@
       color: #333;
       text-align: left;
       margin-left: 15px;
+      font-size: 26px;
     }
     .menu-bun{
         position: fixed;

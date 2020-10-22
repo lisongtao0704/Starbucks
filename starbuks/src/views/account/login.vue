@@ -63,24 +63,24 @@ export default {
       }
     },
     onSuccess (times) {
-      console.log('验证通过，耗时 ' + times + '毫秒')
+      alert('只用了 ' + times/1000 + 's'+',简直比闪电还快呢')
       this.msg = '验证通过, 耗时' + times / 1000 + 's'
       this.isslide = false,
       this.ismsg = true
     },
     onFail () {
-      console.log('验证不通过')
+      alert('验证不通过')
       this.msg = ''
     },
     onRefresh () {
-      console.log('点击了刷新小图标')
+      alert('点击了刷新小图标')
       this.msg = ''
     },
     onFulfilled () {
       console.log('刷新成功啦！')
     },
     onAgain () {
-      console.log('检测到非人为操作的哦！')
+      alert('检测到非人为操作的哦！')
       this.msg = 'try again'
       // 刷新
       this.$refs.slideblock.reset()
@@ -99,6 +99,9 @@ export default {
       if(this.password.length <6){
         return alert('来啦')
       }
+      if(this.username !=='123456' && this.password !=='123456'){
+        return alert('帐号或密码错误')
+      }
       this.$http.get('http://localhost:8080/db.json').then(res=>{
          console.log(res.data)
           if(res.data.code === 0){
@@ -108,7 +111,6 @@ export default {
                    alert('登录成功，即将跳转')
                   _this.$router.push('/home')
                  },2000)
-
              }
       })
     }
@@ -169,7 +171,7 @@ export default {
     label {
       position: absolute;
       left: 10%;
-      bottom: 10px;
+      bottom: 20px;
       font-size: 16px;
       color: #ccc;
       transition: all 0.3s;
@@ -178,7 +180,7 @@ export default {
     .classA {
       position: absolute;
       left: 5%;
-      bottom: 40px;
+      bottom: 50px;
       font-size: 14px;
       color: #000;
       opacity: 0.5;
@@ -188,7 +190,6 @@ export default {
   .login-form-password {
     text-align: center;
     position: relative;
-    margin:31px 0 50px 0;
     input {
       border: none;
       width: 90%;
@@ -206,7 +207,7 @@ export default {
     label {
       position: absolute;
       left: 10%;
-      bottom: 10px;
+      bottom: 20px;
       font-size: 16px;
       color: #ccc;
       transition: all 0.3s;
@@ -215,7 +216,7 @@ export default {
     .classB {
       position: absolute;
       left: 5%;
-      bottom: 40px;
+      bottom: 50px;
       font-size: 14px;
       color: #000;
       opacity: 0.5;

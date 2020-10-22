@@ -39,6 +39,14 @@ const routes = [{
   component:()=>import('../views/menu/food.vue')
 },
 {
+  path:'/menu/beverages',
+  component:()=>import('../views/menu/beverages.vue')
+},
+{
+  path:'/menu/coffee',
+  component:()=>import('../views/menu/coffee.vue')
+},
+{
   path:'/menu/search',
   component:()=>import('../views/menu/search.vue')
 },

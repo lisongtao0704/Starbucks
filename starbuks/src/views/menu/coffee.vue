@@ -3,17 +3,15 @@
     <div class="merchandise">
       <header>
         <button class="el-icon-arrow-left" @click="back"></button>
-        <span>美食</span>
+        <span>咖啡产品</span>
       </header>
       	<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
       		<div class="mui-scroll">
             <a class="mui-control-item mui-active">全部</a>
-            <a class="mui-control-item">烘培</a>
-            <a class="mui-control-item">蛋糕&甜点</a>
-            <a class="mui-control-item">三明治,帕尼尼卷</a>
-            <a class="mui-control-item">酸奶</a>
-            <a class="mui-control-item">其他美食</a>
-            <a class="mui-control-item">早安新一天</a>
+            <a class="mui-control-item">咖啡豆</a>
+            <a class="mui-control-item">星巴克VIA® 免煮咖啡</a>
+            <a class="mui-control-item">星巴克臻选™咖啡</a>
+            <a class="mui-control-item">Origami™</a>
       		</div>
       	</div>
     </div>
@@ -104,7 +102,7 @@
      padding: 16px 16px 0;
      header{
        text-align: left;
-        margin-bottom: 12px;
+       margin-bottom:12px;
        button{
          border: none;
          padding: 8px;

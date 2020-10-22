@@ -3,17 +3,19 @@
     <div class="merchandise">
       <header>
         <button class="el-icon-arrow-left" @click="back"></button>
-        <span>美食</span>
+        <span>饮料</span>
       </header>
       	<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
       		<div class="mui-scroll">
             <a class="mui-control-item mui-active">全部</a>
-            <a class="mui-control-item">烘培</a>
-            <a class="mui-control-item">蛋糕&甜点</a>
-            <a class="mui-control-item">三明治,帕尼尼卷</a>
-            <a class="mui-control-item">酸奶</a>
-            <a class="mui-control-item">其他美食</a>
-            <a class="mui-control-item">早安新一天</a>
+            <a class="mui-control-item">星巴克玩味冰调™</a>
+            <a class="mui-control-item">手工调制浓缩咖啡</a>
+            <a class="mui-control-item">星冰乐®</a>
+            <a class="mui-control-item">茶瓦纳™</a>
+            <a class="mui-control-item">经典巧克力饮品</a>
+            <a class="mui-control-item">咖啡融合冰淇淋</a>
+            <a class="mui-control-item">星巴克冷萃咖啡系列</a>
+            <a class="mui-control-item">气致™冷萃咖啡</a>
       		</div>
       	</div>
     </div>

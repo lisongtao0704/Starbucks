@@ -9,6 +9,10 @@ import SlideVerify from 'vue-monoplasty-slide-verify'
 Vue.use(ElementUI)
 Vue.use(SlideVerify)
 
+//导入MUI样式
+import './lib/mui/css/mui.min.css'
+import './lib/mui/css/icons-extra.css'
+
 Vue.config.productionTip = false
 
 import axios from 'axios'

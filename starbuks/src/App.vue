@@ -114,4 +114,5 @@ export default {}
   .v-lever-active{
   	 transition:all 0.3s ease;
   }
+   * { touch-action: pan-y; }
 </style>
