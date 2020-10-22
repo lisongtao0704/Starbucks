@@ -82,52 +82,52 @@
 </template>
 
 <script>
-	import axios from 'axios'
-	import TokenTools from '@/utils/tokenTools'
-	import CookieTools from '@/utils/cookieTools'
-	import PageviewTools from '@/utils/pageviewTools'
+import axios from 'axios'
+import TokenTools from '@/utils/tokenTools'
+import CookieTools from '@/utils/cookieTools'
+import PageviewTools from '@/utils/pageviewTools'
 
-	export default {
-		data(){
-			return {
+export default {
+  data () {
+    return {
 
-			}
-		},
-		computed: {
-			NickName(){
-				return this.$store.state.NickName;
-			}
-		},
-		methods: {
-			pageRedir(item){
-				this.$store.commit('pageRedir', item);
-			},
-			logout(){
-				let ReqToken = TokenTools.TokenSetting('sbux_token_lo');
-				if(ReqToken){
-					axios.post("users/logout",{
-						ReqToken:ReqToken
-					}).then((res)=>{
-						let data = res.data;
-						if(data.status == '0'){
-							this.$store.commit('updateUserInfo', '');
-							this.$store.commit('pageRedir', 0);
-						}else{
-							console.log('登出失败');
-						}
-						CookieTools.DelCookie('sbux_token_lo');
-					})
-				}
+    }
+  },
+  computed: {
+    NickName () {
+      return this.$store.state.NickName
+    }
+  },
+  methods: {
+    pageRedir (item) {
+      this.$store.commit('pageRedir', item)
+    },
+    logout () {
+      const ReqToken = TokenTools.TokenSetting('sbux_token_lo')
+      if (ReqToken) {
+        axios.post('users/logout', {
+          ReqToken: ReqToken
+        }).then((res) => {
+          const data = res.data
+          if (data.status == '0') {
+            this.$store.commit('updateUserInfo', '')
+            this.$store.commit('pageRedir', 0)
+          } else {
+            console.log('登出失败')
+          }
+          CookieTools.DelCookie('sbux_token_lo')
+        })
+      }
 
-				let storage = window.sessionStorage || null;
-				if(storage) {
-					axios.post('/users/trackLogout', {
-						visitorID: storage.getItem('VisitorID'),
-						LogoutTime: PageviewTools.GetTime()
-					})
-				}	
-			}
-		}
-	}
+      const storage = window.sessionStorage || null
+      if (storage) {
+        axios.post('/users/trackLogout', {
+          visitorID: storage.getItem('VisitorID'),
+          LogoutTime: PageviewTools.GetTime()
+        })
+      }
+    }
+  }
+}
 
 </script>

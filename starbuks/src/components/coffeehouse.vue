@@ -40,35 +40,35 @@
 </template>
 <script>
 
-	import Swiper from 'swiper';
-	import 'swiper/dist/css/swiper.min.css'
-	
-	export default {
-		data(){
-			return{
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 
-			}
-		},
-		mounted(){
-			this.swiperScrollConfig();
-		},
-		methods: {
-			swiperScrollConfig(){
-				let swiper_scroll_ad = new Swiper ('.coffeehouse .swiper-container', {
-		
-					direction: 'horizontal', 
-				    loop: false, 
+export default {
+  data () {
+    return {
+
+    }
+  },
+  mounted () {
+    this.swiperScrollConfig()
+  },
+  methods: {
+    swiperScrollConfig () {
+      const swiper_scroll_ad = new Swiper('.coffeehouse .swiper-container', {
+
+        direction: 'horizontal',
+				    loop: false,
 				    slidesPerView: 'auto',
 				    freeMode: true,
 				    mousewheel: true,
 				    navigation: {
 				      nextEl: '.coffeehouse .swiper-button-next',
-				      prevEl: '.coffeehouse .swiper-button-prev',
-				    },
+				      prevEl: '.coffeehouse .swiper-button-prev'
+				    }
 
-				});
-			}
-		}
-	}
-	
+      })
+    }
+  }
+}
+
 </script>

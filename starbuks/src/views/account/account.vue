@@ -16,14 +16,14 @@
 <script>
 export default {
   name: 'account',
-  data(){
+  data () {
     return {
-      isok:0
+      isok: 0
     }
   },
-  mounted(){
-      this.isok = this.$store.state.token;
-      console.log(this.isok)
+  mounted () {
+    this.isok = this.$store.state.token
+    console.log(this.isok)
   }
 }
 </script>

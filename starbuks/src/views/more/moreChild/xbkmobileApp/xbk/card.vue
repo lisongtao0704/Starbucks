@@ -1,11 +1,11 @@
 <template>
-  <div class="club">
+  <div class="card">
     <div class="head">
-      <h2>星享俱乐部</h2>
-      <p>在门店展示我的二维码可积星星享好礼...</p>
+      <h2>星礼卡</h2>
+      <p>  在App中可绑定实体星礼卡，或随心挑选和购买电子星礼卡。用App内星礼卡支付可以加速积星，每消费40元获得一颗星星，比其他支付方式积星快25%。开能随时查看余额，充值和管理卡片。</p>
     </div>
     <div class="img">
-      <img src="../../../../../assets/images/apps-mobile-screens-1.png" />
+      <img src="../../../../../assets/images/apps-mobile-screens-2.png" />
       <!-- <router-link to="4" class="left">‹</router-link>
       <router-link to="2" class="right">›</router-link> -->
     </div>
@@ -14,12 +14,12 @@
 
 <script>
 export default {
-  name: "club"
+  name: "card"
 }
 </script>
 
 <style lang="less" scoped>
-.club {
+.card {
   .head {
     height: 170px;
     h2::before {

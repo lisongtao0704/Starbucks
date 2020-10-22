@@ -6,12 +6,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './styles/style.css'
 import SlideVerify from 'vue-monoplasty-slide-verify'
+
+import axios from 'axios'
 Vue.use(ElementUI)
 Vue.use(SlideVerify)
 
 Vue.config.productionTip = false
-
-import axios from 'axios'
 Vue.prototype.$http = axios
 
 new Vue({

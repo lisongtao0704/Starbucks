@@ -59,104 +59,103 @@
 </template>
 
 <script>
-	import MaskerLayer from '@/components/MaskerLayerConsume'
-	import TokenTools from '@/utils/tokenTools'
-	import CookieTools from '@/utils/cookieTools'
-	import axios from 'axios'
+import MaskerLayer from '@/components/MaskerLayerConsume'
+import TokenTools from '@/utils/tokenTools'
+import CookieTools from '@/utils/cookieTools'
+import axios from 'axios'
 
-	export default {
-		data(){
-			return {
-				mbMedia: window.matchMedia('(max-width: 640px)').matches,
-				ExpensesRecord: '',
-				loading: false,
-				showStarRec: {
-					0: true,
-					1: true
-				},
-				show: false,
-				detailOfItem: ''
-			}
-		},
-		mounted(){
-			window.matchMedia('(max-width: 640px)').addListener(()=>{
-				this.mbMedia = window.matchMedia('(max-width: 640px)').matches;
-			});
-			this.toggleArticle_JQListener();
-			this.checkLogin();
-		},
-		components: {
-			MaskerLayer: MaskerLayer
-		},
-		methods: {
-			toggleArticle_JQListener(){
-				$('td.toggle-btn').click(function(){
-					$(this).parent().parent().next().slideToggle(200);
-				});
-			},
-			toggleIcon(index){
-				this.showStarRec[index] = !this.showStarRec[index];
-			},
-			checkLogin(){
-				let ReqToken = TokenTools.TokenSetting('sbux_token_cl');
-				
-				if(ReqToken){
-					axios.post("users/checkLogin",{
-						ReqToken: ReqToken
-					}).then((res)=>{
-						let data = res.data;
-						if(data.status == '0'){
-							let res = data.result;
-							this.$store.commit('updateUserInfo', res.NickName);
-							//如果当前为登录状态，则进一步获取用户信息
-							this.getAccountInfo();
-						}else{
-							this.$store.commit('updateUserInfo', '');
-						}
-						CookieTools.DelCookie('sbux_token_cl');
-					})
-				}
-			},
-			getAccountInfo(){
-				this.loading = true;
+export default {
+  data () {
+    return {
+      mbMedia: window.matchMedia('(max-width: 640px)').matches,
+      ExpensesRecord: '',
+      loading: false,
+      showStarRec: {
+        0: true,
+        1: true
+      },
+      show: false,
+      detailOfItem: ''
+    }
+  },
+  mounted () {
+    window.matchMedia('(max-width: 640px)').addListener(() => {
+      this.mbMedia = window.matchMedia('(max-width: 640px)').matches
+    })
+    this.toggleArticle_JQListener()
+    this.checkLogin()
+  },
+  components: {
+    MaskerLayer: MaskerLayer
+  },
+  methods: {
+    toggleArticle_JQListener () {
+      $('td.toggle-btn').click(function () {
+        $(this).parent().parent().next().slideToggle(200)
+      })
+    },
+    toggleIcon (index) {
+      this.showStarRec[index] = !this.showStarRec[index]
+    },
+    checkLogin () {
+      const ReqToken = TokenTools.TokenSetting('sbux_token_cl')
 
-				let ReqToken = TokenTools.TokenSetting('sbux_token_gai');
-				
-				if(ReqToken){
-					axios.post("users/accountInfo", {
-						ReqToken: ReqToken
-					}).then((res)=>{
-						let data = res.data;
-						if(data.status == '0'){
-							let res = data.result;
-							this.ExpensesRecord = res.ExpensesRecord;
-							this.loading = false;
-						}
-						CookieTools.DelCookie('sbux_token_gai');
-					})
-				}
-			},
-			showRecordDetail(item){
-				this.detailOfItem = item;
-				this.show = true;
-				this.trackingVisitor();
-			},
-			closeRecordDetail(){
-				this.show = false;
-			},
-			trackingVisitor() {
-				let storage = window.sessionStorage || null;
-				if(storage) {
-					let VisitorID = storage.getItem('VisitorID'),
-						page = '获取星星-弹窗';
-					if(!VisitorID) return;
-					axios.post('users/tracking',{
-						visitorID: VisitorID,
-						page: page
-					})
-				}
-				
-			}
-		}
-	}
+      if (ReqToken) {
+        axios.post('users/checkLogin', {
+          ReqToken: ReqToken
+        }).then((res) => {
+          const data = res.data
+          if (data.status == '0') {
+            const res = data.result
+            this.$store.commit('updateUserInfo', res.NickName)
+            // 如果当前为登录状态，则进一步获取用户信息
+            this.getAccountInfo()
+          } else {
+            this.$store.commit('updateUserInfo', '')
+          }
+          CookieTools.DelCookie('sbux_token_cl')
+        })
+      }
+    },
+    getAccountInfo () {
+      this.loading = true
+
+      const ReqToken = TokenTools.TokenSetting('sbux_token_gai')
+
+      if (ReqToken) {
+        axios.post('users/accountInfo', {
+          ReqToken: ReqToken
+        }).then((res) => {
+          const data = res.data
+          if (data.status == '0') {
+            const res = data.result
+            this.ExpensesRecord = res.ExpensesRecord
+            this.loading = false
+          }
+          CookieTools.DelCookie('sbux_token_gai')
+        })
+      }
+    },
+    showRecordDetail (item) {
+      this.detailOfItem = item
+      this.show = true
+      this.trackingVisitor()
+    },
+    closeRecordDetail () {
+      this.show = false
+    },
+    trackingVisitor () {
+      const storage = window.sessionStorage || null
+      if (storage) {
+        const VisitorID = storage.getItem('VisitorID')
+        const page = '获取星星-弹窗'
+        if (!VisitorID) return
+        axios.post('users/tracking', {
+          visitorID: VisitorID,
+          page: page
+        })
+      }
+    }
+  }
+}
 </script>

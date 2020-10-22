@@ -6,22 +6,22 @@
 </template>
 <script>
 
-	import NavHeader from '@/components/navHeader'
+import NavHeader from '@/components/navHeader'
 
-	export default {
-		data(){
-			return {
+export default {
+  data () {
+    return {
 
-			}
-		},
-		components: {
-			NavHeader: NavHeader,
-		},
-		methods: {
-			showMenu(){
-				this.$emit("showMenuOverlay");
-			}
-		}
-	}
+    }
+  },
+  components: {
+    NavHeader: NavHeader
+  },
+  methods: {
+    showMenu () {
+      this.$emit('showMenuOverlay')
+    }
+  }
+}
 
 </script>

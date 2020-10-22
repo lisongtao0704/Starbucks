@@ -14,7 +14,7 @@
       </div>
       <div class="mobile-device">
         <video class="mockup" controls >
-          <source src="../../../../assets/apps-mobile-screens-cn.mp4" type="video/mp4"></source>
+          <source src="../../../../assets/apps-mobile-screens-cn.mp4" type="video/mp4">  </source>
         </video>
       </div>
     </div>
@@ -23,12 +23,13 @@
  <el-menu
         :default-active="activeIndex"
         mode="horizontal"
+        @select="handleSelect"
         text-color="rgba(0, 0, 0, 0.56)"
         active-text-color="rgba(0, 0, 0, 0.87)"
         class="xbkmobile xbk-four-nav"
         router
       >
-        <el-menu-item index="app/1"
+        <el-menu-item index="1"
           ><img src="../../../../assets/images/icon-star-active.svg"><p>星享俱乐部</p></el-menu-item
         >
         <el-menu-item index="2"
@@ -42,28 +43,127 @@
         </el-menu-item>
       </el-menu>
       <router-view/>
+     
     </div>
+     <div class="foot">
+        <p>
+    星巴克手机应用目前在
+    <a href="https://apps.apple.com/cn/app/xing-ba-ke-zhong-guo/id499819758?ls=1">App Store</a>
+    和以下安卓平台均有下载
+  </p>
+  <ul>
+    <li><a href="#">应用宝</a></li>
+    <li><a href="#">小米商店</a></li>
+    <li><a href="#">360手机助手</a></li>
+    <li><a href="#">百度手机助手</a></li>
+    <li><a href="#">魅族</a></li>
+    <li><a href="#">豌豆荚安装</a></li>
+    <li><a href="#">华为应用市场</a></li>
+    
+  </ul>
+  <div class="qr-code">
+    <img src="../../../../assets/images/app_qr_20181112.jpg">
+    <div class="xiazai"><img src="../../../../assets/images/苹果.png"><img src="../../../../assets/images/安卓 B.png"></div>
+  </div>
+  <p class="issue">如果您有任何问题，请查看常见问题，也可以直接与我们联系</p>
+      </div>
+      <div class="common"><a href="/more/help"><div>常见问题</div></a><a href="https://www.starbucks.com.cn/about/contact/"><div>联系我们</div></a></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'mobileApp',
-  data () {
+  name: "mobileApp",
+  data() {
     return {
-      activeIndex: '1'
+      activeIndex: "1",
+    };
+  },
+  created() {
+    if (!sessionStorage.getItem("index")) {
+      return;
     }
+    this.activeIndex = sessionStorage.getItem("index");
   },
   methods: {
-
-  }
-}
+    handleSelect(key, keyPath) {
+      this.activeIndex = key;
+      sessionStorage.setItem("index", key);
+      console.log(this.activeIndex);
+    },
+  },
+};
 </script>
 
 <style scoped lang="less">
 .mobileApp {
   background-color: #efebe8;
-  padding-bottom: 70px;
+  padding-bottom: 165px;
+  .common {
+    display: flex;
+    justify-content: center;
+    a{
+      text-decoration: none;
+    }
+    div {
+      border: 1px solid #00a862;
+      border-radius: 48px;
+      margin: 0 5px;
+      color: #00a862;
+      font-weight: 500;
+      padding: 6px 18px;
+    }
+  }
+  .foot {
+    .issue {
+      margin-top: 48px;
+      padding: 0 23px 30px;
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .qr-code {
+      img {
+        width: 160px;
+        margin-top: 25px;
+      }
+      .xiazai {
+        img {
+          width: 35px;
+          padding-top: 0;
+          margin: 0 5px;
+        }
+      }
+    }
+    letter-spacing: 0.4px;
+    padding: 55px 20px 20px;
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      color: #000;
+      a {
+        text-decoration: none;
+        color: #00a862;
+      }
+    }
+    ul {
+      padding: 20px 0;
+      li:last-of-type a {
+        border-right: unset;
+      }
+      li {
+        list-style: none;
+        float: left;
+
+        a {
+          padding: 0 20px;
+          border-right: 1px solid black;
+          text-decoration: none;
+          color: #00a862;
+        }
+      }
+    }
+  }
   .xbkapp-download {
     position: fixed;
     z-index: 999;
@@ -76,26 +176,7 @@ export default {
   .border-bottom {
     background: #fff;
     padding: 0 15px;
-    .block {
-      /deep/ .el-carousel__indicators {
-        background: red;
-        top: 0;
-        bottom: unset !important;
-      }
-     /deep/ .el-carousel__container {
-        margin-top: 205px;
-      }
-      .small {
-        .bg {
-          width: 100%;
-          height: 250px;
-          background: url("../../../../assets/images/apps-mobile-circle.svg")
-            no-repeat;
-          background-size: 100%;
-          opacity: 0.85;
-        }
-      }
-    }
+
     .xbk-four-nav {
       border-bottom: solid 1px #15030326;
       .is-active {

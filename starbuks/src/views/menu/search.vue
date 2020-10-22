@@ -10,7 +10,6 @@
       </div>
       <div id="menu-search-empty"><div>大家都在搜</div></div>
 
-
       <!-- 搜索后的 -->
       <div class="grid" v-if="search.length>0">
           <div class="item" v-for="list in searchData">
@@ -42,76 +41,76 @@
 </template>
 
 <script>
-  export default{
-    data(){
-      return{
-        search:'',
-        // 原本展示数据
-        list: [],
-        // 搜索后的展示数据
-        searchData: [],
-        products: [
-          //假数据
-          {
-            name: "爱尔兰奶油冷萃1",
-            date: '2018-01-04',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃2",
-            date: '2018-01-25',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃3",
-            date: '2018-02-10',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃4",
-            date: '2018-03-04',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃5",
-            date: '2018-05-24',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃6",
-            date: '2018-10-29',
-            depart:'/img/menu-img2.253f8708.jpg'
-          }
-        ]
-      }
+export default {
+  data () {
+    return {
+      search: '',
+      // 原本展示数据
+      list: [],
+      // 搜索后的展示数据
+      searchData: [],
+      products: [
+        // 假数据
+        {
+          name: '爱尔兰奶油冷萃1',
+          date: '2018-01-04',
+          depart: '/img/menu-img2.253f8708.jpg'
+        },
+        {
+          name: '爱尔兰奶油冷萃2',
+          date: '2018-01-25',
+          depart: '/img/menu-img2.253f8708.jpg'
+        },
+        {
+          name: '爱尔兰奶油冷萃3',
+          date: '2018-02-10',
+          depart: '/img/menu-img2.253f8708.jpg'
+        },
+        {
+          name: '爱尔兰奶油冷萃4',
+          date: '2018-03-04',
+          depart: '/img/menu-img2.253f8708.jpg'
+        },
+        {
+          name: '爱尔兰奶油冷萃5',
+          date: '2018-05-24',
+          depart: '/img/menu-img2.253f8708.jpg'
+        },
+        {
+          name: '爱尔兰奶油冷萃6',
+          date: '2018-10-29',
+          depart: '/img/menu-img2.253f8708.jpg'
+        }
+      ]
+    }
+  },
+  methods: {
+    back () {
+      this.$router.back()
     },
-    methods:{
-      back(){
-        this.$router.back()
-      },
-      Search(){
-          var search = this.search;
-          if (search) {
-            this.searchData = this.products.filter(function(product) {
-               //console.log(product)
-              return Object.keys(product).some(function(key) {
-                 //console.log(key)
-                return String(product[key]).toLowerCase().indexOf(search) > -1
-              })
-            })
-            if(this.searchData == ''){
-              alert('未查询到商品')
-              console.dir(this.searchData)
-            };
-          }else if(search.length === 0){
-              this.searchData = this.list;
-              alert('请输入查找内容')
-            }else{
-              return this.searchData;
-            }
-       }
+    Search () {
+      var search = this.search
+      if (search) {
+        this.searchData = this.products.filter(function (product) {
+          // console.log(product)
+          return Object.keys(product).some(function (key) {
+            // console.log(key)
+            return String(product[key]).toLowerCase().indexOf(search) > -1
+          })
+        })
+        if (this.searchData == '') {
+          alert('未查询到商品')
+          console.dir(this.searchData)
+        };
+      } else if (search.length === 0) {
+        this.searchData = this.list
+        alert('请输入查找内容')
+      } else {
+        return this.searchData
+      }
     }
   }
+}
 </script>
 
 <style lang="less" scoped>

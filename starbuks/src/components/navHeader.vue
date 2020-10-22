@@ -23,20 +23,20 @@
 </template>
 <script>
 
-	export default {
-		data(){
-			return {
+export default {
+  data () {
+    return {
 
-			}
-		},
-		methods: {
-			showMenu(){
-				this.$emit("clickedShowMenu");
-			},
-			pageRedir(item){
-				this.$store.commit('pageRedir', item);
-			}
-		}
-	}
+    }
+  },
+  methods: {
+    showMenu () {
+      this.$emit('clickedShowMenu')
+    },
+    pageRedir (item) {
+      this.$store.commit('pageRedir', item)
+    }
+  }
+}
 
 </script>

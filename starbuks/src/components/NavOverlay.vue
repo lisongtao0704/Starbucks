@@ -9,26 +9,25 @@
 </template>
 <script>
 
-	import NavHeaderOverlay from '@/components/navHeaderOverlay'
-	import NavBodyOverlay from '@/components/navBodyOverlay'
-	import NavFooterOverlay from '@/components/navFooterOverlay'
+import NavHeaderOverlay from '@/components/navHeaderOverlay'
+import NavBodyOverlay from '@/components/navBodyOverlay'
+import NavFooterOverlay from '@/components/navFooterOverlay'
 
-	export default {
-		data(){
-			return {
-				
+export default {
+  data () {
+    return {
 
-			}
-		},
-		components: {
-			NavHeaderOverlay: NavHeaderOverlay,
-			NavBodyOverlay: NavBodyOverlay,
-			NavFooterOverlay: NavFooterOverlay
-		},
-		methods: {
-			closeMenu(){
-				this.$emit("closeMenuOverlay");
-			}
-		}
-	}
+    }
+  },
+  components: {
+    NavHeaderOverlay: NavHeaderOverlay,
+    NavBodyOverlay: NavBodyOverlay,
+    NavFooterOverlay: NavFooterOverlay
+  },
+  methods: {
+    closeMenu () {
+      this.$emit('closeMenuOverlay')
+    }
+  }
+}
 </script>

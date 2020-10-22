@@ -1,11 +1,13 @@
 <template>
-  <div class="club">
+  <div class="shop">
     <div class="head">
-      <h2>星享俱乐部</h2>
-      <p>在门店展示我的二维码可积星星享好礼...</p>
+      <h2>查找星门店</h2>
+      <p>
+        快速找到离您最近的星巴克门店，了解门店营业时间，并接收门店精确位置
+      </p>
     </div>
     <div class="img">
-      <img src="../../../../../assets/images/apps-mobile-screens-1.png" />
+      <img src="../../../../../assets/images/apps-mobile-screens-3.png" />
       <!-- <router-link to="4" class="left">‹</router-link>
       <router-link to="2" class="right">›</router-link> -->
     </div>
@@ -14,12 +16,12 @@
 
 <script>
 export default {
-  name: "club"
-}
+  name: "shop",
+};
 </script>
 
 <style lang="less" scoped>
-.club {
+.shop {
   .head {
     height: 170px;
     h2::before {

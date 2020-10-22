@@ -17,46 +17,46 @@
 </template>
 <script>
 
-	import Swiper from 'swiper';
-	import 'swiper/dist/css/swiper.min.css'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 
-	export default {
-		data(){
-			return{
-				sliderList: [
-					{
-						sliderImage: 'banner-1.jpg',
-						sliderImageMobile: 'banner-1-mobile.jpg'
-					},
-					{
-						sliderImage: 'kv-1.jpg',
-						sliderImageMobile: 'kv-1-mobile.jpg'
-					},
-					{
-						sliderImage: 'kv-cold-brew.jpg',
-						sliderImageMobile: 'kv-cold-brew-mobile.jpg'
-					},
-					{
-						sliderImage: 'kv-2.jpg',
-						sliderImageMobile: 'kv-2-mobile.jpg'
-					},
-					{
-						sliderImage: 'kv-5-icecream.jpg',
-						sliderImageMobile: 'kv-5-icecream-mobile.jpg'
-					},
-					{
-						sliderImage: 'kv-ice.jpg',
-						sliderImageMobile: 'kv-ice-mobile.jpg'
-					}
-				]
-			}
-		},
-		mounted(){
-			 this.swiperSlideConfig();
-		},
-		methods: {
-			swiperSlideConfig(){
-				let swiper_slider_ad = new Swiper ('.slider-ad .swiper-container', {
+export default {
+  data () {
+    return {
+      sliderList: [
+        {
+          sliderImage: 'banner-1.jpg',
+          sliderImageMobile: 'banner-1-mobile.jpg'
+        },
+        {
+          sliderImage: 'kv-1.jpg',
+          sliderImageMobile: 'kv-1-mobile.jpg'
+        },
+        {
+          sliderImage: 'kv-cold-brew.jpg',
+          sliderImageMobile: 'kv-cold-brew-mobile.jpg'
+        },
+        {
+          sliderImage: 'kv-2.jpg',
+          sliderImageMobile: 'kv-2-mobile.jpg'
+        },
+        {
+          sliderImage: 'kv-5-icecream.jpg',
+          sliderImageMobile: 'kv-5-icecream-mobile.jpg'
+        },
+        {
+          sliderImage: 'kv-ice.jpg',
+          sliderImageMobile: 'kv-ice-mobile.jpg'
+        }
+      ]
+    }
+  },
+  mounted () {
+			 this.swiperSlideConfig()
+  },
+  methods: {
+    swiperSlideConfig () {
+      const swiper_slider_ad = new Swiper('.slider-ad .swiper-container', {
 
 			    	direction: 'horizontal',
 			    	loop: true,
@@ -64,27 +64,27 @@
 			    	autoplay: {
 			    		delay: 3600,
 			   	 		stopOnLastSlide: false,
-			    		disableOnInteraction: false,
+			    		disableOnInteraction: false
 			    	},
 			    	navigation: {
-			      		nextEl: '.swiper-button-next',
-			    	},
+			      		nextEl: '.swiper-button-next'
+			    	}
 
-			  	});
+			  	})
 
-			  	swiper_slider_ad.el.onmouseover = function(){
-			  		swiper_slider_ad.autoplay.stop();
-				};
+			  	swiper_slider_ad.el.onmouseover = function () {
+			  		swiper_slider_ad.autoplay.stop()
+      }
 
-				swiper_slider_ad.el.onmouseout = function(){
-			  		swiper_slider_ad.autoplay.start();
-				};
+      swiper_slider_ad.el.onmouseout = function () {
+			  		swiper_slider_ad.autoplay.start()
+      }
 
-				$('.slider-ad .swiper-button-next').click(()=>{
-					swiper_slider_ad.autoplay.start();
-				});
-			}
-		}
-	}
+      $('.slider-ad .swiper-button-next').click(() => {
+        swiper_slider_ad.autoplay.start()
+      })
+    }
+  }
+}
 
 </script>

@@ -17,13 +17,13 @@
 </template>
 
 <script>
-  export default{
-    methods:{
-      back(){
-        this.$router.back()
-      }
+export default {
+  methods: {
+    back () {
+      this.$router.back()
     }
   }
+}
 </script>
 
 <style lang="less" scoped>

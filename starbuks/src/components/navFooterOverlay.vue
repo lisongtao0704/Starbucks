@@ -6,7 +6,7 @@
 			<a href="javascript:;">使用条款</a>
 			<div class="legal">
 				<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402000318"
-				   target="_blank"> 
+				   target="_blank">
 					<img src="/static/images/icpicon.png" />
 					<span>沪公网安备 31010402000318号</span>
 				</a>

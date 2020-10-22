@@ -35,28 +35,28 @@ const routes = [{
   component: () => import('../views/menu/menu.vue')
 },
 {
-  path:'/menu/food',
-  component:()=>import('../views/menu/food.vue')
+  path: '/menu/food',
+  component: () => import('../views/menu/food.vue')
 },
 {
-  path:'/menu/search',
-  component:()=>import('../views/menu/search.vue')
+  path: '/menu/search',
+  component: () => import('../views/menu/search.vue')
 },
 {
-  path:'/menu/merchandise',
-  component:()=>import('../views/menu/merchandise.vue'),
+  path: '/menu/merchandise',
+  component: () => import('../views/menu/merchandise.vue'),
   redirect: '/menu/merchandise/merchandise-all',
-  children:[{
-    path:'merchandise-all',
-    component:()=>import('../views/menu/merchandise-all.vue')
+  children: [{
+    path: 'merchandise-all',
+    component: () => import('../views/menu/merchandise-all.vue')
   },
   {
-    path:'merchandise-core',
-    component:()=>import('../views/menu/merchandise-core.vue')
+    path: 'merchandise-core',
+    component: () => import('../views/menu/merchandise-core.vue')
   },
   {
-    path:'merchandise-store',
-    component:()=>import('../views/menu/merchandise-store.vue')
+    path: 'merchandise-store',
+    component: () => import('../views/menu/merchandise-store.vue')
   }
   ]
 },
@@ -127,11 +127,26 @@ const routes = [{
   children: [{
     path: 'app',
     name: 'app',
+    redirect: '/more/xbkMobileApp/app/1',
     component: () => import('../views/more/moreChild/xbkmobileApp/mobileApp.vue'),
     children: [{
       path: '1',
       name: 'club',
       component: () => import('../views/more/moreChild/xbkmobileApp/xbk/club.vue')
+    },{
+      path: '2',
+      name: 'card',
+      component: () => import('../views/more/moreChild/xbkmobileApp/xbk/card.vue')
+    },
+    {
+      path: '3',
+      name: 'shop',
+      component: () => import('../views/more/moreChild/xbkmobileApp/xbk/shop.vue')
+    },
+    {
+      path: '4',
+      name: 'info',
+      component: () => import('../views/more/moreChild/xbkmobileApp/xbk/info.vue')
     }]
   },
   {
