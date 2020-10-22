@@ -46,13 +46,15 @@
         <img src="../../../../assets/images/apple-watch-stores@2x.png" />
       </div>
     </div>
-    <p class="foot">
-      为了能正常使用，请确认您IPhone中的<a
-        href="https://apps.apple.com/cn/app/xing-ba-ke-zhong-guo/id499819758?ls=1"
-        >星巴克移动应用版本为4.1.8或以上</a
-      >。苹果公司标志及iPhone是苹果公司在美国及其他国家的注册商标。Apple
-      Watch是苹果公司的注册商标，苹果应用商店是苹果公司的服务商标。
-    </p>
+    <div class="foot">
+      <p>
+        为了能正常使用，请确认您IPhone中的<a
+          href="https://apps.apple.com/cn/app/xing-ba-ke-zhong-guo/id499819758?ls=1"
+          >星巴克移动应用版本为4.1.8或以上</a
+        >。苹果公司标志及iPhone是苹果公司在美国及其他国家的注册商标。Apple
+        Watch是苹果公司的注册商标，苹果应用商店是苹果公司的服务商标。
+      </p>
+    </div>
   </div>
 </template>
 
@@ -70,28 +72,33 @@ export default {
     #f1f1f1 50%,
     #e8e8e8 100%
   );
-  padding-bottom: 60px;
+  padding-bottom: 35px;
   .foot {
-    text-indent: 30px;
-    letter-spacing: 0.4px;
-    color: rgba(0, 0, 0, 0.87);
-    text-align: justify;
-    font-size: 16px;
-    font-weight: 400;
-    margin: 48px 41px 75px;
-    padding-top: 40px;
-    border-top: 1px solid #0000004d;
-    a {
-      text-decoration: none;
+        background: #fff;
+    padding: 48px 31px 75px;
+    p {
+      text-indent: 30px;
+      letter-spacing: 0.4px;
+      color: rgba(0, 0, 0, 0.87);
+      text-align: justify;
       font-size: 16px;
       font-weight: 400;
-      color: #00a862;
+      padding-top: 40px;
+      border-top: 1px solid #0000004d;
+      a {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        color: #00a862;
+      }
     }
   }
+
   .goods {
     display: flex;
     text-align: justify;
-    margin-top: 60px;
+    background: #fff;
+    padding-top: 60px;
     div {
       padding: 0px 17px;
       h2 {
@@ -155,6 +162,7 @@ export default {
     // background-size: cover;
     height: 205px;
     width: 100%;
+    margin-top: 70px;
     position: relative;
     img {
       position: absolute;

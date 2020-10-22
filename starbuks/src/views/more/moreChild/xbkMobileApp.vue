@@ -52,6 +52,7 @@ export default {
 
 <style scoped lang="less">
 .xbkMobileApp {
+  max-width: 1035px;
   .v-enter,
   .v-lever-to {
     opacity: 0;
@@ -62,6 +63,7 @@ export default {
     transition: all 0.3s ease;
   }
   .headed {
+    background-color: #fff;
     h2 {
       font-size: 24px;
       font-weight: bold;

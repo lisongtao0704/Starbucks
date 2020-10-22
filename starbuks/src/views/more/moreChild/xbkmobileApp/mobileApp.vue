@@ -62,7 +62,7 @@
     
   </ul>
   <div class="qr-code">
-    <img src="../../../../assets/images/app_qr_20181112.jpg">
+   <div style=" margin: 0px 50px 0px;"><img src="../../../../assets/images/app_qr_20181112.jpg"></div> 
     <div class="xiazai"><img src="../../../../assets/images/苹果.png"><img src="../../../../assets/images/安卓 B.png"></div>
   </div>
   <p class="issue">如果您有任何问题，请查看常见问题，也可以直接与我们联系</p>
@@ -102,7 +102,7 @@ export default {
   .common {
     display: flex;
     justify-content: center;
-    a{
+    a {
       text-decoration: none;
     }
     div {
@@ -125,7 +125,7 @@ export default {
     .qr-code {
       img {
         width: 160px;
-        margin-top: 25px;
+        margin-top: 15px;
       }
       .xiazai {
         img {
@@ -140,6 +140,7 @@ export default {
     p {
       font-size: 18px;
       font-weight: 400;
+      line-height: 30px;
       color: #000;
       a {
         text-decoration: none;
@@ -154,9 +155,9 @@ export default {
       li {
         list-style: none;
         float: left;
-
+        margin-bottom: 3px;
         a {
-          padding: 0 20px;
+          padding: 0 17px;
           border-right: 1px solid black;
           text-decoration: none;
           color: #00a862;
@@ -224,6 +225,7 @@ export default {
       position: relative;
       .content {
         h1 {
+          margin-top: 0;
           color: #fff;
           padding-top: 45px;
           margin-bottom: 48px;

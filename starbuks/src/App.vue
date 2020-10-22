@@ -56,6 +56,11 @@
 export default {};
 </script>
 <style lang="less">
+@media screen and (min-width: 640px) {
+     .nav-bar.songtao{
+        display: none;
+    }
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
