@@ -7,19 +7,18 @@
 					<p class="program-detail">
 						开启您的星享之旅，星星越多、会员等级越高、好礼越丰富。
 						<a href="javascript:;" class="program-more">
-							了解更多 ›
+							<span @click="myClick">了解更多 ›</span>
 						</a>
 					</p>
 					<p class="account-entry" v-if="!NickName">
-						<a href="javascript:;" class="sign-in button btn-bigger" @click="pageRedir(2)">
-							<span>登录</span>
+						<a href="javascript:;" class="sign-in button btn-bigger" >
+							<span @click="loginClick">登录</span>
 						</a>
-						<a href="javascript:;" class="register button btn-bigger" @click="pageRedir(4)">
-							<span>注册</span>
+						<a href="javascript:;" class="register button btn-bigger" >
+							<span @click="btnClick">注册</span>
 						</a>
 					</p>
 				</div>
-				<!-- 登录后此处添加.vertical-middle-login保证图片居中，同时上面登录注册按钮隐藏 -->
 				<div class="program-image" :class="{'onlogin':NickName}">
 					<img src="@/assets/images/logo-msr-new.svg">
 				</div>
@@ -35,13 +34,17 @@ export default {
       return this.$store.state.NickName
     }
   },
-  mounted () {
-
-  },
-  methods: {
-    pageRedir (item) {
-      this.$store.commit('pageRedir', item)
-    }
-  }
+  methods:{
+		loginClick(){
+      this.$router.push('/account')
+		},
+		btnClick(){
+			this.$router.push('/account')
+		},
+		myClick(){
+			this.$router.push('/account')
+		}
+	}
+ 
 }
 </script>

@@ -74,6 +74,10 @@
         <div class="tag-ad">广告</div>
         <ad-slider/>
         <promotion></promotion>
+        <program></program>
+        <tmall></tmall>
+        <coffeehouse></coffeehouse>
+     
       </section>
     </article>
     
@@ -89,6 +93,10 @@ import NavContainer from '@/components/navContainer'
 import NavOverlay from '@/components/NavOverlay'
 import AdSlider from "@/components/adSlider";
 import Promotion from "@/components/promotion"
+import Program from "@/components/program"
+import Tmall from "@/components/tmall"
+import Coffeehouse from '@/components/coffeehouse'
+
 
 export default {
   name: 'Home',
@@ -96,7 +104,11 @@ export default {
     NavContainer,
     NavOverlay,
     AdSlider,
-    Promotion
+    Promotion,
+    Program,
+    Tmall,
+    Coffeehouse,
+
   },
   data () {
     return {
@@ -112,7 +124,8 @@ export default {
     },
     closeMenuExec () {
       this.isshow = false
-    }
+    },
+    
   },
   computed: {
     NickName () {
