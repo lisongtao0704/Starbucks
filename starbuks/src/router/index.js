@@ -48,7 +48,14 @@ const routes = [{
   },
   {
     path: '/menu/search',
-    component: () => import('../views/menu/search.vue')
+    component: () => import('../views/menu/search.vue'),
+    meta:{
+    	requireAuth:true
+    }
+  },
+  {
+    path:'/menu/shoplist',
+    component:()=> import('../views/menu/shoplist.vue')
   },
   {
     path: '/menu/merchandise',

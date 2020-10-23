@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="rewards-tips">
-          <p class="white">
+          <p class="white" style="font-size: 12px;">
             详情以<a href="javascript:;" class="ga-msr-intro-terms">《星享俱乐部活动的条款和条件》</a>的规定为准
           </p>
         </div>
@@ -64,28 +64,23 @@
     <div class="bg-grey">
     	<img src="../../assets/images/bg-banner-01.png" alt="">
     </div>
-    <section class="member-package bg-grey">
+    <section class="member-package">
     	<div class="wrapper">
     		<div class="rewards-title">
-    			<img src="../../assets/images/04-member-package-title-mobile.png" alt="" class="tablet-hidden mobile-show">
+    			<img src="../../assets/images/04-member-package-title-mobile.png">
     		</div>
-    		<div class="rewards-content">
-    			<div class="item">
-    				<div class="item-image">
-    					<img src="../../assets/images/srkit-mobile.png" alt="">
-    				</div>
-    			</div>
-    			<div class="item">
-    				<div class="item-image">
-    					<img src="../../assets/images/coupon-zh.png" alt="">
-    				</div>
-    			</div>
-    			<div class="item">
-    				<div class="item-content">
+        <div class="rewards-title1">
+        	<img src="../../assets/images/srkit-mobile.png" alt="">
+        </div>
+        <div class="rewards-title2">
+        	<img src="../../assets/images/coupon-zh.png" alt="">
+        </div>
+
+
+
+    		<div class="rewards-content1">
+          <h3>选购会员星礼包，丰富好礼随心享：</h3>
     					<ul>
-    						<li class="title">
-    							<h3>选购会员星礼包，丰富好礼随心享：</h3>
-    						</li>
     						<li>
     							6张电子好礼券<small>*</small>，适用多种商品种类
     						</li>
@@ -99,8 +94,6 @@
     						<br>
     						<small>** 附赠星礼卡的初始余额为0元。</small>
     					</p>
-    				</div>
-    			</div>
     		</div>
     		<div class="rewards-tips">
     			<p>
@@ -166,13 +159,16 @@
           }
       }
    }
-  .bg-dark .wrapper {
+  .member-package .wrapper {
     padding: 0 24px;
   }
 
   .rewards-title {
     margin: auto;
     margin-bottom: 24px;
+    img{
+      width: 100%;
+    }
   }
 
   .wrapper .rewards-content {
@@ -229,5 +225,39 @@
   .bg-grey{
     position: relative;
     top: -0.6rem;
+  }
+  .rewards-title1{
+    width:80%;
+    margin-left:13%;
+    padding: 20px;
+    img{
+      width: 100%;
+    }
+  }
+  .rewards-title2{
+    width:80%;
+    margin-left:13%;
+    padding: 20px;
+    img{
+      width: 100%;
+    }
+  }
+  .rewards-content1{
+    h3{
+      color: #000;
+      font-size: 18px;
+      text-align: left;
+    }
+    ul{
+      li{
+        text-align: left;
+            font-size: 13px;
+            line-height: 200%;
+            padding-left: 10px;
+      }
+    }
+    .small{
+      text-align: left;
+    }
   }
 </style>

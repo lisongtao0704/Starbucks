@@ -12,10 +12,10 @@
 
       <!-- 搜索后的 -->
       <div class="grid" v-if="search.length>0">
-          <div class="item" v-for="item in searchData">
+          <router-link to="shoplist"  class="item" v-for="item in searchData" tag='div'>
                <img :src="'https://www.starbucks.com.cn/'+item.preview"/>
               <p>{{item.title}}</p>
-          </div>
+          </router-link>
       </div>
       <!-- 搜索前的 -->
       <div class="grid" v-else>
@@ -67,7 +67,7 @@
         })
       },
       back(){
-        this.$router.back()
+        this.$router.push('/menu')
       },
       Search(){
           var search = this.search;
@@ -75,8 +75,8 @@
             this.searchData = this.list.filter(product=>{
                 //console.log(product)
               return Object.keys(product).some(key=>{
-                 console.log(key)
-                 console.log(this.searchData)
+                 //console.log(key)
+                 //console.log(this.searchData)
                 return String(product[key]).toLowerCase().indexOf(search) > -1
               })
             })

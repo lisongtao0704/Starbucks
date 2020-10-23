@@ -102,7 +102,7 @@
             this.$store.commit("setToken", this.user);
             mui.toast('登录成功，即将跳转')
             setTimeout(function() {
-              _this.$router.push('/menu')
+              _this.$router.push('/')
             }, 2000)
           }
         })
