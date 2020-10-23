@@ -64,6 +64,7 @@
     justify-content: space-between;
     background-color: #fff;
     box-shadow: 1px -2px 2px #ccc;
+    height: 85vh;
     li{
       width: 49%;
       margin: 4px 0;

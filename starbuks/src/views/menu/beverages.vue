@@ -7,39 +7,26 @@
       </header>
       	<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
       		<div class="mui-scroll">
-            <a class="mui-control-item mui-active">全部</a>
-            <a class="mui-control-item">星巴克玩味冰调™</a>
-            <a class="mui-control-item">手工调制浓缩咖啡</a>
-            <a class="mui-control-item">星冰乐®</a>
-            <a class="mui-control-item">茶瓦纳™</a>
-            <a class="mui-control-item">经典巧克力饮品</a>
-            <a class="mui-control-item">咖啡融合冰淇淋</a>
-            <a class="mui-control-item">星巴克冷萃咖啡系列</a>
-            <a class="mui-control-item">气致™冷萃咖啡</a>
+            <a class="mui-control-item mui-active" @click="getByCateId('all')">全部</a>
+            <a class="mui-control-item" @click="getByCateId('mixology')">星巴克玩味冰调™</a>
+            <a class="mui-control-item" @click="getByCateId('icecream')">手工调制浓缩咖啡</a>
+            <a class="mui-control-item" @click="getByCateId('coldextra')">星冰乐®</a>
+            <a class="mui-control-item" @click="getByCateId('espresso')">茶瓦纳™</a>
+            <a class="mui-control-item" @click="getByCateId('frappu')">经典巧克力饮品</a>
+            <a class="mui-control-item" @click="getByCateId('gas-coldextra')">咖啡融合冰淇淋</a>
+            <a class="mui-control-item" @click="getByCateId('chocolate')">星巴克冷萃咖啡系列</a>
+            <a class="mui-control-item" @click="getByCateId('chawana')">气致™冷萃咖啡</a>
       		</div>
       	</div>
     </div>
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-    	<li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
+    	<router-link v-for="item in list" :to="'/home/photoinfo/' + item.id" tag="li">
+        <img :src="item.ProductImage"/>
+        <p>{{item.ProductName}}</p>
+      </router-link>
     </ul>
-
     <router-link to="/menu/search" class="menu-bun">搜索菜单</router-link>
   </div>
 </template>
@@ -47,16 +34,32 @@
   // 1. 导入 mui 的js文件
   import mui from "../../lib/mui/js/mui.min.js";
   export default{
+    data(){
+      return{
+        list:[],
+        cates:[],
+      }
+    },
+    created(){
+      this. getByCateId('all');
+    },
     methods:{
       back(){
         this.$router.push('/menu')
-      }
+      },
+      getByCateId(val){
+        this.$http.get('http://123.56.129.223/starbucks/menu.php?category=beverages&type='+val).then(res=>{
+          this.list = res.data
+          //console.log( res.data)
+        })
+      },
     },
     mounted() {
     	mui(".mui-scroll-wrapper").scroll({
     		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
     	});
-    },
+
+    }
   }
 </script>
 
@@ -68,6 +71,7 @@
     justify-content: space-between;
     background-color: #fff;
     box-shadow: 1px -2px 2px #ccc;
+    
     li{
       width: 49%;
       margin: 4px 0;

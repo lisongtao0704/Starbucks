@@ -36,13 +36,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
-.login-content {
-  height: 85vh;
-  background-color: rgb(247, 247, 247);
-  border-top: 1px solid #ccc;
-  box-shadow: 0px -2px 2px #eee;
-  padding-top: 20px;
-}
+
 .menubtn {
   h2 {
     font-weight: 700;

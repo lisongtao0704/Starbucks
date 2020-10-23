@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import mui from '../../lib/mui/js/mui.min.js'
 export default {
   data () {
     return {
@@ -63,24 +64,24 @@ export default {
       }
     },
     onSuccess (times) {
-      alert('只用了 ' + times/1000 + 's'+',简直比闪电还快呢')
+     mui.toast('只用了 ' + times/1000 + 's'+',简直比闪电还快呢')
       this.msg = '验证通过, 耗时' + times / 1000 + 's'
       this.isslide = false,
       this.ismsg = true
     },
     onFail () {
-      alert('验证不通过')
+      mui.toast('验证不通过')
       this.msg = ''
     },
     onRefresh () {
-      alert('点击了刷新小图标')
+      mui.toast('点击了刷新小图标')
       this.msg = ''
     },
     onFulfilled () {
       console.log('刷新成功啦！')
     },
     onAgain () {
-      alert('检测到非人为操作的哦！')
+      mui.toast('检测到非人为操作的哦！')
       this.msg = 'try again'
       // 刷新
       this.$refs.slideblock.reset()
@@ -89,27 +90,22 @@ export default {
 
       var _this = this
       if (!this.ismsg) {
-        return this.$alert('请先通过验证', {
-          confirmButtonText: '确定'
-        })
+        return mui.toast('验证不通过，请重新验证')
       }
-      if (this.username.length < 6) {
-         return alert('qing')
+      if(this.username =='' || this.password ==''){
+        return mui.toast('请输入帐号或密码')
       }
-      if(this.password.length <6){
-        return alert('来啦')
-      }
-      if(this.username !=='123456' && this.password !=='123456'){
-        return alert('帐号或密码错误')
+      if(this.username !=='123456' || this.password !=='123456'){
+        return mui.toast('帐号或密码错误');
       }
       this.$http.get('http://localhost:8080/db.json').then(res=>{
          console.log(res.data)
           if(res.data.code === 0){
                  this.user = res.data.result
                  this.$store.commit("setToken", this.user);
+                  mui.toast('登录成功，即将跳转')
                  setTimeout(function(){
-                   alert('登录成功，即将跳转')
-                  _this.$router.push('/home')
+                  _this.$router.push('/menu')
                  },2000)
              }
       })
@@ -246,5 +242,12 @@ export default {
         color:#00A862;
       }
     }
+  }
+  .login-content {
+    height: 100vh;
+    background-color: rgb(247, 247, 247);
+    border-top: 1px solid #ccc;
+    box-shadow: 0px -2px 2px #eee;
+    padding-top: 20px;
   }
 </style>

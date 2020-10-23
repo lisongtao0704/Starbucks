@@ -77,5 +77,4 @@
       height: 100%;
     }
   }
-  * { touch-action: pan-y; }
 </style>

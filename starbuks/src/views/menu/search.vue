@@ -13,9 +13,9 @@
 
       <!-- 搜索后的 -->
       <div class="grid" v-if="search.length>0">
-          <div class="item" v-for="list in searchData">
-               <img :src="list.depart"/>
-              <p>{{list.name}}</p>
+          <div class="item" v-for="item in searchData">
+               <img :src="'https://www.starbucks.com.cn/'+item.preview"/>
+              <p>{{item.title}}</p>
           </div>
       </div>
       <!-- 搜索前的 -->
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  import mui from '../../lib/mui/js/mui.min.js'
   export default{
     data(){
       return{
@@ -49,63 +50,44 @@
         // 原本展示数据
         list: [],
         // 搜索后的展示数据
-        searchData: [],
-        products: [
-          //假数据
-          {
-            name: "爱尔兰奶油冷萃1",
-            date: '2018-01-04',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃2",
-            date: '2018-01-25',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃3",
-            date: '2018-02-10',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃4",
-            date: '2018-03-04',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃5",
-            date: '2018-05-24',
-            depart: '/img/menu-img2.253f8708.jpg'
-          },
-          {
-            name: "爱尔兰奶油冷萃6",
-            date: '2018-10-29',
-            depart:'/img/menu-img2.253f8708.jpg'
-          }
-        ]
+        searchData:[],
+        products: {},
       }
     },
+    created(){
+       this.getAllShop()
+    },
     methods:{
+      getAllShop(){
+        this.$http.get('http://localhost:8080/allShop.json').then(res=>{
+          this.products=res.data;
+          for(let key in this.products){
+            this.list.push(this.products[key])
+          }
+          //console.log(this.list)
+        })
+      },
       back(){
         this.$router.back()
       },
       Search(){
           var search = this.search;
           if (search) {
-            this.searchData = this.products.filter(function(product) {
-               //console.log(product)
-              return Object.keys(product).some(function(key) {
-                 //console.log(key)
+            this.searchData = this.list.filter(product=>{
+                //console.log(product)
+              return Object.keys(product).some(key=>{
+                 console.log(key)
+                 console.log(this.searchData)
                 return String(product[key]).toLowerCase().indexOf(search) > -1
               })
             })
             if(this.searchData == ''){
-              alert('未查询到商品')
+              mui.toast('未查询到商品')
               console.dir(this.searchData)
             };
           }else if(search.length === 0){
               this.searchData = this.list;
-              alert('请输入查找内容')
+              mui.toast('请输入查找内容')
             }else{
               return this.searchData;
             }
@@ -160,10 +142,9 @@
        }
        .field{
          position: relative;
-         margin-bottom: 18px;
          img{
            position: absolute;
-           bottom: 10px;
+           bottom: 25px;
            right: 0;
          }
          input{
