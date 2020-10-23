@@ -17,8 +17,8 @@
         <li><router-link to="/more/xbkChoose">星巴克臻选™</router-link></li>
         <li><router-link to="/more/feikuai">啡快™ - 在线点 到店取</router-link></li>
         <li><router-link to="/more/starSend">专星送™</router-link></li>
-        <li><router-link to="/more/coffeeClassroom">咖啡星讲堂</router-link></li>
-        <li><router-link to="/more/baking">上海烘焙工坊</router-link></li>
+        <li><a href="https://www.starbucks.com.cn/coffee-blog">咖啡星讲堂</a></li>
+        <li><a href="https://roastery.starbucks.com.cn/">上海烘焙工坊</a></li>
         <li><router-link to="/more/asXbk">关于星巴克</router-link></li>
         <li><router-link to="/more/help">帮助中心</router-link></li>
         <li><hr /></li>
