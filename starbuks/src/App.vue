@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div id="nav">
-
       <div class="nav-bar songtao">
         <el-menu class="el-menu-demo" mode="horizontal">
           <el-menu-item>
@@ -14,14 +13,20 @@
           <el-menu-item>
             <router-link to="/stores" class="stores">
               <img class="default" src="./assets/images/icon-stores.svg" />
-              <img class="active" src="./assets/images/icon-stores-active.svg" />
+              <img
+                class="active"
+                src="./assets/images/icon-stores-active.svg"
+              />
               <div><span>门店</span></div>
             </router-link>
           </el-menu-item>
           <el-menu-item>
             <router-link to="/account" class="account">
               <img class="default" src="./assets/images/icon-account.svg" />
-              <img class="active" src="./assets/images/icon-account-active.svg" />
+              <img
+                class="active"
+                src="./assets/images/icon-account-active.svg"
+              />
               <div><span>我的账户</span></div>
             </router-link>
           </el-menu-item>
@@ -43,76 +48,83 @@
       </div>
     </div>
     <transition>
-      <router-view/>
+      <router-view />
     </transition>
   </div>
 </template>
 <script>
-export default {}
+export default {};
 </script>
 <style lang="less">
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
-  #nav {
-    .el-menu--horizontal>.el-menu-item.is-active {
-      border: none;
+@media screen and (min-width: 640px) {
+     .nav-bar.songtao{
+        display: none;
     }
-    .nav-bar.songtao {
-      width: 100%;
-      position: fixed;
-      z-index: 999;
-      bottom: 0;
-      background: #fff;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  .el-menu--horizontal > .el-menu-item.is-active {
+    border: none;
+  }
+  .nav-bar.songtao {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 -1px 1px rgba(100, 100, 100, 0.2);
 
-      .el-menu {
-        .active {
+    .el-menu {
+      .active {
+        display: none;
+      }
+
+      .router-link-active {
+        .default {
           display: none;
         }
 
-        .router-link-active{
-          .default {
-            display: none;
-          }
-
-          .active {
-            display: inline;
-          }
-
-          color: #00a862;
+        .active {
+          display: inline;
         }
 
-        li {
-          line-height: unset;
-          width: 20%;
-          height: 55px;
-          padding: 0;
+        color: #00a862;
+      }
 
-          a {
-            text-decoration: none;
+      li {
+        line-height: unset;
+        width: 20%;
+        height: 55px;
+        padding: 5px 0;
 
-            span {
-              font-weight: 400;
-              font-size: 12px;
-            }
+        a {
+          text-decoration: none;
+
+          span {
+            font-weight: 400;
+            font-size: 12px;
           }
         }
       }
     }
   }
-  .v-enter,
-  .v-lever-to{
-  	 opacity: 0;
-  	 transform: translate(100%);
-
-  }
-  .v-enter-active,
-  .v-lever-active{
-  	 transition:all 0.3s ease;
-  }
-   * { touch-action: pan-y; }
+}
+.v-enter,
+.v-lever-to {
+  opacity: 0;
+  transform: translate(100%);
+}
+.v-enter-active,
+.v-lever-active {
+  transition: all 0.3s ease;
+}
+* {
+  touch-action: pan-y;
+}
 </style>

@@ -2,7 +2,7 @@
   <div>
     <article class="wrapper">
       <nav class="nav">
-        <nav-container v-on:showMenuOverlay="showMenuExec" v-show="!isshow">
+        <nav-container @showMenuOverlay="showMenuExec" v-show="!isshow">
           <span slot="navbody">
             <section class="body" v-if="!NickName">
               <div class="account">
@@ -67,48 +67,63 @@
             </section>
           </span>
         </nav-container>
-        <nav-overlay v-on:closeMenuOverlay="closeMenuExec" v-show="isshow">
+        <nav-overlay @closeMenuOverlay="closeMenuExec" v-show="isshow">
         </nav-overlay>
       </nav>
+      <section class="content" v-if="lgMedia || !isshow">
+        <div class="tag-ad">广告</div>
+        <ad-slider/>
+        <promotion></promotion>
+      </section>
     </article>
+    
   </div>
 </template>
 
 <script>
-import "./../assets/css/bootstrap.min.css";
-import "./../assets/css/swiper.min.css";
-import "./../assets/css/init.css";
-import "./../assets/css/styles.css";
-import NavContainer from "@/components/navContainer";
-import NavOverlay from "@/components/NavOverlay";
+import './../assets/css/bootstrap.min.css'
+import './../assets/css/swiper.min.css'
+import './../assets/css/init.css'
+import './../assets/css/styles.css'
+import NavContainer from '@/components/navContainer'
+import NavOverlay from '@/components/NavOverlay'
+import AdSlider from "@/components/adSlider";
+import Promotion from "@/components/promotion"
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     NavContainer,
     NavOverlay,
+    AdSlider,
+    Promotion
   },
-  data() {
+  data () {
     return {
       isshow: false,
       loading: false,
-      lgMedia: window.matchMedia("(min-width: 1025px)").matches,
-      mbMedia: window.matchMedia("(max-width: 640px)").matches,
-    };
+      lgMedia: window.matchMedia('(min-width: 1025px)').matches,
+      mbMedia: window.matchMedia('(max-width: 640px)').matches
+    }
   },
   methods: {
-    showMenuExec() {
-      this.isshow = true;
+    showMenuExec () {
+      this.isshow = true
     },
-    closeMenuExec() {
-      this.isshow = false;
-    },
+    closeMenuExec () {
+      this.isshow = false
+    }
   },
   computed: {
-    NickName() {
-      return this.$store.state.NickName;
-    },
-  },
-};
+    NickName () {
+      return this.$store.state.NickName
+    }
+  }
+}
 </script>
-
+<style  scoped>
+.wrapper .content {
+   padding-top: 0;
+   z-index: 998;
+ }
+</style>

@@ -125,7 +125,7 @@
 	.masker-layer .dialog .body div .date {
 		color: rgba(0, 0, 0, 0.56);
 	}
-	
+
 	.masker-layer .dialog .body table {
 		width: 100%;
 	}
@@ -212,18 +212,18 @@
 		.masker-layer .dialog header .text-desc p {
 			font-size: 1.2rem;
 		}
-		
+
 	}
 </style>
 <script>
-	import axios from 'axios'
+import axios from 'axios'
 
-	export default {
-		props: ["detailOfItem"],
-		methods: {
-			close(){
-				this.$emit("close");
-			}
-		}
-	}
+export default {
+  props: ['detailOfItem'],
+  methods: {
+    close () {
+      this.$emit('close')
+    }
+  }
+}
 </script>

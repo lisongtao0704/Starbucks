@@ -11,23 +11,23 @@
 </template>
 
 <script>
-	import StarLevel from '@/components/starLevel'
-	import StarReward from '@/components/starReward'
+import StarLevel from '@/components/starLevel'
+import StarReward from '@/components/starReward'
 
-	export default {
-		data(){
-			return {
-				StarType: 'level',
-			}
-		},
-		computed: {
-			view(){
-				return this.StarType === 'level' ? 'StarLevel' : 'StarReward';
-			}
-		},
-		components: {
-			StarLevel: StarLevel,
-			StarReward: StarReward
-		}
-	}
+export default {
+  data () {
+    return {
+      StarType: 'level'
+    }
+  },
+  computed: {
+    view () {
+      return this.StarType === 'level' ? 'StarLevel' : 'StarReward'
+    }
+  },
+  components: {
+    StarLevel: StarLevel,
+    StarReward: StarReward
+  }
+}
 </script>

@@ -51,35 +51,35 @@
 </template>
 <script>
 
-	export default {
-		data(){
-			return {
-				actives: '',
-			}
-		},
-		mounted() {
-			this.init();
-		},
-		methods: {
-			init(){
-				let curPath = this.$route.matched[0].path,
-					pathTag = this.$store.state.path.indexOf(curPath);
-				if(curPath === ''){
-					pathTag = 0;
-				}
-				this.$store.commit('mobileNavAct', pathTag);
-				this.actives = this.$store.state.actives;
-			},
-			clickBtn(tag){
-				if(tag === 4){
-					this.$emit("showMenuOverlay");
-				}else{
-					this.$store.commit('pageRedir', tag);
-					this.$store.commit('mobileNavAct', tag);
-					this.actives = this.$store.state.actives;
-				}
-			}
-		}
-	}
-	
+export default {
+  data () {
+    return {
+      actives: ''
+    }
+  },
+  mounted () {
+    this.init()
+  },
+  methods: {
+    init () {
+      const curPath = this.$route.matched[0].path
+      let pathTag = this.$store.state.path.indexOf(curPath)
+      if (curPath === '') {
+        pathTag = 0
+      }
+      this.$store.commit('mobileNavAct', pathTag)
+      this.actives = this.$store.state.actives
+    },
+    clickBtn (tag) {
+      if (tag === 4) {
+        this.$emit('showMenuOverlay')
+      } else {
+        this.$store.commit('pageRedir', tag)
+        this.$store.commit('mobileNavAct', tag)
+        this.actives = this.$store.state.actives
+      }
+    }
+  }
+}
+
 </script>

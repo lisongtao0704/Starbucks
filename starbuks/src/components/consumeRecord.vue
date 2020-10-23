@@ -5,7 +5,7 @@
 				<thead>
 					<tr>
 						<td v-if="!mbMedia"></td>
-						<td>日期</td>	
+						<td>日期</td>
 						<td>门店名称</td>
 						<td>金额</td>
 						<td v-if="!mbMedia">累计星星</td>
@@ -44,71 +44,70 @@
 </template>
 
 <script>
-	import MaskerLayer from '@/components/MaskerLayerConsume'
-	import TokenTools from '@/utils/tokenTools'
-	import CookieTools from '@/utils/cookieTools'
-	import axios from 'axios'
+import MaskerLayer from '@/components/MaskerLayerConsume'
+import TokenTools from '@/utils/tokenTools'
+import CookieTools from '@/utils/cookieTools'
+import axios from 'axios'
 
-	export default {
-		data(){
-			return {
-				mbMedia: window.matchMedia('(max-width: 640px)').matches,
-				ExpensesRecord: '',
-				loading: false,
-				show: false,
-				detailOfItem: ''
-			}
-		},
-		mounted(){
-			window.matchMedia('(max-width: 640px)').addListener(()=>{
-				this.mbMedia = window.matchMedia('(max-width: 640px)').matches;
-			});
-			this.getAccountInfo();
-		},
-		components: {
-			MaskerLayer: MaskerLayer
-		},
-		methods: {
-			getAccountInfo(){
-				this.loading = true;
+export default {
+  data () {
+    return {
+      mbMedia: window.matchMedia('(max-width: 640px)').matches,
+      ExpensesRecord: '',
+      loading: false,
+      show: false,
+      detailOfItem: ''
+    }
+  },
+  mounted () {
+    window.matchMedia('(max-width: 640px)').addListener(() => {
+      this.mbMedia = window.matchMedia('(max-width: 640px)').matches
+    })
+    this.getAccountInfo()
+  },
+  components: {
+    MaskerLayer: MaskerLayer
+  },
+  methods: {
+    getAccountInfo () {
+      this.loading = true
 
-				let ReqToken = TokenTools.TokenSetting('sbux_token_gai');
-				
-				if(ReqToken){
-					axios.post("users/accountInfo",{
-						ReqToken: ReqToken
-					}).then((res)=>{
-						let data = res.data;
-						if(data.status == '0'){
-							let res = data.result;
-							this.ExpensesRecord = res.ExpensesRecord;
-							this.loading = false;
-						}
-						CookieTools.DelCookie('sbux_token_gai');
-					})
-				}
-			},
-			showRecordDetail(item){
-				this.detailOfItem = item;
-				this.show = true;
-				this.trackingVisitor();
-			},
-			closeRecordDetail(){
-				this.show = false;
-			},
-			trackingVisitor() {
-				let storage = window.sessionStorage || null;
-				if(storage) {
-					let VisitorID = storage.getItem('VisitorID'),
-						page = '消费记录-弹窗';
-					if(!VisitorID) return;
-					axios.post('users/tracking',{
-						visitorID: VisitorID,
-						page: page
-					})
-				}
-				
-			}
-		}
-	}
+      const ReqToken = TokenTools.TokenSetting('sbux_token_gai')
+
+      if (ReqToken) {
+        axios.post('users/accountInfo', {
+          ReqToken: ReqToken
+        }).then((res) => {
+          const data = res.data
+          if (data.status == '0') {
+            const res = data.result
+            this.ExpensesRecord = res.ExpensesRecord
+            this.loading = false
+          }
+          CookieTools.DelCookie('sbux_token_gai')
+        })
+      }
+    },
+    showRecordDetail (item) {
+      this.detailOfItem = item
+      this.show = true
+      this.trackingVisitor()
+    },
+    closeRecordDetail () {
+      this.show = false
+    },
+    trackingVisitor () {
+      const storage = window.sessionStorage || null
+      if (storage) {
+        const VisitorID = storage.getItem('VisitorID')
+        const page = '消费记录-弹窗'
+        if (!VisitorID) return
+        axios.post('users/tracking', {
+          visitorID: VisitorID,
+          page: page
+        })
+      }
+    }
+  }
+}
 </script>

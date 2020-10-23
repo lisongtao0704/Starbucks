@@ -6,7 +6,9 @@
       <div class="router-div">
         <router-link to="/account/login">登录</router-link>
         <router-link to="/account/register">注册</router-link>
-        <router-link to="/account/starbucks-rewards">关于兴享俱乐部</router-link>
+        <router-link to="/account/starbucks-rewards"
+          >关于兴享俱乐部</router-link
+        >
       </div>
       <router-view></router-view>
     </div>
@@ -15,24 +17,24 @@
 
 <script>
 export default {
-  name: 'account',
-  data(){
+  name: "account",
+  data() {
     return {
-      isok:0
-    }
+      isok: 0,
+    };
   },
-  mounted(){
-      this.isok = this.$store.state.token;
-      console.log(this.isok)
+  mounted() {
+    this.isok = this.$store.state.token;
+    console.log(this.isok);
   },
-  methods:{
-      tuichu(){
-        this.isok = 0 ;
-        this.$store.commit("setToken", this.isok);
-        sessionStorage.clear()
-      }
-  }
-}
+  methods: {
+    tuichu() {
+      this.isok = 0;
+      this.$store.commit("setToken", this.isok);
+      sessionStorage.clear();
+    },
+  },
+};
 </script>
 
 <style lang='less' scoped>

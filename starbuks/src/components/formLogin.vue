@@ -27,161 +27,159 @@
 		<div class="login-action button" @click="login">
 			<a href="javascript:;">登录</a>
 		</div>
-	</div> 
+	</div>
 </template>
 
 <script>
 
-	import axios from 'axios'
-	import CheckTools from '@/utils/checkTools'
-	import TokenTools from '@/utils/tokenTools'
-	import CookieTools from '@/utils/cookieTools'
-	
-	export default {
-		data(){
-			return {
-				username: '',
-				password: '',
-				errorTip: false,
-				autoLogin: true,
-                showPW: false,
-				nickName: false,
-				loading: false
-			}
-		},
-		watch: {
-			'username': function(){
-				$('input[id=username]').focus();
-			},
-			'password': function(){
-				$('input[id=password]').focus();
-			}
-		},
-		mounted(){
-			this.init();
+import axios from 'axios'
+import CheckTools from '@/utils/checkTools'
+import TokenTools from '@/utils/tokenTools'
+import CookieTools from '@/utils/cookieTools'
 
-			setTimeout(()=>{
-				this.username = 'ZhangHe';
-				this.password = 'HelloWorld';
-			}, 1200);
-		},
-		methods: {
-			init(){
-				let _self = this;
+export default {
+  data () {
+    return {
+      username: '',
+      password: '',
+      errorTip: false,
+      autoLogin: true,
+      showPW: false,
+      nickName: false,
+      loading: false
+    }
+  },
+  watch: {
+    username: function () {
+      $('input[id=username]').focus()
+    },
+    password: function () {
+      $('input[id=password]').focus()
+    }
+  },
+  mounted () {
+    this.init()
 
-				$('input[placeholder]').focus(function(){
-					let inputID = $(this).attr('id'),
-						label = $('label[for=' + inputID + ']');
+    setTimeout(() => {
+      this.username = 'ZhangHe'
+      this.password = 'HelloWorld'
+    }, 1200)
+  },
+  methods: {
+    init () {
+      const _self = this
 
-					label.animate({
-						'top': '-24px',
-						'font-size': '13px',
-						'font-weight': '400',
-						'opacity': '0.56',
-					}, 200);
+      $('input[placeholder]').focus(function () {
+        const inputID = $(this).attr('id')
+        const label = $('label[for=' + inputID + ']')
 
-					$(this).css({
-						'border-bottom': '1px solid #00A862'
-					});
+        label.animate({
+          top: '-24px',
+          'font-size': '13px',
+          'font-weight': '400',
+          opacity: '0.56'
+        }, 200)
 
-				}).blur(function(){
-					let inputID = $(this).attr('id'),
-						label = $('label[for=' + inputID + ']');
+        $(this).css({
+          'border-bottom': '1px solid #00A862'
+        })
+      }).blur(function () {
+        const inputID = $(this).attr('id')
+        const label = $('label[for=' + inputID + ']')
 
-					// 有数据时保持focus状态，_self[inputID]表示_self.username或_self.password
-					if(_self[inputID] === ''){
-						label.animate({
-							'top': '0',
-							'font-size': '16px',
-							'font-weight': '400',
-							'opacity': '0.32'
-						}, 200);
+        // 有数据时保持focus状态，_self[inputID]表示_self.username或_self.password
+        if (_self[inputID] === '') {
+          label.animate({
+            top: '0',
+            'font-size': '16px',
+            'font-weight': '400',
+            opacity: '0.32'
+          }, 200)
 
-						$(this).css({
-							'border-bottom': '1px solid rgba(0, 0, 0, 0.24)'
-						});
+          $(this).css({
+            'border-bottom': '1px solid rgba(0, 0, 0, 0.24)'
+          })
+        } else {
+          $(this).css({
+            'border-bottom': '1px solid #00A862'
+          })
+        }
+      })
 
-					}else{
-						$(this).css({
-							'border-bottom': '1px solid #00A862'
-						});
-					}
-				});
+      this.toggleAutoLogin(true)
+    },
+    togglePWDisplay () {
+      // 控制密码明密文展示
+      this.showPW = !this.showPW
+      if (this.showPW) {
+        $('input[name=password]').attr('type', 'text')
+      } else {
+        $('input[name=password]').attr('type', 'password')
+      }
+    },
+    toggleAutoLogin (init) {
+      if (!init) {
+        this.autoLogin = !this.autoLogin
+      }
+      if (this.autoLogin) {
+        $('<style>input[type=checkbox]::before{display: none;}</style>').appendTo('head')
+        $('<style>input[type=checkbox]::after{display: block;}</style>').appendTo('head')
+      } else {
+        $('<style>input[type=checkbox]::before{display: block;}</style>').appendTo('head')
+        $('<style>input[type=checkbox]::after{display: none;}</style>').appendTo('head')
+      }
 
-				this.toggleAutoLogin(true);
-			},
-			togglePWDisplay(){
-				// 控制密码明密文展示
-				this.showPW = !this.showPW;
-				if(this.showPW){
-					$('input[name=password]').attr('type', 'text');
-				}else{
-					$('input[name=password]').attr('type', 'password');
-				}
-			},
-			toggleAutoLogin(init){
-				if(!init){
-					this.autoLogin = !this.autoLogin;
-				}
-				if(this.autoLogin){
-					$('<style>input[type=checkbox]::before{display: none;}</style>').appendTo('head');
-					$('<style>input[type=checkbox]::after{display: block;}</style>').appendTo('head');
-				}else{
-					$('<style>input[type=checkbox]::before{display: block;}</style>').appendTo('head');
-					$('<style>input[type=checkbox]::after{display: none;}</style>').appendTo('head');
-				}
+      setTimeout(() => {
+        const val = $('input[type=checkbox]:checked').val()
+        if (val) {
+          this.autoLogin = true
+        } else {
+                    	this.autoLogin = false
+        }
+      }, 100)
+    },
+    login () {
+      const UserNameCheckRes = CheckTools.UserNameRegExp.test(this.username)
+      const PasswordCheckRes = CheckTools.PasswordRegExp.test(this.password)
+      if (!UserNameCheckRes || !PasswordCheckRes) {
+        this.errorTip = true
+        setTimeout(() => {
+          this.errorTip = false
+        }, 2000)
+        return
+      }
 
-				setTimeout(()=>{
-					let val = $('input[type=checkbox]:checked').val();
-					if(val){
-                        this.autoLogin = true;
-                    }else{
-                    	this.autoLogin = false;
-                    }
-				},100);
-			},
-			login(){
-				let UserNameCheckRes = CheckTools.UserNameRegExp.test(this.username),
-					PasswordCheckRes = CheckTools.PasswordRegExp.test(this.password);
-				if(!UserNameCheckRes || !PasswordCheckRes){
-					this.errorTip = true;
-					setTimeout(()=>{
-						this.errorTip = false;
-					}, 2000);
-					return ;
-				}
+      this.loading = true
 
-				this.loading = true;
-				
-				axios.post("/users/login", {
-					UserName: this.username,
-					Password: this.password,
-					AutoLogin: this.autoLogin,
-				}).then((res)=>{
-					let data = res.data;
-					if(data.status == '0'){
-						let res = data.result;
-						this.$store.commit('updateUserInfo', res.NickName);
-						this.$store.commit('pageRedir', 2);
-						this.errorTip = false;
-						this.loading = false;
-					}else{
-						this.loading = false;
-						this.errorTip = true;
-						setTimeout(()=>{
-							this.errorTip = false;
-						}, 1200);
-					}
+      axios.post('/users/login', {
+        UserName: this.username,
+        Password: this.password,
+        AutoLogin: this.autoLogin
+      }).then((res) => {
+        const data = res.data
+        if (data.status == '0') {
+          const res = data.result
+          this.$store.commit('updateUserInfo', res.NickName)
+          this.$store.commit('pageRedir', 2)
+          this.errorTip = false
+          this.loading = false
+        } else {
+          this.loading = false
+          this.errorTip = true
+          setTimeout(() => {
+            this.errorTip = false
+          }, 1200)
+        }
 
-					let storage = window.sessionStorage || null;
-					if(storage) {
-						axios.post('/users/trackLogin', {
-							visitorID: storage.getItem('VisitorID')
-						})
-					}
-				})
-			}
-		}
-	}
+        const storage = window.sessionStorage || null
+        if (storage) {
+          axios.post('/users/trackLogin', {
+            visitorID: storage.getItem('VisitorID')
+          })
+        }
+      })
+    }
+  }
+}
 
 </script>

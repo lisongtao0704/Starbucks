@@ -29,19 +29,19 @@
 </template>
 
 <script>
-	export default {
-		computed: {
-			NickName(){
-				return this.$store.state.NickName;
-			}
-		},
-		mounted(){
-			
-		},
-		methods: {
-            pageRedir(item){
-				this.$store.commit('pageRedir', item);
-			}
-		}
-	}
+export default {
+  computed: {
+    NickName () {
+      return this.$store.state.NickName
+    }
+  },
+  mounted () {
+
+  },
+  methods: {
+    pageRedir (item) {
+      this.$store.commit('pageRedir', item)
+    }
+  }
+}
 </script>

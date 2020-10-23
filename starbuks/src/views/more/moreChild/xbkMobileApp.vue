@@ -4,6 +4,7 @@
       <h2>星巴克移动应用</h2>
       <el-menu
         :default-active="activeIndex"
+        @select="handleSelect"
         mode="horizontal"
         text-color="rgba(0, 0, 0, 0.56)"
         active-text-color="rgba(0, 0, 0, 0.87)"
@@ -19,25 +20,54 @@
       </el-menu>
       <div class="advertising-right">广告</div>
     </div>
-    <router-view />
+    <transition>
+      <router-view />
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'xbkMobileApp',
-  data () {
+  name: "xbkMobileApp",
+  data() {
     return {
-      activeIndex: '/more/xbkMobileApp/app'
-    }
+      activeIndex: "/more/xbkMobileApp/app",
+    };
   },
-  methods: {}
-}
+  created() {
+    if (!sessionStorage.getItem("index2")) {
+      return;
+    }
+    this.activeIndex = sessionStorage.getItem("index2");
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      this.activeIndex = key;
+      sessionStorage.setItem("index2", key);
+      console.log(this.activeIndex);
+    },
+  },
+};
 </script>
 
 <style scoped lang="less">
 .xbkMobileApp {
+  max-width: 1035px;
+  .v-enter,
+  .v-lever-to {
+    opacity: 0;
+    transform: translate(100%);
+  }
+  .v-enter-active,
+  .v-lever-active {
+    transition: all 0.3s ease;
+  }
   .headed {
+    background-color: #fff;
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+    }
     padding: 16px 16px 0 16px;
     .advertising-right {
       position: absolute;

@@ -117,7 +117,7 @@
 		line-height: 160%;
 		letter-spacing: 0.4px;
 	}
-	
+
 	@media (max-width: 1024px)
 	{
 		.masker-layer-rewd {
@@ -150,14 +150,14 @@
 	}
 </style>
 <script>
-	import axios from 'axios'
+import axios from 'axios'
 
-	export default {
-		props: ["detailOfItem"],
-		methods: {
-			close(){
-				this.$emit("close");
-			}
-		}
-	}
+export default {
+  props: ['detailOfItem'],
+  methods: {
+    close () {
+      this.$emit('close')
+    }
+  }
+}
 </script>

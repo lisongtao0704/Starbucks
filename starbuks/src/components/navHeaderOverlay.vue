@@ -10,20 +10,20 @@
 </template>
 <script>
 
-	export default {
-		data(){
-			return {
+export default {
+  data () {
+    return {
 
-			}
-		},
-		methods: {
-			closeMenu(){
-				this.$emit("clickedCloseMenu");
-			},
-			pageRedir(item){
-				this.$store.commit('pageRedir', item);
-			}
-		}
-	}
+    }
+  },
+  methods: {
+    closeMenu () {
+      this.$emit('clickedCloseMenu')
+    },
+    pageRedir (item) {
+      this.$store.commit('pageRedir', item)
+    }
+  }
+}
 
 </script>

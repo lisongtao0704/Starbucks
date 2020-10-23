@@ -133,23 +133,23 @@
 </template>
 
 <script>
-  export default {
-    name: 'menus',
-    data() {
-      return {
-        ishidden: true,
-        isok: true,
-        classA: 'el-icon-arrow-down',
-        classB: 'el-icon-arrow-up'
-      }
-    },
-    methods: {
-      change() {
-        this.isok = !this.isok;
-        this.ishidden = !this.ishidden
-      }
+export default {
+  name: 'menus',
+  data () {
+    return {
+      ishidden: true,
+      isok: true,
+      classA: 'el-icon-arrow-down',
+      classB: 'el-icon-arrow-up'
+    }
+  },
+  methods: {
+    change () {
+      this.isok = !this.isok
+      this.ishidden = !this.ishidden
     }
   }
+}
 </script>
 
 <style lang='less' scoped>

@@ -61,80 +61,80 @@
 </template>
 
 <script>
-	import TokenTools from '@/utils/tokenTools'
-	import CookieTools from '@/utils/cookieTools'
-	import axios from 'axios'
+import TokenTools from '@/utils/tokenTools'
+import CookieTools from '@/utils/cookieTools'
+import axios from 'axios'
 
-	export default {
-		data(){
-			return {
-				mbMedia: window.matchMedia('(max-width: 640px)').matches,
-				StarLev: '',
-				RewardStarRecord: '',
-				loading: false,
-				showStarRec: {
-					0: true,
-					1: true
-				},
-			}
-		},
-		mounted(){
-			window.matchMedia('(max-width: 640px)').addListener(()=>{
-				this.mbMedia = window.matchMedia('(max-width: 640px)').matches;
-			});
-			this.toggleArticle_JQListener();
-			this.checkLogin();
-		},
-		methods: {
-			toggleArticle_JQListener(){
-				$('td.toggle-btn').click(function(){
-					$(this).parent().parent().next().slideToggle(200);
-				});
-			},
-			toggleIcon(index){
-				this.showStarRec[index] = !this.showStarRec[index];
-			},
-			checkLogin(){
-				let ReqToken = TokenTools.TokenSetting('sbux_token_cl');
-				
-				if(ReqToken){
-					axios.post("users/checkLogin", {
-						ReqToken: ReqToken
-					}).then((res)=>{
-						let data = res.data;
-						if(data.status == '0'){
-							let res = data.result;
-							this.$store.commit('updateUserInfo', res.NickName);
-							//如果当前为登录状态，则进一步获取用户信息
-							this.getAccountInfo();
-						}else{
-							this.$store.commit('updateUserInfo', '');
-						}
-						CookieTools.DelCookie('sbux_token_cl');
-					})
-				}
-			},
-			getAccountInfo(){
-				this.loading = true;
+export default {
+  data () {
+    return {
+      mbMedia: window.matchMedia('(max-width: 640px)').matches,
+      StarLev: '',
+      RewardStarRecord: '',
+      loading: false,
+      showStarRec: {
+        0: true,
+        1: true
+      }
+    }
+  },
+  mounted () {
+    window.matchMedia('(max-width: 640px)').addListener(() => {
+      this.mbMedia = window.matchMedia('(max-width: 640px)').matches
+    })
+    this.toggleArticle_JQListener()
+    this.checkLogin()
+  },
+  methods: {
+    toggleArticle_JQListener () {
+      $('td.toggle-btn').click(function () {
+        $(this).parent().parent().next().slideToggle(200)
+      })
+    },
+    toggleIcon (index) {
+      this.showStarRec[index] = !this.showStarRec[index]
+    },
+    checkLogin () {
+      const ReqToken = TokenTools.TokenSetting('sbux_token_cl')
 
-				let ReqToken = TokenTools.TokenSetting('sbux_token_gai');
-				
-				if(ReqToken){
-					axios.post("users/accountInfo",{
-						ReqToken: ReqToken
-					}).then((res)=>{
-						let data = res.data;
-						if(data.status == '0'){
-							let res = data.result;
-							this.StarLev = res.MemberShip.StarLevel;
-							// this.RewardStarRecord = res.RewardStarRecord;
-							// 好礼星星，数据库暂时没有相关数据
-							this.loading = false;
-						}
-						CookieTools.DelCookie('sbux_token_gai');
-					})
-				}
-			}
-		}
-	}
+      if (ReqToken) {
+        axios.post('users/checkLogin', {
+          ReqToken: ReqToken
+        }).then((res) => {
+          const data = res.data
+          if (data.status == '0') {
+            const res = data.result
+            this.$store.commit('updateUserInfo', res.NickName)
+            // 如果当前为登录状态，则进一步获取用户信息
+            this.getAccountInfo()
+          } else {
+            this.$store.commit('updateUserInfo', '')
+          }
+          CookieTools.DelCookie('sbux_token_cl')
+        })
+      }
+    },
+    getAccountInfo () {
+      this.loading = true
+
+      const ReqToken = TokenTools.TokenSetting('sbux_token_gai')
+
+      if (ReqToken) {
+        axios.post('users/accountInfo', {
+          ReqToken: ReqToken
+        }).then((res) => {
+          const data = res.data
+          if (data.status == '0') {
+            const res = data.result
+            this.StarLev = res.MemberShip.StarLevel
+            // this.RewardStarRecord = res.RewardStarRecord;
+            // 好礼星星，数据库暂时没有相关数据
+            this.loading = false
+          }
+          CookieTools.DelCookie('sbux_token_gai')
+        })
+      }
+    }
+  }
+}
 </script>

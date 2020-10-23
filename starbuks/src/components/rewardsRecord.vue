@@ -126,106 +126,105 @@
 </template>
 
 <script>
-	import MaskerLayer from '@/components/MaskerLayerReward'
-	import TokenTools from '@/utils/tokenTools'
-	import CookieTools from '@/utils/cookieTools'
-	import axios from 'axios'
+import MaskerLayer from '@/components/MaskerLayerReward'
+import TokenTools from '@/utils/tokenTools'
+import CookieTools from '@/utils/cookieTools'
+import axios from 'axios'
 
-	export default {
-		data(){
-			return {
-				showStarRec: {
-					0: true,
-					1: false,
-					2: false,
-					3: false
-				},
-				AvlRewd: '',
-				UsedRewd: '',
-				ExpRewd: '',
-				UnAvlRewd: '',
-				loading: false,
-				show: false,
-				detailOfItem: ''
-			}
-		},
-		mounted(){
-			this.toggleArticle_JQListener();
-			this.getAccountInfo();
-		},
-		components: {
-			MaskerLayer: MaskerLayer
-		},
-		methods: {
-			toggleArticle_JQListener(){
-				$('tbody.hide-init').css('display','none');
-				$('td.toggle-btn').click(function(){
-					$(this).parent().parent().next().slideToggle(200);
-				});
-			},
-			toggleIcon(index){
-					this.showStarRec[index] = !this.showStarRec[index];
-			},
-			getAccountInfo(){
-				this.loading = true;
+export default {
+  data () {
+    return {
+      showStarRec: {
+        0: true,
+        1: false,
+        2: false,
+        3: false
+      },
+      AvlRewd: '',
+      UsedRewd: '',
+      ExpRewd: '',
+      UnAvlRewd: '',
+      loading: false,
+      show: false,
+      detailOfItem: ''
+    }
+  },
+  mounted () {
+    this.toggleArticle_JQListener()
+    this.getAccountInfo()
+  },
+  components: {
+    MaskerLayer: MaskerLayer
+  },
+  methods: {
+    toggleArticle_JQListener () {
+      $('tbody.hide-init').css('display', 'none')
+      $('td.toggle-btn').click(function () {
+        $(this).parent().parent().next().slideToggle(200)
+      })
+    },
+    toggleIcon (index) {
+      this.showStarRec[index] = !this.showStarRec[index]
+    },
+    getAccountInfo () {
+      this.loading = true
 
-				let ReqToken = TokenTools.TokenSetting('sbux_token_gai');
-				
-				if(ReqToken){
-					axios.post("users/accountInfo", {
-						ReqToken: ReqToken
-					}).then((res)=>{
-						let data = res.data;
-						if(data.status == '0'){
-							let res = data.result;
-							
-							let MyRewards = res.MyRewards,
-								AvlRewd = [],
-								UsedRewd = [],
-								ExpRewd = [];
+      const ReqToken = TokenTools.TokenSetting('sbux_token_gai')
 
-							for(let i = 0; i < MyRewards.length; i++){
-								if(MyRewards[i].State === 'AVL'){
-									AvlRewd.push(MyRewards[i]);
-								}else if(MyRewards[i].State === 'USED'){
-									UsedRewd.push(MyRewards[i]);
-								}else if(MyRewards[i].State === 'EXP'){
-									ExpRewd.push(MyRewards[i]);
-								}
-							}
-							this.AvlRewd = AvlRewd;
-							this.UsedRewd = UsedRewd;
-							this.ExpRewd = ExpRewd;
-							this.UnAvlRewd = [];
+      if (ReqToken) {
+        axios.post('users/accountInfo', {
+          ReqToken: ReqToken
+        }).then((res) => {
+          const data = res.data
+          if (data.status == '0') {
+            const res = data.result
 
-							this.loading = false;
-						}
-						CookieTools.DelCookie('sbux_token_gai');
-					})
-				}
-			},
-			showRecordDetail(item){
-				this.detailOfItem = item;
-				this.show = true;
-				this.trackingVisitor();
-			},
-			closeRecordDetail(){
-				this.show = false;
-			},
-			trackingVisitor() {
-				let storage = window.sessionStorage || null;
-				if(storage) {
-					let VisitorID = storage.getItem('VisitorID'),
-						page = '星享好礼-弹窗';
-					if(!VisitorID) return;
-					axios.post('users/tracking',{
-						visitorID: VisitorID,
-						page: page
-					})
-				}
-				
-			}
-		}
-	}
+            const MyRewards = res.MyRewards
+            const AvlRewd = []
+            const UsedRewd = []
+            const ExpRewd = []
+
+            for (let i = 0; i < MyRewards.length; i++) {
+              if (MyRewards[i].State === 'AVL') {
+                AvlRewd.push(MyRewards[i])
+              } else if (MyRewards[i].State === 'USED') {
+                UsedRewd.push(MyRewards[i])
+              } else if (MyRewards[i].State === 'EXP') {
+                ExpRewd.push(MyRewards[i])
+              }
+            }
+            this.AvlRewd = AvlRewd
+            this.UsedRewd = UsedRewd
+            this.ExpRewd = ExpRewd
+            this.UnAvlRewd = []
+
+            this.loading = false
+          }
+          CookieTools.DelCookie('sbux_token_gai')
+        })
+      }
+    },
+    showRecordDetail (item) {
+      this.detailOfItem = item
+      this.show = true
+      this.trackingVisitor()
+    },
+    closeRecordDetail () {
+      this.show = false
+    },
+    trackingVisitor () {
+      const storage = window.sessionStorage || null
+      if (storage) {
+        const VisitorID = storage.getItem('VisitorID')
+        const page = '星享好礼-弹窗'
+        if (!VisitorID) return
+        axios.post('users/tracking', {
+          visitorID: VisitorID,
+          page: page
+        })
+      }
+    }
+  }
+}
 
 </script>
