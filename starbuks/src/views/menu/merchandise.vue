@@ -76,11 +76,8 @@ header {
     display: inline-block;
     height: 100%;
   }
-<<<<<<< HEAD
-=======
 }
 * {
   touch-action: pan-y;
 }
->>>>>>> 957366dbd68c8b08925a30337817614d6965afa6
 </style>
