@@ -66,7 +66,37 @@ const routes = [{
   {
     path: '/more/asXbk',
     name: 'asXbk',
-    component: () => import('../views/more/moreChild/asXbk.vue')
+    redirect: '/more/asXbk/inchina',
+    component: () => import('../views/more/moreChild/asXbk.vue'),
+    children:[{
+      path:'duty',
+      name:'Duty',
+      component:() => import('../views/more/moreChild/asXbk/duty.vue')
+    },{
+      path:'history',
+      name:'History',
+      component:() => import('../views/more/moreChild/asXbk/history.vue')
+    },
+    {
+      path:'inchina',
+      name:'Inchina',
+      component:() => import('../views/more/moreChild/asXbk/inchina.vue')
+    },
+    {
+      path:'news',
+      name:'News',
+      component:() => import('../views/more/moreChild/asXbk/news.vue')
+    },
+    {
+      path:'we',
+      name:'We',
+      component:() => import('../views/more/moreChild/asXbk/we.vue')
+    },
+    {
+      path:'work',
+      name:'Work',
+      component:() => import('../views/more/moreChild/asXbk/work.vue')
+    },]
   },
   {
     path: '/more/baking',
