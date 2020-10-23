@@ -7,35 +7,23 @@
       </header>
       	<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
       		<div class="mui-scroll">
-            <a class="mui-control-item mui-active">全部</a>
-            <a class="mui-control-item">烘培</a>
-            <a class="mui-control-item">蛋糕&甜点</a>
-            <a class="mui-control-item">三明治,帕尼尼卷</a>
-            <a class="mui-control-item">酸奶</a>
-            <a class="mui-control-item">其他美食</a>
-            <a class="mui-control-item">早安新一天</a>
+            <a class="mui-control-item mui-active"  @click="getByCateId('all')">全部</a>
+            <a class="mui-control-item"  @click="getByCateId('baking')">烘培</a>
+            <a class="mui-control-item"  @click="getByCateId('dessert')">蛋糕&甜点</a>
+            <a class="mui-control-item"  @click="getByCateId('other')">三明治,帕尼尼卷</a>
+            <a class="mui-control-item"  @click="getByCateId('sandwich')">酸奶</a>
+            <a class="mui-control-item"  @click="getByCateId('yogurt')">其他美食</a>
+            <a class="mui-control-item"  @click="getByCateId('dessert')">早安新一天</a>
       		</div>
       	</div>
     </div>
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-    	<li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
+    	<router-link v-for="item in list" :to="'/home/photoinfo/' + item.id" tag="li">
+    	  <img :src="item.ProductImage"/>
+    	  <p>{{item.ProductName}}</p>
+    	</router-link>
     </ul>
 
     <router-link to="/menu/search" class="menu-bun">搜索菜单</router-link>
@@ -45,10 +33,25 @@
   // 1. 导入 mui 的js文件
   import mui from "../../lib/mui/js/mui.min.js";
   export default{
+    data(){
+      return{
+        list:[],
+        cates:[],
+      }
+    },
+    created(){
+      this. getByCateId('all');
+    },
     methods:{
       back(){
         this.$router.push('/menu')
-      }
+      },
+      getByCateId(val){
+        this.$http.get('http://123.56.129.223/starbucks/menu.php?category=food&type='+val).then(res=>{
+          this.list = res.data
+          console.log( res.data)
+        })
+      },
     },
     mounted() {
     	mui(".mui-scroll-wrapper").scroll({
@@ -66,7 +69,6 @@
     justify-content: space-between;
     background-color: #fff;
     box-shadow: 1px -2px 2px #ccc;
-    height: 85vh;
     li{
       width: 49%;
       margin: 4px 0;

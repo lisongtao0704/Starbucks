@@ -53,20 +53,6 @@ const routes = [{
   {
     path: '/menu/merchandise',
     component: () => import('../views/menu/merchandise.vue'),
-    redirect: '/menu/merchandise/merchandise-all',
-    children: [{
-        path: 'merchandise-all',
-        component: () => import('../views/menu/merchandise-all.vue')
-      },
-      {
-        path: 'merchandise-core',
-        component: () => import('../views/menu/merchandise-core.vue')
-      },
-      {
-        path: 'merchandise-store',
-        component: () => import('../views/menu/merchandise-store.vue')
-      }
-    ]
   },
   {
     path: '/more',

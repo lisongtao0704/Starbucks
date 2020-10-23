@@ -7,33 +7,24 @@
       </header>
       	<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
       		<div class="mui-scroll">
-            <a class="mui-control-item mui-active">全部</a>
-            <a class="mui-control-item">咖啡豆</a>
-            <a class="mui-control-item">星巴克VIA® 免煮咖啡</a>
-            <a class="mui-control-item">星巴克臻选™咖啡</a>
-            <a class="mui-control-item">Origami™</a>
+            <a class="mui-control-item mui-active"  @click="getByCateId('all')">全部</a>
+            <a class="mui-control-item"  @click="getByCateId('selection')">咖啡豆</a>
+            <a class="mui-control-item"  @click="getByCateId('baking-D')">星巴克VIA® 免煮咖啡</a>
+            <a class="mui-control-item"  @click="getByCateId('via-dairy')">星巴克甄选咖啡</a>
+            <a class="mui-control-item"  @click="getByCateId('baking-M')">baking-M</a>
+            <a class="mui-control-item"  @click="getByCateId('origami-D')">Origami™</a>
+            <a class="mui-control-item"  @click="getByCateId('via-black')">via-black</a>
+            <a class="mui-control-item"  @click="getByCateId('origami-M')">origami-M</a>
       		</div>
       	</div>
     </div>
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-    	<li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
-      <li>
-        <img src="../../assets/images/menu-img2.jpg" />
-        <p>爱尔兰奶油冷萃</p>
-      </li>
+    	<router-link v-for="item in list" :to="'/home/photoinfo/' + item.id" tag="li">
+    	  <img :src="item.ProductImage"/>
+    	  <p>{{item.ProductName}}</p>
+    	</router-link>
     </ul>
 
     <router-link to="/menu/search" class="menu-bun">搜索菜单</router-link>
@@ -43,17 +34,32 @@
   // 1. 导入 mui 的js文件
   import mui from "../../lib/mui/js/mui.min.js";
   export default{
-    methods:{
-      back(){
-        this.$router.push('/menu')
-      }
-    },
-    mounted() {
-    	mui(".mui-scroll-wrapper").scroll({
-    		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-    	});
-    },
-  }
+   data(){
+       return{
+         list:[],
+         cates:[],
+       }
+     },
+     created(){
+       this. getByCateId('all');
+     },
+     methods:{
+       back(){
+         this.$router.push('/menu')
+       },
+       getByCateId(val){
+         this.$http.get('http://123.56.129.223/starbucks/menu.php?category=coffee&type='+val).then(res=>{
+           this.list = res.data
+           console.log( res.data)
+         })
+       },
+     },
+     mounted() {
+     	mui(".mui-scroll-wrapper").scroll({
+     		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+     	});
+     },
+   }
 </script>
 
 <style lang="less" scoped>
@@ -64,7 +70,6 @@
     justify-content: space-between;
     background-color: #fff;
     box-shadow: 1px -2px 2px #ccc;
-    height: 85vh;
     li{
       width: 49%;
       margin: 4px 0;
