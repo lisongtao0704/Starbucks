@@ -7,22 +7,22 @@
 		<div class="scroll-wrapper">
 			<div class="swiper-container">
 			    <div class="swiper-wrapper">
-			        <a class="swiper-slide transition">
+			        <a class="swiper-slide transition" href="https://www.starbucks.com.cn/coffee-blog/the-origin-of-coffee-and-its-cultivation/">
 			        	<div class="bg-image coffee-cultivation"></div>
 			        	<span>咖啡知识</span>
 			        	<p>咖啡的起源于培植</p>
 			        </a>
-			        <a class="swiper-slide transition">
+			        <a class="swiper-slide transition" href="https://www.starbucks.com.cn/coffee-blog/the-4-fundamentals/">
 			        	<div class="bg-image fundamentals"></div>
 			        	<span>咖啡品鉴</span>
 			        	<p>咖啡调剂</p>
 			        </a>
-			        <a class="swiper-slide transition">
+			        <a class="swiper-slide transition" href="https://www.starbucks.com.cn/coffee-blog/roast-story/">
 			        	<div class="bg-image roast-story"></div>
 			        	<span>咖啡知识</span>
 			        	<p>咖啡烘焙</p>
 			        </a>
-			        <a class="swiper-slide transition">
+			        <a class="swiper-slide transition" href="https://www.starbucks.com.cn/coffee-blog/pour-over/">
 			        	<div class="bg-image pour-over"></div>
 			        	<span>咖啡品鉴</span>
 			        	<p>手冲咖啡</p>

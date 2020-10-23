@@ -2,7 +2,7 @@
 	<section class="slider-ad">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" v-for="(item,index) in sliderList" :key="index">
+				<div class="swiper-slide" v-for="(item,index) in sliderList" :key="index" @click="itemClick"> 
 					<a href="javascript:;">
 						<img :src=" item.sliderImage"
 						class="tablet-show mobile-hidden">
@@ -53,6 +53,10 @@
 			 this.swiperSlideConfig();
 		},
 		methods: {
+			itemClick(){
+      
+      this.$router.push('/menu')
+    },
 			swiperSlideConfig(){
 				let swiper_slider_ad = new Swiper ('.slider-ad .swiper-container', {
 
