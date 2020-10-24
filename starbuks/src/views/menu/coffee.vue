@@ -21,7 +21,7 @@
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-    	<router-link v-for="item in list" :to="'/home/photoinfo/' + item.id" tag="li">
+    	<router-link v-for="item in list" :to="'goodinfo/' + item.ProductID" tag="li">
     	  <img :src="item.ProductImage"/>
     	  <p>{{item.ProductName}}</p>
     	</router-link>
@@ -50,7 +50,7 @@
        getByCateId(val){
          this.$http.get('http://123.56.129.223/starbucks/menu.php?category=coffee&type='+val).then(res=>{
            this.list = res.data
-           console.log( res.data)
+           //console.log( res.data)
          })
        },
      },

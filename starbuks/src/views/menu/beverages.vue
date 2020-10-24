@@ -22,7 +22,7 @@
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-    	<router-link v-for="item in list" :to="'/home/photoinfo/' + item.id" tag="li">
+    	<router-link v-for="item in list" :to="'goodinfo/' + item.ProductID" tag="li">
         <img :src="item.ProductImage"/>
         <p>{{item.ProductName}}</p>
       </router-link>
@@ -71,7 +71,7 @@
     justify-content: space-between;
     background-color: #fff;
     box-shadow: 1px -2px 2px #ccc;
-    
+
     li{
       width: 49%;
       margin: 4px 0;

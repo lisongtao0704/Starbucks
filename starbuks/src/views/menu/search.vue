@@ -19,22 +19,10 @@
       </div>
       <!-- 搜索前的 -->
       <div class="grid" v-else>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
+        <router-link :to="'/menu/goodinfo/' + item.ProductID" class="item" v-for="item in cades" tag='div'>
+          <img :src="item.ProductImage" />
+          <p>{{item.ProductName}}</p>
+        </router-link>
       </div>
     </div>
   </div>
@@ -51,10 +39,12 @@
         // 搜索后的展示数据
         searchData:[],
         products: {},
+        cades:[]
       }
     },
     created(){
-       this.getAllShop()
+       this.getAllShop();
+       this.getByCateId()
     },
     methods:{
       getAllShop(){
@@ -63,7 +53,13 @@
           for(let key in this.products){
             this.list.push(this.products[key])
           }
-          //console.log(this.list)
+          console.log(this.list)
+        })
+      },
+      getByCateId(){
+        this.$http.get('http://123.56.129.223/starbucks/menu.php?category=beverages&type=chawana').then(res=>{
+          this.cades = res.data
+          //console.log( res.data)
         })
       },
       back(){

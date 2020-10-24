@@ -11,16 +11,15 @@
             <a class="mui-control-item"  @click="getByCateId('baking')">烘培</a>
             <a class="mui-control-item"  @click="getByCateId('dessert')">蛋糕&甜点</a>
             <a class="mui-control-item"  @click="getByCateId('other')">三明治,帕尼尼卷</a>
-            <a class="mui-control-item"  @click="getByCateId('sandwich')">酸奶</a>
-            <a class="mui-control-item"  @click="getByCateId('yogurt')">其他美食</a>
-            <a class="mui-control-item"  @click="getByCateId('dessert')">早安新一天</a>
+            <a class="mui-control-item"  @click="getByCateId('sandwich')">早安新一天</a>
+            <a class="mui-control-item"  @click="getByCateId('yogurt')">酸奶</a>
       		</div>
       	</div>
     </div>
 
     <!-- 图片列表区域 -->
     <ul class="photo-list">
-    	<router-link v-for="item in list" :to="'/home/photoinfo/' + item.id" tag="li">
+    	<router-link v-for="item in list" :to="'goodinfo/' + item.ProductID" tag="li">
     	  <img :src="item.ProductImage"/>
     	  <p>{{item.ProductName}}</p>
     	</router-link>
@@ -49,9 +48,9 @@
       getByCateId(val){
         this.$http.get('http://123.56.129.223/starbucks/menu.php?category=food&type='+val).then(res=>{
           this.list = res.data
-          console.log( res.data)
+          //console.log( res.data)
         })
-      },
+      }
     },
     mounted() {
     	mui(".mui-scroll-wrapper").scroll({
