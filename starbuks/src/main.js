@@ -21,27 +21,30 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+      router,
+      store,
+      render: h => {
+        let root = h(App)
+        console.log(h)
+        return root}
+      }).$mount('#app')
 
-// 配置路由权限
-import mui from './lib/mui/js/mui.min.js'
-router.beforeEach((to, from, next) => {
-  if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
-    if (store.state.token ) { // 判断本地是否存在access_token
-      next()
-    } else {
-		mui.toast('请先登录')
-      // 未登录,跳转到登陆页面，并且带上 将要去的地址，方便登陆后跳转。
-    setTimeout(function(){
-      next({
-        path: '/account/login',
-      })
-    },2000)
-    }
-  } else {
-    next()
-  }
-})
+    // 配置路由权限
+    import mui from './lib/mui/js/mui.min.js'
+    router.beforeEach((to, from, next) => {
+      if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
+        if (store.state.token) { // 判断本地是否存在access_token
+          next()
+        } else {
+          mui.toast('请先登录')
+          // 未登录,跳转到登陆页面，并且带上 将要去的地址，方便登陆后跳转。
+          setTimeout(function () {
+            next({
+              path: '/account/login',
+            })
+          }, 2000)
+        }
+      } else {
+        next()
+      }
+    })
