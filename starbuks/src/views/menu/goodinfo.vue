@@ -12,6 +12,7 @@
         <p class="caption-1">{{goodInfo.body}}</p>
       </div>
     </div>
+<ad-slider/>
   </div>
 </template>
 

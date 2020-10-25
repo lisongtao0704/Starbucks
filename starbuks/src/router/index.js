@@ -54,10 +54,6 @@ const routes = [{
     }
   },
   {
-    path:'/menu/shoplist',
-    component:()=> import('../views/menu/shoplist.vue')
-  },
-  {
     path: '/menu/merchandise',
     component: () => import('../views/menu/merchandise.vue'),
   },

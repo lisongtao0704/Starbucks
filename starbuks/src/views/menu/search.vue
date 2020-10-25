@@ -12,15 +12,15 @@
 
       <!-- 搜索后的 -->
       <div class="grid" v-if="search.length>0">
-          <router-link to="shoplist"  class="item" v-for="item in searchData" tag='div'>
-               <img :src="'https://www.starbucks.com.cn/'+item.preview"/>
+          <router-link :to="'goodinfo/' + item.id"  class="item" v-for="item in searchData" tag='div'>
+               <img :src="item.preview"/>
               <p>{{item.title}}</p>
           </router-link>
       </div>
       <!-- 搜索前的 -->
       <div class="grid" v-else>
         <router-link :to="'/menu/goodinfo/' + item.ProductID" class="item" v-for="item in cades" tag='div'>
-          <img :src="item.ProductImage" />
+          <img :src="item.ProductImage" alt="暂无图片"/>
           <p>{{item.ProductName}}</p>
         </router-link>
       </div>
@@ -35,7 +35,6 @@
       return{
         search:'',
         // 原本展示数据
-        list: [],
         // 搜索后的展示数据
         searchData:[],
         products: {},
@@ -48,12 +47,9 @@
     },
     methods:{
       getAllShop(){
-        this.$http.get('http://localhost:8080/allShop.json').then(res=>{
+        this.$http.get('http://123.56.129.223/starbucks/product.php?all=all').then(res=>{
           this.products=res.data;
-          for(let key in this.products){
-            this.list.push(this.products[key])
-          }
-          console.log(this.list)
+          console.log(this.products)
         })
       },
       getByCateId(){
@@ -63,12 +59,12 @@
         })
       },
       back(){
-        this.$router.push('/menu')
+        this.$router.back()
       },
       Search(){
           var search = this.search;
           if (search) {
-            this.searchData = this.list.filter(product=>{
+            this.searchData = this.products.filter(product=>{
                 //console.log(product)
               return Object.keys(product).some(key=>{
                  //console.log(key)
@@ -108,6 +104,7 @@
         box-sizing: border-box;
         padding: 12px;
         border-radius: 50%;
+        min-height: 162px;
       }
       p{
         font-size: 16px;
