@@ -62,7 +62,9 @@
     
   </ul>
   <div class="qr-code">
-   <div style=" margin: 0px 50px 0px;"><img src="../../../../assets/images/app_qr_20181112.jpg"></div> 
+   <div style="width: 100%;
+    display: flex;
+    justify-content: center;"><img src="../../../../assets/images/app_qr_20181112.jpg"></div> 
     <div class="xiazai"><img src="../../../../assets/images/苹果.png"><img src="../../../../assets/images/安卓 B.png"></div>
   </div>
   <p class="issue">如果您有任何问题，请查看常见问题，也可以直接与我们联系</p>

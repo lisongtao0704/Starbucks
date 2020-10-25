@@ -10,7 +10,8 @@
       </section>
     </div>
     <div class="plate">
-      <router-link to="/more/asXbk/history">
+      <div></div>
+      <router-link to="/more/asXbk/history" @click.native=" handleSelect('/more/asXbk/history')">
         <h5>历史</h5>
       </router-link>
       <section>
@@ -83,6 +84,12 @@
 <script>
 export default {
   name: "Inchina",
+  methods: {
+    // handleSelect(key) {
+    //   alert(3);
+    //   sessionStorage.setItem("asxbk",key);
+    // },
+  },
 };
 </script>
 
