@@ -90,42 +90,10 @@
     <div class="lto-items" id="lto-items">
       <h2>所有新品</h2>
       <div class="grid">
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
-        <div class="item">
-          <img src="../../assets/images/menu-img2.jpg" />
-          <p>爱尔兰奶油冷萃</p>
-        </div>
+        <router-link :to="'/menu/goodinfo/' + item.ProductID" class="item" v-for="item in list" tag='div'>
+          <img :src="item.ProductImage" />
+          <p>{{item.ProductName}}</p>
+        </router-link>
       </div>
     </div>
     <router-link to="/menu/search" class="menu-bun">搜索菜单</router-link>
@@ -140,14 +108,24 @@ export default {
       ishidden: true,
       isok: true,
       classA: 'el-icon-arrow-down',
-      classB: 'el-icon-arrow-up'
+      classB: 'el-icon-arrow-up',
+      list:[]
     }
+  },
+  created(){
+    this.getByCateId()
   },
   methods: {
     change () {
       this.isok = !this.isok
       this.ishidden = !this.ishidden
-    }
+    },
+    getByCateId(){
+      this.$http.get('http://123.56.129.223/starbucks/menu.php?category=coffee&type=baking-M').then(res=>{
+        this.list = res.data
+        //console.log( res.data)
+      })
+    },
   }
 }
 </script>

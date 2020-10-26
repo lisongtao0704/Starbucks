@@ -31,9 +31,16 @@ export default {
       activeIndex: "/more/asXbk/inchina",
     };
   },
+  created () {
+    if (!sessionStorage.getItem("asxbk")) {
+      return;
+    }
+    this.activeIndex=sessionStorage.getItem("asxbk");
+  },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+      this.activeIndex=key;
+      sessionStorage.setItem("asxbk",key);
     },
   },
 };
@@ -41,6 +48,7 @@ export default {
 
 <style lang="less" scoped>
 .asXbk {
+  padding-bottom: 60px;
   *{
     touch-action: unset;
   }

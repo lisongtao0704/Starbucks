@@ -52,7 +52,7 @@ export default {
 
 <style scoped lang="less">
 .xbkMobileApp {
-  max-width: 1035px;
+  // max-width: 1035px;
   .v-enter,
   .v-lever-to {
     opacity: 0;
