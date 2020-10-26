@@ -72,34 +72,32 @@
       </nav>
       <section class="content" v-if="lgMedia || !isshow">
         <div class="tag-ad">广告</div>
-        <ad-slider/>
+        <ad-slider />
         <promotion></promotion>
         <program></program>
         <tmall></tmall>
         <coffeehouse></coffeehouse>
-     
       </section>
     </article>
-    
+    <div class="cover" ></div>
   </div>
 </template>
 
 <script>
-import './../assets/css/bootstrap.min.css'
-import './../assets/css/swiper.min.css'
-import './../assets/css/init.css'
-import './../assets/css/styles.css'
-import NavContainer from '@/components/navContainer'
-import NavOverlay from '@/components/NavOverlay'
+import "./../assets/css/bootstrap.min.css";
+import "./../assets/css/swiper.min.css";
+import "./../assets/css/init.css";
+import "./../assets/css/styles.css";
+import NavContainer from "@/components/navContainer";
+import NavOverlay from "@/components/NavOverlay";
 import AdSlider from "@/components/adSlider";
-import Promotion from "@/components/promotion"
-import Program from "@/components/program"
-import Tmall from "@/components/tmall"
-import Coffeehouse from '@/components/coffeehouse'
-
+import Promotion from "@/components/promotion";
+import Program from "@/components/program";
+import Tmall from "@/components/tmall";
+import Coffeehouse from "@/components/coffeehouse";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     NavContainer,
     NavOverlay,
@@ -108,35 +106,52 @@ export default {
     Program,
     Tmall,
     Coffeehouse,
-
   },
-  data () {
+  data() {
     return {
       isshow: false,
+      coverShows:true,
       loading: false,
-      lgMedia: window.matchMedia('(min-width: 1025px)').matches,
-      mbMedia: window.matchMedia('(max-width: 640px)').matches
-    }
+      lgMedia: window.matchMedia("(min-width: 1025px)").matches,
+      mbMedia: window.matchMedia("(max-width: 640px)").matches,
+      
+    };
   },
   methods: {
-    showMenuExec () {
-      this.isshow = true
+    showMenuExec() {
+      this.isshow = true;
     },
-    closeMenuExec () {
-      this.isshow = false
+    closeMenuExec() {
+      this.isshow = false;
+    },
+   
+  },
+  computed: {
+    NickName() {
+      return this.$store.state.NickName;
     },
     
   },
-  computed: {
-    NickName () {
-      return this.$store.state.NickName
-    }
-  }
-}
+};
 </script>
 <style  scoped>
 .wrapper .content {
-   padding-top: 0;
-   z-index: 998;
- }
+  padding-top: 0;
+  z-index: 998;
+}
+.cover {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  height: 49px;
+  background: #fff;
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .cover {
+        display: block;
+    }
+}
 </style>

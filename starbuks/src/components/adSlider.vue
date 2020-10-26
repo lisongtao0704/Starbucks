@@ -4,7 +4,7 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" v-for="(item,index) in sliderList" :key="index" @click="itemClick"> 
 					<a href="javascript:;">
-						<img :src=" item.sliderImage"
+						<img :src="item.sliderImage"
 						class="tablet-show mobile-hidden">
 						<img :src="item.sliderImageMobile"
 						class="tablet-hidden mobile-show">
@@ -25,7 +25,6 @@
 		data(){
 			return{
 				sliderList: [
-					
 					{
 						sliderImage: require('./../assets/images/kv-1.jpg'),
 						sliderImageMobile: require('./../assets/images/kv-1-mobile.jpg')
@@ -54,7 +53,6 @@
 		},
 		methods: {
 			itemClick(){
-      
       this.$router.push('/menu')
     },
 			swiperSlideConfig(){
@@ -71,7 +69,6 @@
 			    	navigation: {
 			      		nextEl: '.swiper-button-next'
 			    	}
-
 			  	})
 
 			  	swiper_slider_ad.el.mouseover = function(){
