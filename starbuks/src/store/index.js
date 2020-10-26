@@ -8,7 +8,6 @@ var token = sessionStorage.getItem('token') || false
 export default new Vuex.Store({
     state: {
         token: token,
-
     },
     mutations: {
         setToken(state, token) {
@@ -16,7 +15,6 @@ export default new Vuex.Store({
             localStorage.token = token // 同步存储token至localStorage
             console.log(token)
         },
-
     },
     getters: {
         // 获取token方法
