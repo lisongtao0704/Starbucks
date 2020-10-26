@@ -49,21 +49,21 @@ const routes = [{
   {
     path: '/menu/search',
     component: () => import('../views/menu/search.vue'),
-    meta:{
-    	requireAuth:true
+    meta: {
+      requireAuth: true
     }
   },
   {
-    path:'/menu/shoplist',
-    component:()=> import('../views/menu/shoplist.vue')
+    path: '/menu/shoplist',
+    component: () => import('../views/menu/shoplist.vue')
   },
   {
     path: '/menu/merchandise',
     component: () => import('../views/menu/merchandise.vue'),
   },
   {
-    path:'/menu/goodinfo/:id',
-    component:()=> import('../views/menu/goodinfo.vue')
+    path: '/menu/goodinfo/:id',
+    component: () => import('../views/menu/goodinfo.vue')
   },
   {
     path: '/more',
@@ -79,35 +79,36 @@ const routes = [{
     name: 'asXbk',
     redirect: '/more/asXbk/inchina',
     component: () => import('../views/more/moreChild/asXbk.vue'),
-    children:[{
-      path:'duty',
-      name:'Duty',
-      component:() => import('../views/more/moreChild/asXbk/duty.vue')
-    },{
-      path:'history',
-      name:'History',
-      component:() => import('../views/more/moreChild/asXbk/history.vue')
-    },
-    {
-      path:'inchina',
-      name:'Inchina',
-      component:() => import('../views/more/moreChild/asXbk/inchina.vue')
-    },
-    {
-      path:'news',
-      name:'News',
-      component:() => import('../views/more/moreChild/asXbk/news.vue')
-    },
-    {
-      path:'we',
-      name:'We',
-      component:() => import('../views/more/moreChild/asXbk/we.vue')
-    },
-    {
-      path:'work',
-      name:'Work',
-      component:() => import('../views/more/moreChild/asXbk/work.vue')
-    },]
+    children: [{
+        path: 'duty',
+        name: 'Duty',
+        component: () => import('../views/more/moreChild/asXbk/duty.vue')
+      }, {
+        path: 'history',
+        name: 'History',
+        component: () => import('../views/more/moreChild/asXbk/history.vue')
+      },
+      {
+        path: 'inchina',
+        name: 'Inchina',
+        component: () => import('../views/more/moreChild/asXbk/inchina.vue')
+      },
+      {
+        path: 'news',
+        name: 'News',
+        component: () => import('../views/more/moreChild/asXbk/news.vue'),
+      },
+      {
+        path: 'we',
+        name: 'We',
+        component: () => import('../views/more/moreChild/asXbk/we.vue')
+      },
+      {
+        path: 'work',
+        name: 'Work',
+        component: () => import('../views/more/moreChild/asXbk/work.vue')
+      },
+    ]
   },
   {
     path: '/more/baking',
@@ -191,7 +192,12 @@ const routes = [{
         component: () => import('../views/more/moreChild/xbkmobileApp/apple.vue')
       }
     ]
-  }
+  },
+  {
+    path: '/more/asXbk/news/:id?',
+    name: 'Newslist',
+    component: () => import('../views/more/moreChild/asXbk/newsChild/index.vue'),
+  },
 ]
 
 const router = new VueRouter({

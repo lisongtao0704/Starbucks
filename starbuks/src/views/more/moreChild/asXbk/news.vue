@@ -9,10 +9,13 @@
     </div>
     <ul class="news-list">
       <li v-for="item in newsList">
-        <div
+        <router-link :to="'/more/asXbk/news/'+item.id">
+          <div
           :style="{'background-image':'url('+item.titleImg+')','background-position':'center','background-size':'cover'}"
         ></div>
         <p v-html="item.title"></p>
+        </router-link>
+        
       </li>
     </ul>
   </div>
@@ -45,18 +48,26 @@ export default {
      border-radius: 2px;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.12);
     margin-top: 14px;
+    margin: 14px 10px 0;
+    a{
+      width: 100%;
+    }
       div {
         width: 31%;
+            height: 100%;
+    float: left;
       }
       p {
         text-align: left;
          padding: 17px;
         width: 69%;
+        height: 100%;
         margin: 0;
         font-size: 20px;
         font-weight: 400;
         background: #fff;
         color: #000;
+        float: right;
       }
     }
   }
