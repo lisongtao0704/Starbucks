@@ -79,7 +79,7 @@
         <coffeehouse></coffeehouse>
       </section>
     </article>
-    <div class="cover" ></div>
+   
   </div>
 </template>
 
@@ -139,19 +139,7 @@ export default {
   padding-top: 0;
   z-index: 998;
 }
-.cover {
-  width: 100%;
-  position: fixed;
-  z-index: 999;
-  bottom: 0;
-  height: 49px;
-  background: #fff;
-  display: none;
-}
 
-@media screen and (min-width: 1024px) {
-    .cover {
-        display: block;
-    }
-}
+
+
 </style>

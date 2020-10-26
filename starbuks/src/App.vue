@@ -128,4 +128,9 @@ export default {};
 * {
   touch-action: pan-y;
 }
+@media screen and (min-width: 1024px) {
+     .nav-bar.songtao{
+        display: none;
+    }
+}
 </style>
