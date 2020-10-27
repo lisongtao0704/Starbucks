@@ -26,8 +26,12 @@ const routes = [{
       {
         path: 'starbucks-rewards',
         component: () => import('../views/account/starbucks-rewards.vue')
-      }
+      },
     ]
+  },
+  {
+    path:'/account/change',
+    component:()=> import('../views/account/change.vue')
   },
   {
     path: '/menu',

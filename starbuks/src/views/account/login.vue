@@ -17,7 +17,7 @@
       <div class="msg" v-if="ismsg"><span>✓</span>{{ msg }}</div>
       <div class="login-dl">
         <el-button type="text" @click="login">登录</el-button>
-        <div class="forget-password"><a href="javascript:;">忘记密码?</a></div>
+        <router-link to="change" class="forget-password" tag="div"><a href="javascript:;" @click="forget">修改密码</a></router-link>
       </div>
     </div>
   </div>
@@ -89,23 +89,31 @@
         if (!this.ismsg) {
           return mui.toast('验证不通过，请重新验证')
         }
-        if (this.username == '' || this.password == '') {
+        if (this.username.trim() == '' || this.password.trim() == '') {
           return mui.toast('请输入帐号或密码')
         }
-        if (this.username !== '123456' || this.password !== '123456') {
-          return mui.toast('帐号或密码错误');
-        }
-        this.$http.get('http://localhost:8080/db.json').then(res => {
-          console.log(res.data)
-          if (res.data.code === 0) {
-            this.user = res.data.result
-            this.$store.commit("setToken", this.user);
-            mui.toast('登录成功，即将跳转')
-            setTimeout(function() {
-              _this.$router.push('/')
-            }, 2000)
+        this.$store.state.userinfo.forEach(item => {
+         var user = JSON.parse(item)
+         console.log(user[0])
+        	if(user[0].username !=this.username && user[0].password !=this.password){
+             return mui.toast('帐号或密码错误')
+          }else{
+            this.$http.get('http://localhost:8080/db.json').then(res => {
+              console.log(res.data)
+              if (res.data.code === 0) {
+                this.user = res.data.result
+                this.$store.commit("setToken", this.user);
+                mui.toast('登录成功，即将跳转')
+                setTimeout(function() {
+                  _this.$router.push('/')
+                }, 2000)
+              }
+            })
           }
         })
+      },
+      forget(){
+        console.log(this.$store.state.userinfo);
       }
     }
   }
@@ -244,7 +252,7 @@
     }
   }
   .login-content {
-    height: 100vh;
+    height: 90vh;
     background-color:#fff;
     border-top: 1px solid #ccc;
     box-shadow: 0px -2px 2px #eee;
