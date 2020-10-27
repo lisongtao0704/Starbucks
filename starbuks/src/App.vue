@@ -56,11 +56,11 @@
 export default {};
 </script>
 <style lang="less">
-// @media screen and (min-width: 640px) {
-//      .nav-bar.songtao{
-//         display: none;
-//     }
-// }
+@media screen and (min-width: 1025px) {
+     .nav-bar.songtao{
+        display: none;
+    }
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   // padding-bottom: 70px;
@@ -127,5 +127,10 @@ export default {};
 }
 * {
   touch-action: pan-y;
+}
+@media screen and (min-width: 1024px) {
+     .nav-bar.songtao{
+        display: none;
+    }
 }
 </style>
