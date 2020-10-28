@@ -92,7 +92,7 @@
         if (this.username.trim() == '' || this.password.trim() == '') {
           return mui.toast('请输入帐号或密码')
         }
-        this.$store.state.userinfo.forEach(item => {
+       this.$store.state.userinfo.forEach(item => {
          var user = JSON.parse(item)
          //console.log(user[0])
         	if(user[0].username ==this.username || user[0].password ==this.password){
