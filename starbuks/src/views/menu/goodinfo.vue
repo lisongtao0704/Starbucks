@@ -12,7 +12,6 @@
         <p class="caption-1">{{goodInfo.body}}</p>
       </div>
     </div>
-<ad-slider/>
   </div>
 </template>
 
@@ -34,7 +33,7 @@
       getGoodsInfo() {
       	this.$http.get('http://123.56.129.223/starbucks/product.php?id=' + this.id).then(res => {
           this.goodInfo=res.data[0];
-          console.log(this.goodInfo);
+          //console.log(this.goodInfo);
       	})
       },
     }

@@ -94,21 +94,21 @@
         }
         this.$store.state.userinfo.forEach(item => {
          var user = JSON.parse(item)
-         console.log(user[0])
-        	if(user[0].username !=this.username && user[0].password !=this.password){
-             return mui.toast('帐号或密码错误')
+         //console.log(user[0])
+        	if(user[0].username ==this.username || user[0].password ==this.password){
+             this.$http.get('http://localhost:8080/db.json').then(res => {
+               console.log(res.data)
+               if (res.data.code === 0) {
+                 this.user = res.data.result
+                 this.$store.commit("setToken", this.user);
+                 mui.toast('登录成功，即将跳转')
+                 setTimeout(function() {
+                   _this.$router.push('/')
+                 }, 2000)
+               }
+             })
           }else{
-            this.$http.get('http://localhost:8080/db.json').then(res => {
-              console.log(res.data)
-              if (res.data.code === 0) {
-                this.user = res.data.result
-                this.$store.commit("setToken", this.user);
-                mui.toast('登录成功，即将跳转')
-                setTimeout(function() {
-                  _this.$router.push('/')
-                }, 2000)
-              }
-            })
+             mui.toast('帐号或密码错误')
           }
         })
       },

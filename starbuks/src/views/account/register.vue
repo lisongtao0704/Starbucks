@@ -73,14 +73,21 @@
         if (this.password.trim() !== this.confirmpassword) {
           return mui.toast('两次输入密码不一致')
         }
-        var obj = { 'username':this.username,'password':this.password}
-        this.signoutShow.push(obj);
-        //console.log( this.signoutShow);
-        //console.log(this.$store.state.userinfo);
-        console.log(localStorage.getItem('userInfo'));
-        console.log(this.$store.state.userinfo)
-        this.$store.commit("gettToken", JSON.stringify(this.signoutShow));
-        mui.toast('注册成功')
+
+        this.$store.state.userinfo.forEach(item => {
+         var user = JSON.parse(item)
+         //console.log(user[0])
+        	if(user[0].username !=this.username){
+            var obj = { 'username':this.username,'password':this.password}
+            this.signoutShow.push(obj);
+            this.$store.commit("gettToken", JSON.stringify(this.signoutShow));
+            mui.toast('注册成功')
+          }else{
+            mui.toast('帐号已被注册，请重新输入帐号')
+          }
+        })
+
+
       },
       login(){
         this.$router.push('/account/login')

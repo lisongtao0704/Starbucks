@@ -6,7 +6,7 @@
     <div class="search_body">
       <div class="field search">
          <img src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/icons/icon-search.svg" class="icon" @click="Search">
-         <input type="text" id="menu-search-input" placeholder="搜索菜单" v-model="search">
+         <input type="text" id="menu-search-input" placeholder="搜索菜单" v-model="search" @keyup.13="Search">
       </div>
       <div id="menu-search-empty"><div>大家都在搜</div></div>
 
@@ -43,13 +43,13 @@
     },
     created(){
        this.getAllShop();
-       this.getByCateId()
+       this.getByCateId();
     },
     methods:{
       getAllShop(){
         this.$http.get('http://123.56.129.223/starbucks/product.php?all=all').then(res=>{
           this.products=res.data;
-          console.log(this.products)
+          // console.log(this.products)
         })
       },
       getByCateId(){
@@ -74,7 +74,7 @@
             })
             if(this.searchData == ''){
               mui.toast('未查询到商品')
-              console.dir(this.searchData)
+              //console.dir(this.searchData)
             };
           }else if(search.length === 0){
               this.searchData = this.list;

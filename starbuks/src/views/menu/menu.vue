@@ -36,7 +36,7 @@
       </div>
       <div class="featured-item">
         <a href="#lto-items" class="block relative">
-          <img src="../../assets/images/menu-img2.jpg">
+          <img src="../../assets/images/banner-3-mobile.jpg">
         </a>
         <div class="description">
           <h2>尝一口金秋</h2>
@@ -49,7 +49,7 @@
       </div>
       <div class="featured-item">
         <a href="#lto-items" class="block relative">
-          <img src="../../assets/images/menu-img2.jpg">
+          <img src="../../assets/images/banner-6-mobile.jpg">
         </a>
         <div class="description">
           <h2>尝一口金秋</h2>
@@ -62,7 +62,7 @@
       </div>
       <div class="featured-item">
         <a href="#lto-items" class="block relative">
-          <img src="../../assets/images/menu-img2.jpg">
+          <img src="../../assets/images/banner-1-mobile.jpg">
         </a>
         <div class="description">
           <h2>尝一口金秋</h2>
@@ -75,7 +75,7 @@
       </div>
       <div class="featured-item">
         <a href="#lto-items" class="block relative">
-          <img src="../../assets/images/menu-img2.jpg">
+          <img src="../../assets/images/kv-bev-1-mobile.jpg">
         </a>
         <div class="description">
           <h2>尝一口金秋</h2>
@@ -237,18 +237,7 @@ export default {
             font-size: 22px;
           }
 
-          .body:after {
-            background: linear-gradient(rgba(255, 255, 255, 0) 24px, #eee);
-            content: '';
-            height: 100%;
-            left: 0;
-            opacity: 0.4;
-            position: absolute;
-            top: 0;
-            transition-duration: 0.1s;
-            transition-property: opacity;
-            width: 100%;
-          }
+          
 
           .body {
             position: relative;

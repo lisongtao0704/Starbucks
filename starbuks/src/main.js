@@ -25,7 +25,7 @@ new Vue({
       store,
       render: h => {
         let root = h(App)
-        console.log(h)
+        //console.log(h)
         return root}
       }).$mount('#app')
 
