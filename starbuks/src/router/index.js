@@ -26,12 +26,12 @@ const routes = [{
       {
         path: 'starbucks-rewards',
         component: () => import('../views/account/starbucks-rewards.vue')
-      },
+      }
     ]
   },
   {
-    path:'/account/change',
-    component:()=> import('../views/account/change.vue')
+    path: '/account/change',
+    component: () => import('../views/account/change.vue')
   },
   {
     path: '/menu',
@@ -59,7 +59,7 @@ const routes = [{
   },
   {
     path: '/menu/merchandise',
-    component: () => import('../views/menu/merchandise.vue'),
+    component: () => import('../views/menu/merchandise.vue')
   },
   {
     path: '/menu/goodinfo/:id',
@@ -96,7 +96,7 @@ const routes = [{
       {
         path: 'news',
         name: 'News',
-        component: () => import('../views/more/moreChild/asXbk/news.vue'),
+        component: () => import('../views/more/moreChild/asXbk/news.vue')
       },
       {
         path: 'we',
@@ -107,7 +107,7 @@ const routes = [{
         path: 'work',
         name: 'Work',
         component: () => import('../views/more/moreChild/asXbk/work.vue')
-      },
+      }
     ]
   },
   {
@@ -128,7 +128,20 @@ const routes = [{
   {
     path: '/more/giftCards',
     name: 'giftCards',
-    component: () => import('../views/more/moreChild/giftCards.vue')
+    redirect: '/more/giftCards/1',
+    component: () => import('../views/more/moreChild/giftCards.vue'),
+    children: [{
+      path: '1',
+      component: () => import('../views/more/moreChild/giftCards/index.vue')
+    },{
+      path: '2',
+      component: () => import('../views/more/moreChild/giftCards/index2.vue')
+    },
+    {
+      path: '3',
+      component: () => import('../views/more/moreChild/giftCards/index3.vue')
+    }
+  ]
   },
   {
     path: '/more/help',
@@ -196,8 +209,8 @@ const routes = [{
   {
     path: '/more/asXbk/news/:id?',
     name: 'Newslist',
-    component: () => import('../views/more/moreChild/asXbk/newsChild/index.vue'),
-  },
+    component: () => import('../views/more/moreChild/asXbk/newsChild/index.vue')
+  }
 ]
 
 const router = new VueRouter({

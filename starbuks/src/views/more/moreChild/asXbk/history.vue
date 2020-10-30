@@ -65,13 +65,13 @@
 
 <script>
 export default {
-  name: "History",
-};
+  name: 'History'
+}
 </script>
 
 <style scoped lang="less">
 .inchina {
- 
+
   letter-spacing: 0.4px;
   z-index: -1;
   .plate {

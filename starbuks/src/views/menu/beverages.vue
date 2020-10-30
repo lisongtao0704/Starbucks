@@ -31,36 +31,35 @@
   </div>
 </template>
 <script>
-  // 1. 导入 mui 的js文件
-  import mui from "../../lib/mui/js/mui.min.js";
-  export default{
-    data(){
-      return{
-        list:[],
-        cates:[],
-      }
-    },
-    created(){
-      this. getByCateId('all');
-    },
-    methods:{
-      back(){
-        this.$router.push('/menu')
-      },
-      getByCateId(val){
-        this.$http.get('http://123.56.129.223/starbucks/menu.php?category=beverages&type='+val).then(res=>{
-          this.list = res.data
-          //console.log( res.data)
-        })
-      },
-    },
-    mounted() {
-    	mui(".mui-scroll-wrapper").scroll({
-    		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-    	});
-
+// 1. 导入 mui 的js文件
+import mui from '../../lib/mui/js/mui.min.js'
+export default {
+  data () {
+    return {
+      list: [],
+      cates: []
     }
+  },
+  created () {
+    this.getByCateId('all')
+  },
+  methods: {
+    back () {
+      this.$router.push('/menu')
+    },
+    getByCateId (val) {
+      this.$http.get('http://123.56.129.223/starbucks/menu.php?category=beverages&type=' + val).then(res => {
+        this.list = res.data
+        // console.log( res.data)
+      })
+    }
+  },
+  mounted () {
+    	mui('.mui-scroll-wrapper').scroll({
+    		deceleration: 0.0005 // flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    	})
   }
+}
 </script>
 
 <style lang="less" scoped>
@@ -149,6 +148,5 @@
 
        }
    }
-
 
 </style>

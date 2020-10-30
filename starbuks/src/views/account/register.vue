@@ -22,78 +22,76 @@
 </template>
 
 <script>
-  import mui from '../../lib/mui/js/mui.min.js'
-  export default {
-    data() {
-      return {
-        ismsg: false,
-        isok: false,
-        ismove: false,
-        classA: "classA",
-        classB: "classB",
-        username: "",
-        password: "",
-        confirmpassword:'',
-        istrue: false,
-        signoutShow:[]
-      };
+import mui from '../../lib/mui/js/mui.min.js'
+export default {
+  data () {
+    return {
+      ismsg: false,
+      isok: false,
+      ismove: false,
+      classA: 'classA',
+      classB: 'classB',
+      username: '',
+      password: '',
+      confirmpassword: '',
+      istrue: false,
+      signoutShow: []
+    }
+  },
+  methods: {
+    pageRedir () {
+      this.$router.replace('/account/register')
     },
-    methods: {
-      pageRedir() {
-        this.$router.replace("/account/register");
-      },
-      add() {
-        this.isok = true;
-      },
-      reduce() {
-        if (!this.username) {
-          this.isok = false;
-        }
-      },
-      addp() {
-        this.ismove = true;
-      },
-      reducep() {
-        if (!this.password) {
-          this.ismove = false;
-        }
-      },
-      addc() {
-        this.istrue = true;
-      },
-      reducec() {
-        if (!this.confirmpassword) {
-          this.istrue = false;
-        }
-      },
-      register(){
-        if (this.username.trim() == '') {
-          return mui.toast('帐号不能为空')
-        }
-        if (this.password.trim() !== this.confirmpassword) {
-          return mui.toast('两次输入密码不一致')
-        }
-
-        this.$store.state.userinfo.forEach(item => {
-         var user = JSON.parse(item)
-         //console.log(user[0])
-        	if(user[0].username !=this.username){
-            var obj = { 'username':this.username,'password':this.password}
-            this.signoutShow.push(obj);
-            this.$store.commit("gettToken", JSON.stringify(this.signoutShow));
-            mui.toast('注册成功')
-          }else{
-            mui.toast('帐号已被注册，请重新输入帐号')
-          }
-        })
-
-
-      },
-      login(){
-        this.$router.push('/account/login')
+    add () {
+      this.isok = true
+    },
+    reduce () {
+      if (!this.username) {
+        this.isok = false
       }
+    },
+    addp () {
+      this.ismove = true
+    },
+    reducep () {
+      if (!this.password) {
+        this.ismove = false
+      }
+    },
+    addc () {
+      this.istrue = true
+    },
+    reducec () {
+      if (!this.confirmpassword) {
+        this.istrue = false
+      }
+    },
+    register () {
+      if (this.username.trim() == '') {
+        return mui.toast('帐号不能为空')
+      }
+      if (this.password.trim() !== this.confirmpassword) {
+        return mui.toast('两次输入密码不一致')
+      }
+
+      this.$store.state.userinfo.forEach(item => {
+        var user = JSON.parse(item)
+        // console.log(user[0])
+        	if (user[0].username != this.username) {
+          var obj = { username: this.username, password: this.password }
+          this.signoutShow.push(obj)
+          this.$store.commit('gettToken', JSON.stringify(this.signoutShow))
+          mui.toast('注册成功')
+        } else {
+          mui.toast('帐号已被注册，请重新输入帐号')
+        }
+      })
+    },
+    login () {
+      this.$router.push('/account/login')
     }
   }
+}
 </script>
 
 <style lang="less" scoped>

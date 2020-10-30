@@ -43,7 +43,7 @@
         </el-menu-item>
       </el-menu>
       <router-view/>
-     
+
     </div>
      <div class="foot">
         <p>
@@ -59,12 +59,12 @@
     <li><a href="#">魅族</a></li>
     <li><a href="#">豌豆荚安装</a></li>
     <li><a href="#">华为应用市场</a></li>
-    
+
   </ul>
   <div class="qr-code">
    <div style="width: 100%;
     display: flex;
-    justify-content: center;"><img src="../../../../assets/images/app_qr_20181112.jpg"></div> 
+    justify-content: center;"><img src="../../../../assets/images/app_qr_20181112.jpg"></div>
     <div class="xiazai"><img src="../../../../assets/images/苹果.png"><img src="../../../../assets/images/安卓 B.png"></div>
   </div>
   <p class="issue">如果您有任何问题，请查看常见问题，也可以直接与我们联系</p>
@@ -75,26 +75,26 @@
 
 <script>
 export default {
-  name: "mobileApp",
-  data() {
+  name: 'mobileApp',
+  data () {
     return {
-      activeIndex: "1",
-    };
-  },
-  created() {
-    if (!sessionStorage.getItem("index")) {
-      return;
+      activeIndex: '1'
     }
-    this.activeIndex = sessionStorage.getItem("index");
+  },
+  created () {
+    if (!sessionStorage.getItem('index')) {
+      return
+    }
+    this.activeIndex = sessionStorage.getItem('index')
   },
   methods: {
-    handleSelect(key, keyPath) {
-      this.activeIndex = key;
-      sessionStorage.setItem("index", key);
-      console.log(this.activeIndex);
-    },
-  },
-};
+    handleSelect (key, keyPath) {
+      this.activeIndex = key
+      sessionStorage.setItem('index', key)
+      console.log(this.activeIndex)
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">

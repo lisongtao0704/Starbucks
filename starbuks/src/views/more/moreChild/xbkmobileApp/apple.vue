@@ -60,8 +60,8 @@
 
 <script>
 export default {
-  name: "apple",
-};
+  name: 'apple'
+}
 </script>
 
 <style lang="less" scoped>

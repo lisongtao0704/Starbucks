@@ -28,26 +28,26 @@
 
 <script>
 export default {
-  name: "xbkMobileApp",
-  data() {
+  name: 'xbkMobileApp',
+  data () {
     return {
-      activeIndex: "/more/xbkMobileApp/app",
-    };
-  },
-  created() {
-    if (!sessionStorage.getItem("index2")) {
-      return;
+      activeIndex: '/more/xbkMobileApp/app'
     }
-    this.activeIndex = sessionStorage.getItem("index2");
+  },
+  created () {
+    if (!sessionStorage.getItem('index2')) {
+      return
+    }
+    this.activeIndex = sessionStorage.getItem('index2')
   },
   methods: {
-    handleSelect(key, keyPath) {
-      this.activeIndex = key;
-      sessionStorage.setItem("index2", key);
-      console.log(this.activeIndex);
-    },
-  },
-};
+    handleSelect (key, keyPath) {
+      this.activeIndex = key
+      sessionStorage.setItem('index2', key)
+      console.log(this.activeIndex)
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">

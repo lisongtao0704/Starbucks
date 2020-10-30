@@ -34,17 +34,17 @@ export default {
       return this.$store.state.NickName
     }
   },
-  methods:{
-		loginClick(){
+  methods: {
+    loginClick () {
       this.$router.push('/account')
-		},
-		btnClick(){
-			this.$router.push('/account')
-		},
-		myClick(){
-			this.$router.push('/account')
-		}
-	}
- 
+    },
+    btnClick () {
+      this.$router.push('/account')
+    },
+    myClick () {
+      this.$router.push('/account')
+    }
+  }
+
 }
 </script>

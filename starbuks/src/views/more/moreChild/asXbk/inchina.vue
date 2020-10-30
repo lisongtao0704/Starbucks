@@ -83,14 +83,14 @@
 
 <script>
 export default {
-  name: "Inchina",
+  name: 'Inchina',
   methods: {
     // handleSelect(key) {
     //   alert(3);
     //   sessionStorage.setItem("asxbk",key);
     // },
-  },
-};
+  }
+}
 </script>
 
 <style scoped lang="less">

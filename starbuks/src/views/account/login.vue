@@ -24,99 +24,99 @@
 </template>
 
 <script>
-  import mui from '../../lib/mui/js/mui.min.js'
-  export default {
-    data() {
-      return {
-        ismsg: false,
-        isslide: true,
-        isok: false,
-        ismove: false,
-        classA: "classA",
-        classB: "classB",
-        username: "",
-        password: "",
-        msg: "",
-        text: "向右滑",
-        // 精确度小，可允许的误差范围小；为1时，则表示滑块要与凹槽完全重叠，才能验证成功。默认值为5
-        accuracy: 1,
-      };
+import mui from '../../lib/mui/js/mui.min.js'
+export default {
+  data () {
+    return {
+      ismsg: false,
+      isslide: true,
+      isok: false,
+      ismove: false,
+      classA: 'classA',
+      classB: 'classB',
+      username: '',
+      password: '',
+      msg: '',
+      text: '向右滑',
+      // 精确度小，可允许的误差范围小；为1时，则表示滑块要与凹槽完全重叠，才能验证成功。默认值为5
+      accuracy: 1
+    }
+  },
+  methods: {
+    pageRedir () {
+      this.$router.replace('/account/register')
     },
-    methods: {
-      pageRedir() {
-        this.$router.replace("/account/register");
-      },
-      add() {
-        this.isok = true;
-      },
-      reduce() {
-        if (!this.username) {
-          this.isok = false;
-        }
-      },
-      addp() {
-        this.ismove = true;
-      },
-      reducep() {
-        if (!this.password) {
-          this.ismove = false;
-        }
-      },
-      onSuccess(times) {
-        mui.toast("只用了 " + times / 1000 + "s" + ",简直比闪电还快呢");
-        this.msg = "验证通过, 耗时" + times / 1000 + "s";
-        (this.isslide = false), (this.ismsg = true);
-      },
-      onFail() {
-        mui.toast("验证不通过");
-        this.msg = "";
-      },
-      onRefresh() {
-        mui.toast("点击了刷新小图标");
-        this.msg = "";
-      },
-      onFulfilled() {
-        console.log("刷新成功啦！");
-      },
-      onAgain() {
-        mui.toast("检测到非人为操作的哦！");
-        this.msg = "try again";
-        // 刷新
-        this.$refs.slideblock.reset();
-      },
-      login() {
-        var _this = this;
-        if (!this.ismsg) {
-          return mui.toast('验证不通过，请重新验证')
-        }
-        if (this.username.trim() == '' || this.password.trim() == '') {
-          return mui.toast('请输入帐号或密码')
-        }
-        this.$store.state.userinfo.forEach(item => {
-         var user = JSON.parse(item)
-         //console.log(user[0])
-        	if(user[0].username ==this.username || user[0].password ==this.password){
-             this.$http.get('http://localhost:8080/db.json').then(res => {
-               console.log(res.data)
-               if (res.data.code === 0) {
-                 this.user = res.data.result
-                 this.$store.commit("setToken", this.user);
-                 mui.toast('登录成功，即将跳转')
-                 setTimeout(function() {
-                   _this.$router.push('/')
-                 }, 2000)
-               }
-             })
-          }else{
-             mui.toast('帐号或密码错误')
-          }
-        })
-      },
-      forget(){
-        console.log(this.$store.state.userinfo);
+    add () {
+      this.isok = true
+    },
+    reduce () {
+      if (!this.username) {
+        this.isok = false
       }
+    },
+    addp () {
+      this.ismove = true
+    },
+    reducep () {
+      if (!this.password) {
+        this.ismove = false
+      }
+    },
+    onSuccess (times) {
+      mui.toast('只用了 ' + times / 1000 + 's' + ',简直比闪电还快呢')
+      this.msg = '验证通过, 耗时' + times / 1000 + 's';
+      (this.isslide = false), (this.ismsg = true)
+    },
+    onFail () {
+      mui.toast('验证不通过')
+      this.msg = ''
+    },
+    onRefresh () {
+      mui.toast('点击了刷新小图标')
+      this.msg = ''
+    },
+    onFulfilled () {
+      console.log('刷新成功啦！')
+    },
+    onAgain () {
+      mui.toast('检测到非人为操作的哦！')
+      this.msg = 'try again'
+      // 刷新
+      this.$refs.slideblock.reset()
+    },
+    login () {
+      var _this = this
+      if (!this.ismsg) {
+        return mui.toast('验证不通过，请重新验证')
+      }
+      if (this.username.trim() == '' || this.password.trim() == '') {
+        return mui.toast('请输入帐号或密码')
+      }
+      this.$store.state.userinfo.forEach(item => {
+        var user = JSON.parse(item)
+        // console.log(user[0])
+        	if (user[0].username == this.username || user[0].password == this.password) {
+          this.$http.get('http://localhost:8080/db.json').then(res => {
+            console.log(res.data)
+            if (res.data.code === 0) {
+              this.user = res.data.result
+              this.$store.commit('setToken', this.user)
+              mui.toast('登录成功，即将跳转')
+              setTimeout(function () {
+                _this.$router.push('/')
+              }, 2000)
+            }
+          })
+        } else {
+          mui.toast('帐号或密码错误')
+        }
+      })
+    },
+    forget () {
+      console.log(this.$store.state.userinfo)
     }
   }
+}
 </script>
 
 <style lang="less" scoped>

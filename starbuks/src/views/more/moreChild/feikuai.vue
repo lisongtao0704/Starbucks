@@ -17,7 +17,7 @@
     </div>
     <div>
     <img src="@/assets/images/fk5.jpg" alt="" class="jp5">
-    </div>  
+    </div>
   </div>
 </template>
 
