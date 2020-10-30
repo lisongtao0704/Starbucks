@@ -53,7 +53,7 @@
   </div>
 </template>
 <script>
-export default {};
+export default {}
 </script>
 <style lang="less">
 @media screen and (min-width: 1025px) {

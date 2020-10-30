@@ -17,7 +17,7 @@
       <div class="msg" v-if="ismsg"><span>✓</span>{{ msg }}</div>
       <div class="login-dl">
         <el-button type="text" @click="login">登录</el-button>
-        <router-link to="change" class="forget-password" tag="div"><a href="javascript:;" @click="forget">修改密码</a></router-link>
+        <router-link to="change" class="forget-password" tag="div"><a href="javascript:;">修改密码</a></router-link>
       </div>
     </div>
   </div>
@@ -32,15 +32,15 @@
         isslide: true,
         isok: false,
         ismove: false,
-        classA: "classA",
-        classB: "classB",
-        username: "",
-        password: "",
-        msg: "",
-        text: "向右滑",
+        classA: 'classA',
+        classB: 'classB',
+        username: '',
+        password: '',
+        msg: '',
+        text: '向右滑',
         // 精确度小，可允许的误差范围小；为1时，则表示滑块要与凹槽完全重叠，才能验证成功。默认值为5
-        accuracy: 1,
-      };
+        accuracy: 1
+      }
     },
     methods: {
       pageRedir() {
@@ -92,29 +92,26 @@
         if (this.username.trim() == '' || this.password.trim() == '') {
           return mui.toast('请输入帐号或密码')
         }
-       this.$store.state.userinfo.forEach(item => {
-         var user = JSON.parse(item)
-         //console.log(user[0])
-        	if(user[0].username ==this.username || user[0].password ==this.password){
-             this.$http.get('http://localhost:8080/db.json').then(res => {
-               console.log(res.data)
-               if (res.data.code === 0) {
-                 this.user = res.data.result
-                 this.$store.commit("setToken", this.user);
-                 mui.toast('登录成功，即将跳转')
-                 setTimeout(function() {
-                   _this.$router.push('/')
-                 }, 2000)
-               }
-             })
-          }else{
-             mui.toast('帐号或密码错误')
+        this.$store.state.userinfo.forEach(item => {
+          var user = JSON.parse(item)
+          //console.log(user[0])
+          if (user[0].username == this.username && user[0].password == this.password) {
+            this.$http.get('http://localhost:8080/db.json').then(res => {
+              //console.log(res.data)
+              if (res.data.code === 0) {
+                this.user = res.data.result
+                this.$store.commit("setToken", this.user);
+                mui.toast('登录成功，即将跳转')
+                setTimeout(function() {
+                  _this.$router.push('/')
+                }, 2000)
+              }
+            })
+          } else {
+            mui.toast('帐号或密码错误')
           }
         })
       },
-      forget(){
-        console.log(this.$store.state.userinfo);
-      }
     }
   }
 </script>
@@ -158,7 +155,7 @@
     margin: 15px 0;
 
     input {
-      background-color:#fff;
+      background-color: #fff;
       border: none;
       width: 90%;
       border-bottom: 1px solid #ccc;
@@ -207,7 +204,7 @@
     input:focus {
       outline: none;
       border-bottom: 1px solid #00a862;
-       background-color: #fff;
+      background-color: #fff;
     }
 
     label {
@@ -251,9 +248,10 @@
       }
     }
   }
+
   .login-content {
     height: 90vh;
-    background-color:#fff;
+    background-color: #fff;
     border-top: 1px solid #ccc;
     box-shadow: 0px -2px 2px #eee;
     padding-top: 20px;

@@ -16,28 +16,28 @@
 </template>
 
 <script>
-  export default{
-    data(){
-      return{
-        goodInfo: [],
-        id: this.$route.params.id,
-      }
+export default {
+  data () {
+    return {
+      goodInfo: [],
+      id: this.$route.params.id
+    }
+  },
+  created () {
+    this.getGoodsInfo()
+  },
+  methods: {
+    back () {
+      this.$router.back()
     },
-    created(){
-       this.getGoodsInfo()
-    },
-    methods:{
-      back(){
-        this.$router.back()
-      },
-      getGoodsInfo() {
+    getGoodsInfo () {
       	this.$http.get('http://123.56.129.223/starbucks/product.php?id=' + this.id).then(res => {
-          this.goodInfo=res.data[0];
-          //console.log(this.goodInfo);
+        this.goodInfo = res.data[0]
+        // console.log(this.goodInfo);
       	})
-      },
     }
   }
+}
 </script>
 
 <style lang="less" scoped>

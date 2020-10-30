@@ -109,10 +109,10 @@ export default {
       isok: true,
       classA: 'el-icon-arrow-down',
       classB: 'el-icon-arrow-up',
-      list:[]
+      list: []
     }
   },
-  created(){
+  created () {
     this.getByCateId()
   },
   methods: {
@@ -120,12 +120,12 @@ export default {
       this.isok = !this.isok
       this.ishidden = !this.ishidden
     },
-    getByCateId(){
-      this.$http.get('http://123.56.129.223/starbucks/menu.php?category=coffee&type=baking-M').then(res=>{
+    getByCateId () {
+      this.$http.get('http://123.56.129.223/starbucks/menu.php?category=coffee&type=baking-M').then(res => {
         this.list = res.data
-        //console.log( res.data)
+        // console.log( res.data)
       })
-    },
+    }
   }
 }
 </script>
@@ -236,8 +236,6 @@ export default {
             font-weight: 400;
             font-size: 22px;
           }
-
-          
 
           .body {
             position: relative;

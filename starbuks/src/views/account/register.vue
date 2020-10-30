@@ -29,14 +29,14 @@
         ismsg: false,
         isok: false,
         ismove: false,
-        classA: "classA",
-        classB: "classB",
-        username: "",
-        password: "",
-        confirmpassword:'',
+        classA: 'classA',
+        classB: 'classB',
+        username: '',
+        password: '',
+        confirmpassword: '',
         istrue: false,
-        signoutShow:[]
-      };
+        signoutShow: []
+      }
     },
     methods: {
       pageRedir() {
@@ -66,22 +66,22 @@
           this.istrue = false;
         }
       },
-      register(){
+      register() {
         if (this.username.trim() == '') {
           return mui.toast('帐号不能为空')
         }
         if (this.password.trim() !== this.confirmpassword) {
           return mui.toast('两次输入密码不一致')
         }
-         var obj = { 'username':this.username,'password':this.password}
-         this.signoutShow.push(obj);
-         this.$store.commit("gettToken", JSON.stringify(this.signoutShow));
-         mui.toast('注册成功')
-       
-
-
+        var obj = {
+          'username': this.username,
+          'password': this.password
+        }
+        this.signoutShow.push(obj);
+        this.$store.commit("gettToken", JSON.stringify(this.signoutShow));
+        mui.toast('注册成功')
       },
-      login(){
+      login() {
         this.$router.push('/account/login')
       }
     }
@@ -112,7 +112,7 @@
     margin: 15px 0;
 
     input {
-      background-color:#fff;
+      background-color: #fff;
       border: none;
       width: 90%;
       border-bottom: 1px solid #ccc;
@@ -161,7 +161,7 @@
     input:focus {
       outline: none;
       border-bottom: 1px solid #00a862;
-       background-color: #fff;
+      background-color: #fff;
     }
 
     label {
@@ -182,10 +182,12 @@
       opacity: 0.5;
     }
   }
+
   .login-form-cpassword {
     text-align: center;
     position: relative;
     margin-top: 12px;
+
     input {
       border: none;
       width: 90%;
@@ -198,7 +200,7 @@
     input:focus {
       outline: none;
       border-bottom: 1px solid #00a862;
-       background-color: #fff;
+      background-color: #fff;
     }
 
     label {
@@ -219,6 +221,7 @@
       opacity: 0.5;
     }
   }
+
   .login-dl {
     display: flex;
     justify-content: space-between;
@@ -241,9 +244,10 @@
       }
     }
   }
+
   .login-content {
     height: 90vh;
-    background-color:#fff;
+    background-color: #fff;
     border-top: 1px solid #ccc;
     box-shadow: 0px -2px 2px #eee;
     padding-top: 20px;

@@ -25,25 +25,25 @@
 
 <script>
 export default {
-  name: "asXbk",
-  data() {
+  name: 'asXbk',
+  data () {
     return {
-      activeIndex: "/more/asXbk/inchina",
-    };
+      activeIndex: '/more/asXbk/inchina'
+    }
   },
   created () {
-    if (!sessionStorage.getItem("asxbk")) {
-      return;
+    if (!sessionStorage.getItem('asxbk')) {
+      return
     }
-    this.activeIndex=sessionStorage.getItem("asxbk");
+    this.activeIndex = sessionStorage.getItem('asxbk')
   },
   methods: {
-    handleSelect(key, keyPath) {
-      this.activeIndex=key;
-      sessionStorage.setItem("asxbk",key);
-    },
-  },
-};
+    handleSelect (key, keyPath) {
+      this.activeIndex = key
+      sessionStorage.setItem('asxbk', key)
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>

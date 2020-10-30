@@ -15,7 +15,7 @@
         ></div>
         <p v-html="item.title"></p>
         </router-link>
-        
+
       </li>
     </ul>
   </div>
@@ -23,20 +23,20 @@
 
 <script>
 export default {
-  name: "News",
-  data() {
+  name: 'News',
+  data () {
     return {
-      newsList: {},
-    };
+      newsList: {}
+    }
   },
-  created() {
-    this.$http.get("http://123.56.129.223/starbucks/cnews.php").then((res) => {
-      console.log(res);
-      this.newsList = res.data;
-      console.log(this.newsList);
-    });
-  },
-};
+  created () {
+    this.$http.get('http://123.56.129.223/starbucks/cnews.php').then((res) => {
+      console.log(res)
+      this.newsList = res.data
+      console.log(this.newsList)
+    })
+  }
+}
 </script>
 
 <style scoped lang="less">

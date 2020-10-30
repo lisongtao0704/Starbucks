@@ -12,28 +12,28 @@
 
 <script>
 export default {
-  name: "newsList",
-  data() {
+  name: 'newsList',
+  data () {
     return {
       list: 1,
-      listContent: {},
-    };
-  },
-  methods: {
-    handleClick(){
-      this.$router.go(-1);
+      listContent: {}
     }
   },
-  created() {
-    this.list = this.$route.params.id;
-    this.$http
-      .get("http://123.56.129.223/starbucks/cnews.php?id=" + this.list)
-      .then((res) => {
-        this.listContent = JSON.parse(res.request.responseText)[0];
-        console.log(this.listContent);
-      });
+  methods: {
+    handleClick () {
+      this.$router.go(-1)
+    }
   },
-};
+  created () {
+    this.list = this.$route.params.id
+    this.$http
+      .get('http://123.56.129.223/starbucks/cnews.php?id=' + this.list)
+      .then((res) => {
+        this.listContent = JSON.parse(res.request.responseText)[0]
+        console.log(this.listContent)
+      })
+  }
+}
 </script>
 
 <style scoped lang="less">
@@ -58,7 +58,7 @@ export default {
       text-align: left;
     }
     }
-   
+
    /deep/  figure{
        margin:0 ;
      }

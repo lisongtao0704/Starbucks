@@ -29,61 +29,61 @@
 </template>
 
 <script>
-  import mui from '../../lib/mui/js/mui.min.js'
-  export default{
-    data(){
-      return{
-        search:'',
-        // 原本展示数据
-        // 搜索后的展示数据
-        searchData:[],
-        products: {},
-        cades:[]
+import mui from '../../lib/mui/js/mui.min.js'
+export default {
+  data () {
+    return {
+      search: '',
+      // 原本展示数据
+      // 搜索后的展示数据
+      searchData: [],
+      products: {},
+      cades: []
+    }
+  },
+  created () {
+    this.getAllShop()
+    this.getByCateId()
+  },
+  methods: {
+    getAllShop () {
+      this.$http.get('http://123.56.129.223/starbucks/product.php?all=all').then(res => {
+        this.products = res.data
+        // console.log(this.products)
+      })
+    },
+    getByCateId () {
+      this.$http.get('http://123.56.129.223/starbucks/menu.php?category=beverages&type=chawana').then(res => {
+        this.cades = res.data
+        // console.log( res.data)
+      })
+    },
+    back () {
+      this.$router.back()
+    },
+    Search () {
+      var search = this.search
+      if (search) {
+        this.searchData = this.products.filter(product => {
+          // console.log(product)
+          return Object.keys(product).some(key => {
+            // console.log(key)
+            // console.log(this.searchData)
+            return String(product[key]).toLowerCase().indexOf(search) > -1
+          })
+        })
+        if (this.searchData == '') {
+          mui.toast('未查询到商品')
+          // console.dir(this.searchData)
+        };
+      } else if (search.length === 0) {
+        this.searchData = this.list
+        mui.toast('请输入查找内容')
+      } else {
+        return this.searchData
       }
-    },
-    created(){
-       this.getAllShop();
-       this.getByCateId();
-    },
-    methods:{
-      getAllShop(){
-        this.$http.get('http://123.56.129.223/starbucks/product.php?all=all').then(res=>{
-          this.products=res.data;
-          // console.log(this.products)
-        })
-      },
-      getByCateId(){
-        this.$http.get('http://123.56.129.223/starbucks/menu.php?category=beverages&type=chawana').then(res=>{
-          this.cades = res.data
-          //console.log( res.data)
-        })
-      },
-      back(){
-        this.$router.back()
-      },
-      Search(){
-          var search = this.search;
-          if (search) {
-            this.searchData = this.products.filter(product=>{
-                //console.log(product)
-              return Object.keys(product).some(key=>{
-                 //console.log(key)
-                 //console.log(this.searchData)
-                return String(product[key]).toLowerCase().indexOf(search) > -1
-              })
-            })
-            if(this.searchData == ''){
-              mui.toast('未查询到商品')
-              //console.dir(this.searchData)
-            };
-          }else if(search.length === 0){
-              this.searchData = this.list;
-              mui.toast('请输入查找内容')
-            }else{
-              return this.searchData;
-            }
-       }
-},
+    }
+  }
 }
 </script>
 

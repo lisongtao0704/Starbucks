@@ -76,8 +76,6 @@
         	<img src="../../assets/images/coupon-zh.png" alt="">
         </div>
 
-
-
     		<div class="rewards-content1">
           <h3>选购会员星礼包，丰富好礼随心享：</h3>
     					<ul>

@@ -22,24 +22,24 @@
 
 <script>
 export default {
-  name: "account",
-  data() {
+  name: 'account',
+  data () {
     return {
-      isok: 0,
-    };
+      isok: 0
+    }
   },
-  mounted() {
-    this.isok = this.$store.state.token;
-    console.log(this.isok);
+  mounted () {
+    this.isok = this.$store.state.token
+    console.log(this.isok)
   },
   methods: {
-    tuichu() {
-      this.isok = 0;
-      this.$store.commit("setToken", this.isok);
-      sessionStorage.clear();
-    },
-  },
-};
+    tuichu () {
+      this.isok = 0
+      this.$store.commit('setToken', this.isok)
+      localStorage.clear()
+    }
+  }
+}
 </script>
 
 <style lang='less' scoped>
