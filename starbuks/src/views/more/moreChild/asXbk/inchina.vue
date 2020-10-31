@@ -199,7 +199,7 @@ export default {
   }
   height: 216px;
   .inchina-bg {
-    background: url(/img/starbucks-in-china.9e98a223.jpg) no-repeat;
+    background: url("../../../../assets/images/starbucks-in-china.jpg") no-repeat;
     background-size: cover;
     width: 100%;
     height: 216px;

@@ -35,6 +35,7 @@ export default {
     if (!sessionStorage.getItem('asxbk')) {
       return
     }
+    this.$router.push(sessionStorage.getItem("asxbk"));
     this.activeIndex = sessionStorage.getItem('asxbk')
   },
   methods: {

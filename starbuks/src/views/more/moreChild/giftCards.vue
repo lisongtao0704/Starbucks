@@ -26,9 +26,12 @@ export default {
       activeIndex: "1",
     };
   },
+  beforeCreate() {},
   created() {
-    if (sessionStorage.getItem("card"))
+    if (sessionStorage.getItem("card")) {
+      this.$router.push("/more/giftCards/" + sessionStorage.getItem("card"));
       this.activeIndex = sessionStorage.getItem("card");
+    }
   },
   methods: {
     handleSelect(key, keyPath) {
@@ -61,10 +64,10 @@ export default {
         font-size: 16px;
         font-weight: 400;
       }
-      .is-active{
-          border-bottom: 3px solid #00A862;
-          font-weight: 700;
-    }
+      .is-active {
+        border-bottom: 3px solid #00a862;
+        font-weight: 700;
+      }
     }
   }
 }

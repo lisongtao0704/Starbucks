@@ -31,9 +31,7 @@ export default {
   },
   created () {
     this.$http.get('http://123.56.129.223/starbucks/cnews.php').then((res) => {
-      console.log(res)
       this.newsList = res.data
-      console.log(this.newsList)
     })
   }
 }

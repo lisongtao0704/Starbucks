@@ -139,8 +139,8 @@
 
 <script>
 export default {
-  name: "gift",
-};
+  name: 'gift'
+}
 </script>
 
 <style lang='less' scoped>
