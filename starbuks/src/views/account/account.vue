@@ -1,5 +1,10 @@
 <template>
-  <div v-if="isok"><button @click="tuichu">退出登录</button></div>
+  <div v-if="isok">
+    <div class="user">
+      <img src="../../assets/images/logo.svg">
+    </div>
+    <button @click="tuichu">退出登录</button>
+  </div>
   <div class="account" v-else>
     <div class="accountbtn menubtn account">
       <h2>登录或创建一个新帐户 🌟</h2>
@@ -31,7 +36,7 @@ export default {
     tuichu () {
       this.isok = 0
       this.$store.commit('setToken', this.isok)
-      sessionStorage.clear()
+      localStorage.clear()
     }
   }
 }
