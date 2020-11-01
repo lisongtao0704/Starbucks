@@ -314,7 +314,7 @@ export default {
       div.bg1 {
         position: relative;
         height: 168px;
-        background: url(/img/svc-series-1.42c9e542.png) center;
+        background: url("../../../../assets/images/svc-series-1.png") center;
         background-size: cover;
       }
       div.bg2 {

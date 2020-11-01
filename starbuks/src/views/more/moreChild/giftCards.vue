@@ -9,9 +9,9 @@
         @select="handleSelect"
         :router="true"
       >
-        <el-menu-item index="1">关于星礼卡</el-menu-item>
-        <el-menu-item index="2">管理星礼卡</el-menu-item>
-        <el-menu-item index="3">在线申请发票</el-menu-item>
+        <el-menu-item index="/more/giftCards/1">关于星礼卡</el-menu-item>
+        <el-menu-item index="/more/giftCards/2">管理星礼卡</el-menu-item>
+        <el-menu-item index="/more/giftCards/3">在线申请发票</el-menu-item>
       </el-menu>
     </div>
     <router-view />
@@ -20,27 +20,28 @@
 
 <script>
 export default {
-  name: "giftCards",
-  data() {
+  name: 'giftCards',
+  data () {
     return {
-      activeIndex: "1",
-    };
-  },
-  beforeCreate() {},
-  created() {
-    if (sessionStorage.getItem("card")) {
-      this.$router.push("/more/giftCards/" + sessionStorage.getItem("card"));
-      this.activeIndex = sessionStorage.getItem("card");
+      activeIndex: '/more/giftCards/1'
     }
   },
-  methods: {
-    handleSelect(key, keyPath) {
-      this.activeIndex = key;
-      sessionStorage.setItem("card", key);
-      console.log(keyPath);
-    },
+  beforeCreate () {},
+  created () {
+    if (sessionStorage.getItem('card')) {
+      this.activeIndex = sessionStorage.getItem('card')
+      if(this.$route.path==sessionStorage.getItem('card'))
+      return
+      this.$router.push(sessionStorage.getItem('card'))
+    }else  this.$router.push("/more/giftCards/1")
   },
-};
+  methods: {
+    handleSelect (key, keyPath) {
+      this.activeIndex = key
+      sessionStorage.setItem('card', key)
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>

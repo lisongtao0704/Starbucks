@@ -128,7 +128,6 @@ const routes = [{
 {
   path: '/more/giftCards',
   name: 'giftCards',
-  redirect: '/more/giftCards/1',
   component: () => import('../views/more/moreChild/giftCards.vue'),
   children: [{
     path: '1',
@@ -176,7 +175,6 @@ const routes = [{
   children: [{
     path: 'app',
     name: 'app',
-    redirect: '/more/xbkMobileApp/app/1',
     component: () => import('../views/more/moreChild/xbkmobileApp/mobileApp.vue'),
     children: [{
       path: '1',
