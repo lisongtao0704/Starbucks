@@ -14,7 +14,9 @@
         <el-menu-item index="/more/giftCards/3">在线申请发票</el-menu-item>
       </el-menu>
     </div>
-    <router-view />
+    <transition>
+      <router-view />
+    </transition>
   </div>
 </template>
 

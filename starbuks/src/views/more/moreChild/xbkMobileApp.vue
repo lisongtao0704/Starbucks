@@ -38,7 +38,7 @@ export default {
     if (!sessionStorage.getItem('index2')) {
       return
     }
-    this.activeIndex = sessionStorage.getItem('index2')
+     this.activeIndex = sessionStorage.getItem('index2')
     if(this.$route.path==sessionStorage.getItem('index2'))
       return
     this.$router.push(sessionStorage.getItem('index2'))

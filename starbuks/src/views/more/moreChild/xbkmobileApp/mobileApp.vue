@@ -86,12 +86,14 @@ export default {
       return
     }
     this.activeIndex = sessionStorage.getItem('index')
+    if(this.$route.path==sessionStorage.getItem('index'))
+      return
+    this.$router.push(sessionStorage.getItem('index'))
   },
   methods: {
     handleSelect (key, keyPath) {
       this.activeIndex = key
       sessionStorage.setItem('index', key)
-      console.log(this.activeIndex)
     }
   }
 }
