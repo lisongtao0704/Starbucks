@@ -23,6 +23,9 @@
             @focus="focus"
             type="text"
             id="num"
+            name="卡号"
+            required
+            pattern="^\d{16,19}$"
             autocomplete="off"
           />
           <label ref="inputUp" for="num">卡号</label>
@@ -39,6 +42,9 @@
             @focus="focus2"
             type="password"
             id="num2"
+            pattern="^\d{6}$"
+            name="密码"
+            required
             v-if="query"
           />
           <input
@@ -47,7 +53,10 @@
             @blur="blur2"
             @focus="focus2"
             type="text"
+            name="单号"
+            pattern="[a-zA-Z0-9]+"
             id="num3"
+            required
             v-else
           />
           <label ref="inputUp2" for="num2" v-if="query">输入密码</label>
@@ -61,6 +70,29 @@
             <p>此栏不可为空，请输入数字或字母</p>
           </div>
         </div>
+        <div class="slide-block" v-if="slideSuccess">
+          <div class="slide-msg" ref="slideInfo">{{ msg }}</div>
+          <div class="shade">
+            <slide-verify
+              :l="42"
+              :r="10"
+              :w="280"
+              :h="160"
+              @success="onSuccess"
+              @fail="onFail"
+              @refresh="onRefresh"
+              :slider-text="text"
+            >
+            </slide-verify>
+            <div class="success-times" v-show="slideSuccessstime">{{ times }}</div>
+          </div>
+        </div>
+        <div class="slide-success" v-else>
+          <img src="../../../../assets/images/icon-done.svg" /><span
+            >已验证</span
+          >
+        </div>
+        <input ref="sub" type="submit" value="查询" disabled/>
       </form>
     </div>
   </div>
@@ -68,89 +100,115 @@
 
 <script>
 export default {
-  name: 'gift2',
-  data () {
+  name: "gift2",
+  data() {
     return {
+      msg: "拖动下方滑块完成拼图",
+      text: "向右滑",
       query: true,
       nums: false,
       nums2: false,
       nums3: false,
-      valueNums: '',
-      valueNums2: '',
-      valueNums3: ''
-    }
+      valueNums: "",
+      valueNums2: "",
+      valueNums3: "",
+      slideSuccess: true,
+      slideSuccessstime:false,
+      times: "",
+    };
   },
   watch: {
     valueNums: function () {
       if (!/^\d{16,19}$/.test(this.$refs.inputNum.value)) {
-        this.nums = true
-      } else this.nums = false
+        this.nums = true;
+      } else this.nums = false;
     },
     valueNums2: function () {
       if (!/^\d{6}$/.test(this.$refs.inputNum2.value)) {
-        this.nums2 = true
-      } else this.nums2 = false
+        this.nums2 = true;
+      } else this.nums2 = false;
     },
     valueNums3: function () {
       if (!/^[a-z0-9]+$/i.test(this.$refs.inputNum3.value)) {
-        this.nums3 = true
-      } else this.nums3 = false
-    }
+        this.nums3 = true;
+      } else this.nums3 = false;
+    },
   },
   methods: {
-    focus () {
-      this.$refs.inputUp.style =
-        'font-size: 14px;color: rgba(0, 0, 0, 0.56); transition: all 0.2s;top: -18px;'
+    onSuccess(time) {
+      if(time<2000)
+      this.times='太厉害了！耗时'+(time / 1000).toFixed(1) + "s，简直比闪电还快。";
+      if(time>=2000)
+      this.times='耗时'+(time / 1000).toFixed(1) + "s，来和乌龟赛跑吧。";
+      this.msg = "验证成功";
+      this.slideSuccessstime=true;
+      this.$refs.sub.removeAttribute('disabled');
+      setTimeout(() => {
+        this.slideSuccess = false;
+      }, 1500);
     },
-    focus2 () {
+    onFail() {
+      this.msg = "请控制拼图块对齐缺口";
+      this.$refs.slideInfo.style.color = "red";
+      setTimeout(() => {
+        this.msg = "拖动下方滑块完成拼图";
+        this.$refs.slideInfo.style.color = "rgba(0, 0, 0, 0.87)";
+      }, 1500);
+    },
+    onRefresh() {},
+    focus() {
+      this.$refs.inputUp.style =
+        "font-size: 14px;color: rgba(0, 0, 0, 0.56); transition: all 0.2s;top: -18px;";
+    },
+    focus2() {
       if (this.query) {
         this.$refs.inputUp2.style =
-          'font-size: 14px;color: rgba(0, 0, 0, 0.56); transition: all 0.2s;top: -18px;'
+          "font-size: 14px;color: rgba(0, 0, 0, 0.56); transition: all 0.2s;top: -18px;";
       } else {
         this.$refs.inputUp3.style =
-          'font-size: 14px;color: rgba(0, 0, 0, 0.56); transition: all 0.2s;top: -18px;'
+          "font-size: 14px;color: rgba(0, 0, 0, 0.56); transition: all 0.2s;top: -18px;";
       }
     },
-    blur () {
-      if (this.$refs.inputNum.value == '') {
+    blur() {
+      if (this.$refs.inputNum.value == "") {
         this.$refs.inputUp.style =
-          'font-size: 16px;color: rgba(0, 0, 0, 0.38); transition: all 0.2s;top: 5px;'
+          "font-size: 16px;color: rgba(0, 0, 0, 0.38); transition: all 0.2s;top: 5px;";
       }
       if (!/^\d{16,19}$/.test(this.$refs.inputNum.value)) {
-        this.nums = true
-      } else this.nums = false
+        this.nums = true;
+      } else this.nums = false;
     },
-    blur2 () {
+    blur2() {
       if (this.query) {
-        if (this.$refs.inputNum2.value == '') {
+        if (this.$refs.inputNum2.value == "") {
           this.$refs.inputUp2.style =
-            'font-size: 16px;color: rgba(0, 0, 0, 0.38); transition: all 0.2s;top: 5px;'
+            "font-size: 16px;color: rgba(0, 0, 0, 0.38); transition: all 0.2s;top: 5px;";
         }
         if (!/^\d{6}$/.test(this.$refs.inputNum2.value)) {
-          this.nums2 = true
-        } else this.nums2 = false
+          this.nums2 = true;
+        } else this.nums2 = false;
       } else {
-        if (this.$refs.inputNum3.value == '') {
+        if (this.$refs.inputNum3.value == "") {
           this.$refs.inputUp3.style =
-            'font-size: 16px;color: rgba(0, 0, 0, 0.38); transition: all 0.2s;top: 5px;'
+            "font-size: 16px;color: rgba(0, 0, 0, 0.38); transition: all 0.2s;top: 5px;";
         }
         if (!/^[a-z0-9]+$/i.test(this.$refs.inputNum3.value)) {
-          this.nums3 = true
-        } else this.nums3 = false
+          this.nums3 = true;
+        } else this.nums3 = false;
       }
     },
-    changeLeft () {
-      this.$refs.right.style = 'background: #FFF ;color:#00a862'
-      this.$refs.left.style = 'background: #00A862;color: #fff;'
-      this.query = true
+    changeLeft() {
+      this.$refs.right.style = "background: #FFF ;color:#00a862";
+      this.$refs.left.style = "background: #00A862;color: #fff;";
+      this.query = true;
     },
-    changeRight () {
-      this.$refs.right.style = 'background: #00A862;color: #fff;'
-      this.$refs.left.style = 'background: #FFF ;color:#00a862'
-      this.query = false
-    }
-  }
-}
+    changeRight() {
+      this.$refs.right.style = "background: #00A862;color: #fff;";
+      this.$refs.left.style = "background: #FFF ;color:#00a862";
+      this.query = false;
+    },
+  },
+};
 </script>
 
 <style lang='less' scoped>
@@ -199,9 +257,13 @@ export default {
     padding: 20px 0 10px;
   }
   form {
+    input[type='submit']{
+          margin: 15px 0 0 62vw;
+    }
     .form-input {
       position: relative;
       margin-top: 17px;
+      margin-bottom: 10px;
       input:focus {
         border-color: #00a862;
         transition-property: border;
@@ -231,6 +293,48 @@ export default {
           margin: 0;
           padding: 0;
         }
+      }
+    }
+    .slide-block {
+      padding: 0 10px 15px;
+      background: #fff;
+      border-radius: 10px;
+      .slide-msg {
+        color: rgba(0, 0, 0, 0.87);
+        font-size: 10px;
+        font-weight: 400;
+      }
+      .shade {
+        position: relative;
+        .success-times {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #00a862;
+          width: 280px;
+          transform: translate(-50%, -64%);
+          height: 162px;
+          font-weight: 700;
+          background-color: #80808085;
+        }
+        #slideVerify {
+          margin: auto;
+          /deep/.slide-verify-slider {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    .slide-success {
+      img {
+        vertical-align: bottom;
+      }
+      span {
+        color: #00a862;
       }
     }
   }
