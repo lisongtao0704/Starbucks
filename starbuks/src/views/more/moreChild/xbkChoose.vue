@@ -10,7 +10,7 @@
       </div>
     </section>
     <div class="map">
-      <article>
+      <article class="world">
         我们走访世界各地搜罗品质出众的咖啡豆，当中只有少量珍贵而独特风味的
         品种，才会被冠以星巴克臻选™的称号。 它们不可多得，且拥有让人着迷的风味。
         这些臻选™咖啡豆只在指定星巴克门店限量供应。
@@ -149,8 +149,9 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    article {
+    article.world {
       color: rgba(0, 0, 0, 0.87);
+      background-color: unset;
       padding: 0 50px;
       font-size: 16px;
       font-weight: 400;
