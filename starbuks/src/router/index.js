@@ -143,9 +143,18 @@ const routes = [{
   ]
 },
 {
-  path: '/more/help',
+  path: '/more/help/',
   name: 'help',
-  component: () => import('../views/more/moreChild/help.vue')
+  component: () => import('../views/more/moreChild/help.vue'),
+  children:[{
+    path: '1',
+    name: '1',
+    component: () => import('../views/more/moreChild/help/index.vue')
+  },{
+    path: '2',
+    name: '2',
+    component: () => import('../views/more/moreChild/help/index2.vue')
+  }]
 },
 {
   path: '/more/privacy',

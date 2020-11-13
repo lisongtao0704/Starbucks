@@ -33,8 +33,10 @@
     </div>
     <div class="footer">
       <router-link to="">English</router-link>|
-      <router-link to="/more/privacy">隐私政策</router-link>|
-      <router-link to="/more/useClause">使用条款</router-link>
+      <!-- <router-link to="/more/privacy">隐私政策</router-link>|
+      <router-link to="/more/useClause">使用条款</router-link> -->
+      <router-link to="">隐私政策</router-link>|
+      <router-link to="">使用条款</router-link>
     </div>
   </div>
 </template>
