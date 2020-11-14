@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import AMap from 'vue-amap'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './styles/style.css'
@@ -18,6 +19,12 @@ import './lib/mui/css/icons-extra.css'
 import mui from './lib/mui/js/mui.min.js'
 Vue.use(ElementUI)
 Vue.use(SlideVerify)
+Vue.use(AMap)
+
+AMap.initAMapApiLoader({
+  key: '93f3404d1220a5e8dff34a257b590776',
+  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor','AMap.Geocoder','AMap.Geolocation'],
+});
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios

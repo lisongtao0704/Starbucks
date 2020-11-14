@@ -48,7 +48,9 @@
       </div>
     </div>
     <transition>
+      <keep-alive>
       <router-view />
+      </keep-alive>
     </transition>
   </div>
 </template>
